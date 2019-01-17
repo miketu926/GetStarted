@@ -1,7 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+GetStarted, a Kickstarter clone, is a platform that allows users to fundraise project ideas in order to meet production goals. Users who are interested in other project ideas are able to provide funding to see the project come to fruition.
 
 Things you may want to cover:
 

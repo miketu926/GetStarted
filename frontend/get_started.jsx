@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
+import configureStore from './store/store';
 
 // FOR TESTING IN DEVELOPMENT
 import {createUser,
@@ -9,6 +10,7 @@ import {createUser,
 // END TESTING - REMOVE IN PROD
 
 document.addEventListener('DOMContentLoaded', () => {
+  const store = configureStore();
   const root = document.getElementById('root');
 
   // FOR TESTING IN DEVELOPMENT
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.logout = logout;
   // END TESTING - REMOVE IN PROD
   
-  ReactDOM.render(<Root />, root);
+  ReactDOM.render(<Root store={store} />, root);
 });
 
 

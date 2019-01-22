@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
 
 const msp = (state) => {
@@ -16,6 +16,8 @@ const mdp = (dispatch) => {
 
   })
 }
+
+
 
 class HeaderComponent extends React.Component {
 

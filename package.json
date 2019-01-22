@@ -1,5 +1,26 @@
 {
   "name": "GetStarted",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "description": "GetStarted, a Kickstarter clone, is a platform that allows users to fundraise project ideas in order to meet production goals. Users who are interested in other project ideas are able to provide funding to see the project come to fruition.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miketu926/GetStarted.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miketu926/GetStarted/issues"
+  },
+  "homepage": "https://github.com/miketu926/GetStarted#readme"
 }

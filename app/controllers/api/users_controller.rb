@@ -5,10 +5,8 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login!(@user)
-      debugger
-      render 'api/users/show'
+      render 'api/main/main'
     else
-      debugger
       render json: ["Email already exists"], status: 401
     end
 

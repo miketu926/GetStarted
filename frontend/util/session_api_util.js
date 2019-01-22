@@ -5,14 +5,14 @@ export const createUser = (user) => {
     data: {user}
   });
 };
-export const createSession = (user) => {
+export const login = (user) => {
   return $.ajax({
     type: "POST",
     url: "/api/session",
     data: {user}
   });
 };
-export const deleteSession = () => {
+export const logout = () => {
   return $.ajax({
     type: "DELETE",
     url: "/api/session"

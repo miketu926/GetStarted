@@ -65,13 +65,13 @@ class HeaderComponent extends React.Component {
     const { currentUser, logout } = this.props;
 
     return (
-      <div>
-        {this.exploreNAV()}
+      <nav className='nav-bar'>
+        {this.exploreNAV()} 
         {this.createProjectNAV()}
         {this.logoNAV()}
         {this.searchNAV()}
         {this.signinNAV()}
-      </div>
+      </nav>
     );
   }
 }

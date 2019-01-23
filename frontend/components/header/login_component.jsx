@@ -21,18 +21,48 @@ const mdp = (dispatch) => {
 
 
 class LoginComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = this.props.currentUser;
+    this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  
+  update(field) {
+    return (e) => {
+      this.setState({[field]: e.target.value}) 
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.login(this.state).then( () => this.props.history.push('/'));
+  }
+  
+  signupLink () {
+    return (
+      <div className='signup-link'>
+        <Link to='/signup'>Sign Up!</Link>
+      </div>
+    );
+  }
 
   render() {
 
-    const loginForm = () => {
-      return (
-        <div className='login-page'>
-          <Link to='/signup'>Sign Up!</Link>
-        </div>
-      );
-    }
+    return (
+      <div className='login-form'>
+        <h2>Log in</h2>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" value="Email" onChange={this.update("email")} />
+          <input type="text" value="Password" onChange={this.update("password")} />
+          <h4>Forgot your password? modal</h4>
+          <button>Log me in!</button>
+        <h4>New to Kickstarter? {this.signupLink()}</h4>
+        </form>
+      </div>
+    )
 
-    return loginForm()
   }
 
 }

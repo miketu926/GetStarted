@@ -1,0 +1,71 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { login } from '../../actions/session/session_actions';
+import { Link } from 'react-router-dom';
+
+const msp = ({ session, entities }) => {
+
+  return ({
+    currentUser: entities.users[session.sessionUserId],
+  });
+
+};
+
+const mdp = (dispatch) => {
+
+  return ({
+    login: (formUser) => dispatch(login(formUser)),
+  });
+};
+
+
+
+class LoginComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = this.props.currentUser;
+    this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  
+  update(field) {
+    return (e) => {
+      this.setState({[field]: e.target.value}) 
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.login(this.state).then( () => this.props.history.push('/'));
+  }
+  
+  signupLink () {
+    return (
+      <div className='signup-link'>
+        <Link to='/signup'>Sign Up!</Link>
+      </div>
+    );
+  }
+
+  render() {
+
+    return (
+      <div className='login-form'>
+        <h2>Log in</h2>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Email" onChange={this.update("email")} />
+          <input type="text" placeholder="Password" onChange={this.update("password")} />
+          <h4>Forgot your password? MODAL</h4>
+          <button>Log me in!</button>
+          <h5>Remember me CHECKBOX</h5>
+        <h4>New to Kickstarter? {this.signupLink()}</h4>
+        </form>
+      </div>
+    )
+
+  }
+
+}
+
+export default connect(msp, mdp)(LoginComponent);

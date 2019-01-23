@@ -3,6 +3,8 @@ import * as SessionApiUtil from '../../util/session_api_util';
 //CONSTANTS
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
+export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+export const RECEIVE_BLANK_ERRORS = "RECEIVE_BLANK_ERRORS";
 
 //ACTION CREATORS
 
@@ -19,14 +21,46 @@ const logoutCurrentUser = () => {
   });
 };
 
+const receiveSessionErrors = (errors) => {
+  return ({
+    type: RECEIVE_SESSION_ERRORS,
+    errors: errors
+  });
+};
+const blankErrors = () => {
+  return ({
+    type: RECEIVE_SESSION_ERRORS,
+  });
+};
+
+
+
 //THUNK ACTIONS
 
 export const createUser = (formUser) => (dispatch) => {
-  return SessionApiUtil.createUser(formUser).then(user => dispatch(receiveCurrentUser(user)));
+  dispatch(blankErrors());
+
+  return (
+    SessionApiUtil.createUser(formUser)
+    .then( user => {
+      return dispatch(receiveCurrentUser(user));
+    }, err => {
+      return dispatch(receiveSessionErrors(err.responseJSON));
+    })
+  );
 };
 
 export const login = (formUser) => dispatch => {
-  return SessionApiUtil.createSession(formUser).then(user => dispatch(receiveCurrentUser(user)));
+  dispatch(blankErrors());
+
+  return (
+    SessionApiUtil.createSession(formUser)
+    .then( user => {
+      dispatch(receiveCurrentUser(user));
+    }, err => {
+      return dispatch(receiveSessionErrors(err.responseJSON));
+    })
+  );
 };
 
 export const logout = () => dispatch => {

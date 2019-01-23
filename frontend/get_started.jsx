@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.createUser = createUser;
   window.login = login;
   window.logout = logout;
+  window.getState = store.getState;
   window.dispatch = store.dispatch;
   // END TESTING - REMOVE IN PROD
   

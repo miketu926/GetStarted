@@ -26,37 +26,37 @@ class HeaderComponent extends React.Component {
   
   signinNAV () {
     return (
-      <nav className='login-nav'>
+      <div className='login-nav'>
         <Link to='/login'>Sign in</Link>
-      </nav>
+      </div>
     );
   }
   exploreNAV () {
     return (
-      <nav className='explore-nav'>
+      <div className='explore-nav'>
         <div>Explore</div>
-      </nav>
+      </div>
     );
   }
   createProjectNAV () {
     return (
-      <nav className='create-project-nav'>
+      <div className='create-project-nav'>
         <div>Start a project</div>
-      </nav>
+      </div>
     );
   }
   logoNAV () {
     return (
-      <nav className='logo-nav'>
-        <div>Kickstarter Logo</div>
-      </nav>
+      <div className='logo-nav'>
+        <div>KICKSTARTER</div>
+      </div>
     );
   }
   searchNAV () {
     return (
-      <nav className='search-nav'>
+      <div className='search-nav'>
         <div>Search w/ mag glass</div>
-      </nav>
+      </div>
     );
   }
 

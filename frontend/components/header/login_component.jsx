@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
 
-const msp = ({ session, entities }) => {
+// const msp = ({ session, entities }) => {
 
-  return ({
-    currentUser: entities.users[session.sessionUserId],
-  });
+//   return ({
+//     currentUser: {email: "", password: ""}
+//   });
 
-};
+// };
 
 const mdp = (dispatch) => {
 
@@ -23,7 +23,7 @@ const mdp = (dispatch) => {
 class LoginComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.currentUser;
+    this.state = { email: "", password: "" };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -31,7 +31,7 @@ class LoginComponent extends React.Component {
   
   update(field) {
     return (e) => {
-      this.setState({[field]: e.target.value}) 
+      this.setState({[field]: e.target.value});
     };
   }
 
@@ -53,13 +53,24 @@ class LoginComponent extends React.Component {
     return (
       <div className='login-form'>
         <h2>Log in</h2>
+
         <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Email" onChange={this.update("email")} />
-          <input type="text" placeholder="Password" onChange={this.update("password")} />
+          <input 
+            type="text"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.update("email")} />
+
+          <input
+            type="text"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.update("password")} />
+
           <h4>Forgot your password? MODAL</h4>
           <button>Log me in!</button>
           <h5>Remember me CHECKBOX</h5>
-        <h4>New to Kickstarter? {this.signupLink()}</h4>
+          <h4>New to GetStarted? {this.signupLink()}</h4>
         </form>
       </div>
     )
@@ -68,4 +79,4 @@ class LoginComponent extends React.Component {
 
 }
 
-export default connect(msp, mdp)(LoginComponent);
+export default connect(null, mdp)(LoginComponent);

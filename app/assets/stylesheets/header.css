@@ -1,0 +1,11 @@
+.nav-bar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.logo-nav {
+  font-family: 'Modak', cursive;
+  font-size: 27px;
+  color: #034752;
+}

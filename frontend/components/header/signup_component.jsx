@@ -4,11 +4,9 @@ import { createUser } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
 
 // const msp = ({ session, entities }) => {
-
 //   return ({
 //     currentUser: entities.users[session.currentUserId],
 //   });
-
 // };
 
 const mdp = (dispatch) => {
@@ -36,7 +34,7 @@ class SignupComponent extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login(this.state).then(() => this.props.history.push('/'));
+    this.props.createUser(this.state).then(() => this.props.history.push('/'));
   }
 
   signinLink() {

@@ -4,11 +4,9 @@ import { login } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
 
 // const msp = ({ session, entities }) => {
-
 //   return ({
 //     currentUser: {email: "", password: ""}
 //   });
-
 // };
 
 const mdp = (dispatch) => {
@@ -51,28 +49,28 @@ class LoginComponent extends React.Component {
   render() {
 
     return (
-      <div className='login-form'>
-        <h2>Log in</h2>
+      <header className='login-form'>
 
         <form onSubmit={this.handleSubmit}>
-          <input 
-            type="text"
-            placeholder="Email"
-            value={this.state.email}
-            onChange={this.update("email")} />
+          <label>Log in</label>
+            <input 
+              type="text"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={this.update("email")} />
 
-          <input
-            type="text"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.update("password")} />
+            <input
+              type="text"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={this.update("password")} />
 
-          <h4>Forgot your password? MODAL</h4>
-          <button>Log me in!</button>
-          <h5>Remember me CHECKBOX</h5>
-          <h4>New to GetStarted? {this.signupLink()}</h4>
+              <h4>Forgot your password? MODAL</h4>
+              <button>Log me in!</button>
+              <h5>Remember me CHECKBOX</h5>
+              <h4>New to GetStarted? {this.signupLink()}</h4>
         </form>
-      </div>
+      </header>
     )
 
   }

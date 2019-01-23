@@ -1,11 +1,68 @@
+a {
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  line-height: unset;
+  font-family: inherit;
+  font-size: 15px;
+}
+
 .nav-bar {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+  height: 4.2rem;
+  align-items: center;
+  border-bottom: 1px solid #DCDEDD;
 }
+
+.nav-font {
+  font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #282828;
+}
+
+
+.explore-nav {
+  margin-right: 15px;
+}
+
+.explore-nav:hover {
+  color: 009e74;
+}
+
+.start-project-nav {}
 
 .logo-nav {
   font-family: 'Modak', cursive;
   font-size: 27px;
   color: #034752;
+  letter-spacing: 1px;
+}
+
+.search-nav {}
+
+.login-nav{
+  margin-left: 15px;
+}
+
+.nav-left {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin-left: 20px;
+}
+
+.nav-center {}
+
+
+.nav-right {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin-right: 20px;
 }

@@ -54,10 +54,11 @@ class LoginComponent extends React.Component {
       <div className='login-form'>
         <h2>Log in</h2>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" value="Email" onChange={this.update("email")} />
-          <input type="text" value="Password" onChange={this.update("password")} />
-          <h4>Forgot your password? modal</h4>
+          <input type="text" placeholder="Email" onChange={this.update("email")} />
+          <input type="text" placeholder="Password" onChange={this.update("password")} />
+          <h4>Forgot your password? MODAL</h4>
           <button>Log me in!</button>
+          <h5>Remember me CHECKBOX</h5>
         <h4>New to Kickstarter? {this.signupLink()}</h4>
         </form>
       </div>

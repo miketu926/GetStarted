@@ -30,7 +30,7 @@ class SignupComponent extends React.Component {
 
   update(field) {
     return (e) => {
-      this.setState({ [field]: e.target.value })
+      this.setState({ [field]: e.target.value });
     };
   }
 
@@ -54,11 +54,11 @@ class SignupComponent extends React.Component {
         <h4>Have an account? {this.signinLink()}</h4>
         <h2>Sign up</h2>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" value="Name" onChange={this.update("name")} />
-          <input type="text" value="Email" onChange={this.update("email")} />
-          <input type="text" value="Password" onChange={this.update("password")} />
+          <input type="text" placeholder="Name" onChange={this.update("name")} />
+          <input type="text" placeholder="Email" onChange={this.update("email")} />
+          <input type="password" placeholder="Password" onChange={this.update("password")} />
 
-          <h5>Receive a weekly mix of handpicked projects, plus occasional Kickstarter news.</h5>
+          <h5>Receive a weekly mix of handpicked projects, plus occasional Kickstarter news. CHECKBOX</h5>
           <h5>By signing up, you agree to our terms of use, privacy policy, and cookie policy.</h5>
           <button>Create Account</button>
         </form>

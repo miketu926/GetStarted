@@ -1,42 +1,34 @@
-import {createUser, login, logout} from '../../util/session_api_util';
+import * as SessionApiUtil from '../../util/session_api_util';
 
 //CONSTANTS
-export const CREATE_USER = "CREATE_USER";
-export const LOGIN_USER = "LOGIN_USER";
-export const LOGOUT_USER = "LOGOUT_USER";
+export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 
 //ACTION CREATORS
 
-const createUserAction = (user) => {
+const receiveCurrentUser = (user) => {
   return({
-    type: CREATE_USER,
+    type: RECEIVE_CURRENT_USER,
     user: user
   });
 };
 
-const loginAction = (user) => {
+const logoutCurrentUser = () => {
   return({
-    type: LOGIN_USER,
-    user: user
-  });
-};
-
-const logoutAction = () => {
-  return({
-    type: LOGOUT_USER,
+    type: LOGOUT_CURRENT_USER,
   });
 };
 
 //THUNK ACTIONS
 
-export const createUserThunk = (user) => (dispatch) => {
-  return createUser(user).then(user => dispatch(createUserAction(user)));
+export const createUser = (formUser) => (dispatch) => {
+  return SessionApiUtil.createUser(formUser).then(user => dispatch(receiveCurrentUser(user)));
 };
 
-export const loginThunk = (user) => dispatch => {
-  return login(user).then(user => dispatch(loginAction(user)));
+export const login = (formUser) => dispatch => {
+  return SessionApiUtil.createSession(formUser).then(user => dispatch(receiveCurrentUser(user)));
 };
 
-export const logoutThunk = () => dispatch => {
-  return logout().then( () => dispatch(logoutAction()));
+export const logout = () => dispatch => {
+  return SessionApiUtil.deleteSession().then( () => dispatch(logoutCurrentUser()));
 };

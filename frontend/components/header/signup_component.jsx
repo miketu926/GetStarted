@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createUser } from '../../actions/session/session_actions';
+import { createUser, clearErrors } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
+import { merge } from 'lodash';
 
 const msp = ({ errors }) => {
   return ({
-    errors: errors
+    errors: errors.errors || []
   });
 };
 
@@ -13,6 +14,7 @@ const mdp = (dispatch) => {
 
   return ({
     createUser: (formUser) => dispatch(createUser(formUser)),
+    clearErrors: () => dispatch(clearErrors())
   });
 };
 
@@ -29,16 +31,27 @@ class SignupComponent extends React.Component {
     this.handleConfirmClicked = this.handleConfirmClicked.bind(this);
   }
 
+  componentDidMount() {
+    this.props.clearErrors();
+  }
+
   update(field) {
     return (e) => {
       this.setState({ [field]: e.target.value });
     };
   }
 
+  // TESTING MATCHING EMAIL AND PASSWORD CONFIRMS
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createUser(this.state).then( () => this.props.history.push('/'));
+
+    if (this.state.email === this.state.confirmEmail && this.state.password === this.state.confirmPassword) {
+      this.props.createUser(this.state).then( () => this.props.history.push('/'));
+    } else {
+      merge([], this.props.errors, ['Email and/or password confirmations do not match']);
+    }
   }
+  // END TESTING
 
   signinLink() {
     return (
@@ -54,6 +67,7 @@ class SignupComponent extends React.Component {
 
 
   render() {
+    // EMAIL/PASSWORD APPEARANCE
     let confirmEmail = null;
     if (this.state.emailClick) {
       confirmEmail = (
@@ -75,13 +89,25 @@ class SignupComponent extends React.Component {
           onChange={this.update("confirmPassword")} />
       )
     }
-    
+    // END EMAIL/PASSWORD APPEARANCE
+
+    const errorsList = this.props.errors.map( (error, idx) => {
+      return (<li key={idx} class='li'>{error}</li>);
+    });
+
+    let errorsBox = null;
+    if (errorsList.length > 0) {
+      errorsBox = (<ul className='errors margin-lr'>{errorsList}</ul>)
+    }
+    // END ERROR LIST
     return (
       <header className='login-form'>
         <form className='signup-form-box' onSubmit={this.handleSubmit}>
           <div className='margin-lr session-form-header'>Have an account? {this.signinLink()}</div>
           <p className='p-h2 margin-lr margin-top'>Sign up</p>
 
+          {errorsBox}
+          
           <input className='session-input margin-lr transition'
             type="text"
             placeholder="Name"
@@ -93,9 +119,9 @@ class SignupComponent extends React.Component {
             placeholder="Email"
             value={this.state.email}
             onChange={this.update("email")}
-            onClick={this.handleConfirmClicked('emailClick')} />
+            onSelect={this.handleConfirmClicked('emailClick')} />
             
-          {/* appear and disappear */}
+          {/* APPEARS ONCE handleConfirmClicked */}
           {confirmEmail}
 
           <input className='session-input margin-lr transition'
@@ -103,9 +129,9 @@ class SignupComponent extends React.Component {
             placeholder="Password"
             value={this.state.password}
             onChange={this.update("password")}
-            onClick={this.handleConfirmClicked('passwordClick')} />
+            onSelect={this.handleConfirmClicked('passwordClick')} />
 
-          {/* appear and disappear */}
+          {/* APPEARS ONCE handleConfirmClicked */}
           {confirmPassword}
 
 

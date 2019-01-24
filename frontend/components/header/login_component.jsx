@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions/session/session_actions';
+import { login, clearErrors } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
 
 const msp = ({ errors }) => {
   return ({
-    errors: errors
+    errors: errors.errors || []
   });
 };
 
@@ -13,6 +13,7 @@ const mdp = (dispatch) => {
 
   return ({
     login: (formUser) => dispatch(login(formUser)),
+    clearErrors: () => dispatch(clearErrors())
   });
 };
 
@@ -26,6 +27,9 @@ class LoginComponent extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.clearErrors();
+  }
   
   update(field) {
     return (e) => {
@@ -50,12 +54,29 @@ class LoginComponent extends React.Component {
     this.props.login(guest);
   }
 
+
+
   render() {
+    
+    // END EMAIL/PASSWORD APPEARANCE
+
+    const errorsList = this.props.errors.map((error, idx) => {
+      return (<li key={idx} class='li'>{error}</li>);
+    });
+
+    let errorsBox = null;
+    if (errorsList.length > 0) {
+      errorsBox = (<ul className='errors margin-lr'>{errorsList}</ul>)
+    }
+    // END ERROR LIST
 
     return (
       <header className='login-form'>
         <form className='login-form-box' onSubmit={this.handleSubmit}>
           <p className='p-h2 margin-lr'>Log in</p>
+
+          {errorsBox}
+
           <input className='session-input margin-lr transition'
             type="email"
             placeholder="Email"
@@ -63,7 +84,7 @@ class LoginComponent extends React.Component {
             onChange={this.update("email")} />
 
           <input className='session-input margin-lr transition'
-            type="text"
+            type="password"
             placeholder="Password"
             value={this.state.password}
             onChange={this.update("password")} />

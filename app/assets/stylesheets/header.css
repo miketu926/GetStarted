@@ -21,7 +21,8 @@ button {
 }
 
 .nav-font {
-  font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-family: 'roboto', sans-serif;
   font-size: 14px;
   color: #282828;
 }

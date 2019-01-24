@@ -48,7 +48,7 @@ class SignupComponent extends React.Component {
   render() {
 
     return (
-      <div className='login-form'>
+      <header className='signup-form'>
         <h4>Have an account? {this.signinLink()}</h4>
         <h2>Sign up</h2>
         <form onSubmit={this.handleSubmit}>
@@ -74,7 +74,7 @@ class SignupComponent extends React.Component {
           <h5>By signing up, you agree to our terms of use, privacy policy, and cookie policy.</h5>
           <button>Create Account</button>
         </form>
-      </div>
+      </header>
     )
 
   }

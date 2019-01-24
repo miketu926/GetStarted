@@ -40,9 +40,7 @@ class LoginComponent extends React.Component {
   
   signupLink () {
     return (
-      <div className='signup-link'>
-        <Link to='/signup'>Sign Up!</Link>
-      </div>
+      <div className='signup-link'><Link to='/signup'>Sign Up!</Link></div>
     );
   }
 
@@ -50,25 +48,30 @@ class LoginComponent extends React.Component {
 
     return (
       <header className='login-form'>
+        <form className='login-form-box' onSubmit={this.handleSubmit}>
+          <p className='p-h2 margin-lr'>Log in</p>
+          <input className='session-input margin-lr transition'
+            type="text"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.update("email")} />
 
-        <form onSubmit={this.handleSubmit}>
-          <label>Log in</label>
-            <input 
-              type="text"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.update("email")} />
+          <input className='session-input margin-lr transition'
+            type="text"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.update("password")} />
 
-            <input
-              type="text"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.update("password")} />
+            <a href='modalplace'className='login-forgot-password margin-lr'>Forgot your password? MODAL</a>
+            <input className='session-submit margin-lr' type="submit" value="Log me in!"/>
+            <h5 className='login-remember-me margin-lr'>Remember me CHECKBOX</h5>
+         
+          <div className="divider margin-lr">
+            <div className="line"></div>
+            <div className="txt">or</div>
+          </div>
 
-              <h4>Forgot your password? MODAL</h4>
-              <button>Log me in!</button>
-              <h5>Remember me CHECKBOX</h5>
-              <h4>New to GetStarted? {this.signupLink()}</h4>
+          <div className="session-form-footer">New to Kicstarter? {this.signupLink()}</div>
         </form>
       </header>
     )

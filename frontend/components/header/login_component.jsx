@@ -62,14 +62,16 @@ class LoginComponent extends React.Component {
             value={this.state.password}
             onChange={this.update("password")} />
 
-            <a href='modalplace'className='login-forgot-password margin-lr'>Forgot your password? MODAL</a>
-            <input className='session-submit margin-lr' type="submit" value="Log me in!"/>
-            <div className='login-remember-me margin-lr'>Remember me CHECKBOX</div>
+          <a href='modalplace'className='login-forgot-password margin-lr'>Forgot your password? MODAL</a>
+          <input className='session-submit margin-lr' type="submit" value="Log me in!"/>
+          {/* <div className='login-remember-me margin-lr'>Remember me CHECKBOX</div> */}
          
           <div className="divider margin-lr">
             <div className="line"></div>
             <div className="txt">or</div>
           </div>
+
+          <button onClick={this.guestLogin} className="guest-submit guest margin-lr">Guest Log in</button>
 
           <div className="session-form-footer">New to GetStarted? {this.signupLink()}</div>
         </form>

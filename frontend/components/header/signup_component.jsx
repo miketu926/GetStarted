@@ -58,7 +58,7 @@ class SignupComponent extends React.Component {
             type="text"
             placeholder="Name"
             value={this.state.firstName}
-            onChange={this.update("name")} />
+            onChange={this.update("firstName")} />
 
           <input className='session-input margin-lr transition'
             type="text"
@@ -72,8 +72,8 @@ class SignupComponent extends React.Component {
             value={this.state.password}
             onChange={this.update("password")} />
 
-          <h5>Receive a weekly mix of handpicked projects, plus occasional GetStarted news. CHECKBOX</h5>
-          <h5>By signing up, you agree to our terms of use, privacy policy, and cookie policy.</h5>
+          <p className='margin-lr'>Receive a weekly mix of handpicked projects, plus occasional GetStarted news. CHECKBOX</p>
+          <p className='margin-lr'>By signing up, you agree to our terms of use, privacy policy, and cookie policy.</p>
           <input className='session-submit margin-lr' type="submit" value="Create Account" />
 
           <div className="divider margin-lr">
@@ -81,6 +81,7 @@ class SignupComponent extends React.Component {
             <div className="txt">or</div>
           </div>
 
+          <button onClick={this.guestLogin} className="guest-submit guest margin-lr">Guest Log in</button>
         </form>
       </header>
     )

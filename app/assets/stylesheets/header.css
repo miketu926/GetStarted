@@ -1,0 +1,73 @@
+a {
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  line-height: unset;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.nav-bar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  height: 4.2rem;
+  align-items: center;
+  border-bottom: 1px solid #DCDEDD;
+}
+
+.nav-font {
+  /* font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-family: 'roboto', sans-serif;
+  font-size: 14px;
+  color: #282828;
+}
+
+
+.explore-nav {
+  margin-right: 15px;
+}
+
+.hover:hover {
+  color: #009E74;
+}
+
+.start-project-nav {}
+
+.logo-nav {
+  font-family: 'Modak', cursive;
+  font-size: 27px;
+  color: #034752;
+  letter-spacing: 1px;
+}
+
+.search-nav {
+  /* adjust margin right after including magnifying glass */
+  margin-right: 45px;
+  
+}
+
+.login-nav{
+  margin-left: 15px;
+}
+
+.nav-left {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin-left: 25px;
+}
+
+.nav-center {}
+
+
+.nav-right {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin-right: 25px;
+}

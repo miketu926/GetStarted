@@ -1,20 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions/session/session_actions';
+import { login, clearErrors } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
 
-const msp = ({ session, entities }) => {
-
+const msp = ({ errors }) => {
   return ({
-    currentUser: entities.users[session.sessionUserId],
+    errors: errors.errors || []
   });
-
 };
 
 const mdp = (dispatch) => {
 
   return ({
     login: (formUser) => dispatch(login(formUser)),
+    clearErrors: () => dispatch(clearErrors())
   });
 };
 
@@ -23,15 +22,18 @@ const mdp = (dispatch) => {
 class LoginComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.currentUser;
+    this.state = { email: "", password: "" };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.clearErrors();
+  }
   
   update(field) {
     return (e) => {
-      this.setState({[field]: e.target.value}) 
+      this.setState({[field]: e.target.value});
     };
   }
 
@@ -42,26 +44,65 @@ class LoginComponent extends React.Component {
   
   signupLink () {
     return (
-      <div className='signup-link'>
-        <Link to='/signup'>Sign Up!</Link>
-      </div>
+      <Link to='/signup'>Sign Up!</Link>
     );
   }
 
+  guestLogin(e) {
+    e.preventDefault();
+    const guest = { user: { email: 'demo@getstarted.com', password: "demouser" } };
+    this.props.login(guest);
+  }
+
+
+
   render() {
+    
+    // END EMAIL/PASSWORD APPEARANCE
+
+    const errorsList = this.props.errors.map((error, idx) => {
+      return (<li key={idx} class='li'>{error}</li>);
+    });
+
+    let errorsBox = null;
+    if (errorsList.length > 0) {
+      errorsBox = (<ul className='errors margin-lr'>{errorsList}</ul>)
+    }
+    // END ERROR LIST
 
     return (
-      <div className='login-form'>
-        <h2>Log in</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Email" onChange={this.update("email")} />
-          <input type="text" placeholder="Password" onChange={this.update("password")} />
-          <h4>Forgot your password? MODAL</h4>
-          <button>Log me in!</button>
-          <h5>Remember me CHECKBOX</h5>
-        <h4>New to Kickstarter? {this.signupLink()}</h4>
+      <header className='login-form'>
+        <form className='login-form-box' onSubmit={this.handleSubmit}>
+          <p className='p-h2 margin-lr'>Log in</p>
+
+          {errorsBox}
+
+          <input className='session-input margin-lr transition'
+            type="email"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.update("email")} />
+
+          <input className='session-input margin-lr transition'
+            type="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.update("password")} />
+
+          <a href='./' className='login-forgot-password margin-lr'>Forgot your password?</a>
+          <input className='session-submit margin-lr' type="submit" value="Log me in!" />
+          {/* <div className='login-remember-me margin-lr'>Remember me CHECKBOX</div> */}
+         
+          <div className="divider margin-lr">
+            <div className="line"></div>
+            <div className="txt">or</div>
+          </div>
+
+          <button onClick={this.guestLogin} className="guest-submit guest margin-lr">Guest Log in</button>
+
+          <div className="session-form-footer">New to GetStarted? {this.signupLink()}</div>
         </form>
-      </div>
+      </header>
     )
 
   }

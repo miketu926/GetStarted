@@ -23,40 +23,38 @@ const mdp = (dispatch) => {
 
 
 class HeaderComponent extends React.Component {
-  
-  signinNAV () {
-    return (
-      <nav className='login-nav'>
-        <Link to='/login'>Sign in</Link>
-      </nav>
-    );
-  }
   exploreNAV () {
     return (
-      <nav className='explore-nav'>
-        <div>Explore</div>
-      </nav>
+      <div className='explore-nav nav-font'>
+        <button className='hover'>Explore</button>
+      </div>
     );
   }
   createProjectNAV () {
     return (
-      <nav className='create-project-nav'>
-        <div>Start a project</div>
-      </nav>
+      <div className='start-project-nav nav-font'>
+        <button className='hover'>Start a project</button>
+      </div>
     );
   }
   logoNAV () {
     return (
-      <nav className='logo-nav'>
-        <div>Kickstarter Logo</div>
-      </nav>
+      <Link className = 'logo-nav' to='/'>GETSTARTED</Link>
     );
   }
   searchNAV () {
     return (
-      <nav className='search-nav'>
-        <div>Search w/ mag glass</div>
-      </nav>
+      <div className='search-nav nav-font'>
+        <button className='hover'>Search</button>
+      </div>
+    );
+  }
+
+  signinNAV () {
+    return (
+      <div className='login-nav nav-font'>
+        <button><Link className='hover' to='/login'>Sign in</Link></button>
+      </div>
     );
   }
 
@@ -65,13 +63,17 @@ class HeaderComponent extends React.Component {
     const { currentUser, logout } = this.props;
 
     return (
-      <nav className='nav-bar'>
-        {this.exploreNAV()} 
-        {this.createProjectNAV()}
-        {this.logoNAV()}
-        {this.searchNAV()}
-        {this.signinNAV()}
-      </nav>
+      <header className='nav-bar'>
+        <nav className='nav-left'>
+          {this.exploreNAV()} 
+          {this.createProjectNAV()}
+        </nav>
+          {this.logoNAV()}
+        <nav className='nav-right'>
+          {this.searchNAV()}
+          {this.signinNAV()}
+        </nav>
+      </header>
     );
   }
 }

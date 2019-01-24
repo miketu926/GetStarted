@@ -32,8 +32,8 @@ button {
   margin-right: 15px;
 }
 
-.explore-nav:hover {
-  color: 009e74;
+.hover:hover {
+  color: #009E74;
 }
 
 .start-project-nav {}

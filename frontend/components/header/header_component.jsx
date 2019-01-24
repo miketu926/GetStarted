@@ -26,14 +26,14 @@ class HeaderComponent extends React.Component {
   exploreNAV () {
     return (
       <div className='explore-nav nav-font'>
-        <button>Explore</button>
+        <button className='hover'>Explore</button>
       </div>
     );
   }
   createProjectNAV () {
     return (
       <div className='start-project-nav nav-font'>
-       <button>Start a project</button>
+        <button className='hover'>Start a project</button>
       </div>
     );
   }
@@ -47,7 +47,7 @@ class HeaderComponent extends React.Component {
   searchNAV () {
     return (
       <div className='search-nav nav-font'>
-       <button>Search</button>
+        <button className='hover'>Search</button>
       </div>
     );
   }
@@ -55,7 +55,7 @@ class HeaderComponent extends React.Component {
   signinNAV () {
     return (
       <div className='login-nav nav-font'>
-        <button><Link to='/login'>Sign in</Link></button>
+        <button><Link className='hover' to='/login'>Sign in</Link></button>
       </div>
     );
   }

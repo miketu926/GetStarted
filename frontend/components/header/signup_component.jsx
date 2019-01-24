@@ -25,7 +25,7 @@ class SignupComponent extends React.Component {
     super(props);
     this.state = { name: "", email: "", confirmEmail: "",
                     password: "", confirmPassword: "",
-                    emailClick: false, passwordClick: false };
+                    emailClick: false, passwordClick: false, errors: this.props.errors };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleConfirmClicked = this.handleConfirmClicked.bind(this);
@@ -42,13 +42,16 @@ class SignupComponent extends React.Component {
   }
 
   // TESTING MATCHING EMAIL AND PASSWORD CONFIRMS
+  // setState doens't allow submit button to work when reaches else
   handleSubmit(e) {
     e.preventDefault();
 
     if (this.state.email === this.state.confirmEmail && this.state.password === this.state.confirmPassword) {
       this.props.createUser(this.state).then( () => this.props.history.push('/'));
     } else {
-      merge([], this.props.errors, ['Email and/or password confirmations do not match']);
+      return () => {
+        this.setState({errors: ['Email and/or password confirmations do not match']});
+      };
     }
   }
   // END TESTING

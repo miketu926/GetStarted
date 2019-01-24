@@ -44,6 +44,12 @@ class LoginComponent extends React.Component {
     );
   }
 
+  guestLogin(e) {
+    e.preventDefault();
+    const guest = { user: { email: 'demo@getstarted.com', password: "demouser" } };
+    this.props.login(guest);
+  }
+
   render() {
 
     return (
@@ -51,7 +57,7 @@ class LoginComponent extends React.Component {
         <form className='login-form-box' onSubmit={this.handleSubmit}>
           <p className='p-h2 margin-lr'>Log in</p>
           <input className='session-input margin-lr transition'
-            type="text"
+            type="email"
             placeholder="Email"
             value={this.state.email}
             onChange={this.update("email")} />
@@ -62,8 +68,8 @@ class LoginComponent extends React.Component {
             value={this.state.password}
             onChange={this.update("password")} />
 
-          <a href='modalplace'className='login-forgot-password margin-lr'>Forgot your password? MODAL</a>
-          <input className='session-submit margin-lr' type="submit" value="Log me in!"/>
+          <a href='./' className='login-forgot-password margin-lr'>Forgot your password?</a>
+          <input className='session-submit margin-lr' type="submit" value="Log me in!" />
           {/* <div className='login-remember-me margin-lr'>Remember me CHECKBOX</div> */}
          
           <div className="divider margin-lr">

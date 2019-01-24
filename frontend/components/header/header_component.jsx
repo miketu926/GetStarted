@@ -39,9 +39,7 @@ class HeaderComponent extends React.Component {
   }
   logoNAV () {
     return (
-      <div className='logo-nav'>
-       <div>GETSTARTED</div>
-      </div>
+      <Link className = 'logo-nav' to='/'>GETSTARTED</Link>
     );
   }
   searchNAV () {
@@ -70,9 +68,7 @@ class HeaderComponent extends React.Component {
           {this.exploreNAV()} 
           {this.createProjectNAV()}
         </nav>
-        {/* <nav className='nav-center'> */}
           {this.logoNAV()}
-        {/* </nav> */}
         <nav className='nav-right'>
           {this.searchNAV()}
           {this.signinNAV()}

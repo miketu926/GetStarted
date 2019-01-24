@@ -23,7 +23,6 @@ const logoutCurrentUser = () => {
 };
 
 const receiveSessionErrors = (errors) => {
-  debugger
   return ({
     type: RECEIVE_SESSION_ERRORS,
     errors: errors
@@ -39,13 +38,11 @@ const clearErrors = () => {
 //THUNK ACTIONS
 
 export const createUser = (formUser) => (dispatch) => {
-  debugger
   return (
     SessionApiUtil.createUser(formUser)
     .then( user => {
       return dispatch(receiveCurrentUser(user));
     }, err => {
-      debugger
       return dispatch(receiveSessionErrors(err.responseJSON));
     })
   );

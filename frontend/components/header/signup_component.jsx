@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { createUser } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
 
-// const msp = ({ session, entities }) => {
-//   return ({
-//     currentUser: entities.users[session.currentUserId],
-//   });
-// };
+const msp = ({ errors }) => {
+  return ({
+    errors: errors
+  });
+};
 
 const mdp = (dispatch) => {
 
@@ -127,4 +127,4 @@ class SignupComponent extends React.Component {
 
 }
 
-export default connect(null, mdp)(SignupComponent);
+export default connect(msp, mdp)(SignupComponent);

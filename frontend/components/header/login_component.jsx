@@ -40,7 +40,7 @@ class LoginComponent extends React.Component {
   
   signupLink () {
     return (
-      <div className='signup-link'><Link to='/signup'>Sign Up!</Link></div>
+      <Link to='/signup'>Sign Up!</Link>
     );
   }
 
@@ -64,14 +64,14 @@ class LoginComponent extends React.Component {
 
             <a href='modalplace'className='login-forgot-password margin-lr'>Forgot your password? MODAL</a>
             <input className='session-submit margin-lr' type="submit" value="Log me in!"/>
-            <h5 className='login-remember-me margin-lr'>Remember me CHECKBOX</h5>
+            <div className='login-remember-me margin-lr'>Remember me CHECKBOX</div>
          
           <div className="divider margin-lr">
             <div className="line"></div>
             <div className="txt">or</div>
           </div>
 
-          <div className="session-form-footer">New to Kicstarter? {this.signupLink()}</div>
+          <div className="session-form-footer">New to GetStarted? {this.signupLink()}</div>
         </form>
       </header>
     )

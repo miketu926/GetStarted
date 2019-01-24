@@ -39,32 +39,34 @@ class SignupComponent extends React.Component {
 
   signinLink() {
     return (
-      <div className='signin-link'>
-        <Link to='/login'>Sign in</Link>
-      </div>
+      <Link to='/login'>Log in</Link>
     );
   }
 
   render() {
 
     return (
-      <header className='signup-form'>
-        <h4>Have an account? {this.signinLink()}</h4>
-        <h2>Sign up</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input
+      <header className='login-form'>
+        <form className='signup-form-box' onSubmit={this.handleSubmit}>
+          
+          <div className='margin-lr session-form-header'>Have an account? {this.signinLink()}</div>
+
+          <p className='p-h2 margin-lr margin-top'>Sign up</p>
+
+
+          <input className='session-input margin-lr transition'
             type="text"
             placeholder="Name"
             value={this.state.firstName}
             onChange={this.update("name")} />
 
-          <input
+          <input className='session-input margin-lr transition'
             type="text"
             placeholder="Email"
             value={this.state.email}
             onChange={this.update("email")} />
             
-          <input
+          <input className='session-input margin-lr transition'
             type="password"
             placeholder="Password"
             value={this.state.password}
@@ -72,7 +74,13 @@ class SignupComponent extends React.Component {
 
           <h5>Receive a weekly mix of handpicked projects, plus occasional GetStarted news. CHECKBOX</h5>
           <h5>By signing up, you agree to our terms of use, privacy policy, and cookie policy.</h5>
-          <button>Create Account</button>
+          <input className='session-submit margin-lr' type="submit" value="Create Account" />
+
+          <div className="divider margin-lr">
+            <div className="line"></div>
+            <div className="txt">or</div>
+          </div>
+
         </form>
       </header>
     )

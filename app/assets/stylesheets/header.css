@@ -45,7 +45,11 @@ button {
   letter-spacing: 1px;
 }
 
-.search-nav {}
+.search-nav {
+  /* adjust margin right after including magnifying glass */
+  margin-right: 45px;
+  
+}
 
 .login-nav{
   margin-left: 15px;
@@ -55,7 +59,7 @@ button {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
 .nav-center {}
@@ -65,5 +69,5 @@ button {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  margin-right: 20px;
+  margin-right: 25px;
 }

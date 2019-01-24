@@ -28,16 +28,21 @@
 .p-h2 {
   display: block;
   text-align: center;
-  text-transform: capitalize;
   font-size: 28px;
+  font-weight: 300;
   margin-top: 10px;
   margin-bottom: 25px;
   align-self: flex-start;
+  letter-spacing: 1px;
 }
 
 .session-input:focus {
   border: 1px solid #009E74;
   outline: 0;
+}
+
+.login-remember-me {
+  /* margin-top: 50px; */
 }
 
 .session-input {
@@ -73,6 +78,7 @@
   color: white;
   transition: all 0.25s;
   font-size: 14px;
+  letter-spacing: 1px;
   height: 42px;
   line-height: 2;
   padding: 6px;
@@ -81,6 +87,8 @@
   border-radius: 0px;
   background-color: #009E74;
   cursor: pointer;
+  letter-spacing: 0.01em;
+
 }
 
 .session-submit:hover {
@@ -95,6 +103,7 @@
 .divider {
   text-align: center;
   position: relative;
+  /* margin-top: 80px; */
 }
 
 .line {
@@ -113,15 +122,38 @@
 }
 
 .session-form-footer {
-  width: 358px;
+  width: 100%;
   padding: 20px;
   text-align: center;
   color: #282828;
   font-size: 14px;
   border-top: 1px solid #f0f0f0;
-  /* margin-bottom: 60px; */
+  margin-top: 100px;
 }
 
 .session-form-footer:hover {
   color: black
+}
+
+.session-form-header {
+  padding: 20px;
+  text-align: center;
+  color: #282828;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.margin-top {
+  margin-top: 25px;
+}
+
+.signup-form-box {
+  margin-top: 65px;
+  margin-bottom: 65px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 560px;
+  padding: 0 20px 20px 20px;
+  background-color: #ffffff;
 }

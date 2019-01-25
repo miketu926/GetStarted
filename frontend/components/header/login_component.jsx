@@ -25,7 +25,7 @@ class LoginComponent extends React.Component {
     this.state = { email: "", password: "" };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.guestLogin = this.guestLogin.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   componentDidMount() {
@@ -49,10 +49,10 @@ class LoginComponent extends React.Component {
     );
   }
 
-  guestLogin(e) {
+  demoLogin(e) {
     e.preventDefault();
-    const guest = { email: 'demo_user@getstarted.com', password: "demouser" };
-    this.props.login(guest);
+    const demo = { email: 'demo_user@getstarted.com', password: "demouser" };
+    this.props.login(demo);
   }
 
 
@@ -101,7 +101,7 @@ class LoginComponent extends React.Component {
             <div className="txt">or</div>
           </div>
 
-          <button onClick={this.guestLogin} className="guest-submit guest margin-lr">Guest Log in</button>
+          <button onClick={this.demoLogin} className="demo-submit demo margin-lr">Guest Log in</button>
 
           <div className="session-form-footer">New to GetStarted? {this.signupLink()}</div>
         </form>

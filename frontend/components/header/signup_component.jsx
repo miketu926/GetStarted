@@ -18,14 +18,12 @@ const mdp = (dispatch) => {
   });
 };
 
-
-
 class SignupComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: "", email: "", confirmEmail: "",
                     password: "", confirmPassword: "",
-                    emailClick: false, passwordClick: false   };
+                    emailClick: false, passwordClick: false, errors: this.props.errors };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleConfirmClicked = this.handleConfirmClicked.bind(this);
@@ -42,19 +40,13 @@ class SignupComponent extends React.Component {
   }
 
   // TESTING MATCHING EMAIL AND PASSWORD CONFIRMS
-  // setState doens't allow submit button to work when reaches else
   handleSubmit(e) {
     e.preventDefault();
 
     if (this.state.email === this.state.confirmEmail && this.state.password === this.state.confirmPassword) {
-      debugger
       this.props.createUser(this.state).then( () => this.props.history.push('/'));
     } else {
-      debugger
-      return () => {
-        // this.setState({errors: ['Email and/or password confirmations do not match']});
-        this.setState(this.props.errors.push('Email and/or password confirmations do not match'));
-      };
+        this.setState({errors: ['Email and/or password do not match']});
     }
   }
   // END TESTING
@@ -95,14 +87,18 @@ class SignupComponent extends React.Component {
     }
     // END EMAIL/PASSWORD APPEARANCE
 
-    // ERRORS LIST
-    const errorsList = this.props.errors.map( (error, idx) => {
-      return (<li key={idx} class='li'>{error}</li>);
+    // ERRORS LIST (both react state and redux store)
+    const errorsStateList = this.state.errors.map( (error, idx) => {
+      return (<li key={`stateErr${idx}`} class='li'>{error}</li>);
     });
 
+    const errorsStoreList = this.props.errors.map( (error, idx) => {
+      return (<li key={`storeErr${idx}`} class='li'>{error}</li>);
+    })
+
     let errorsBox = null;
-    if (errorsList.length > 0) {
-      errorsBox = (<ul className='errors margin-lr'>{errorsList}</ul>)
+    if (errorsStateList.concat(errorsStoreList).length > 0) {
+      errorsBox = (<ul className='errors margin-lr'>{errorsStateList.concat(errorsStoreList)}</ul>)
     }
     // END ERROR LIST
     return (

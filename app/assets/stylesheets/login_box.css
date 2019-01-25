@@ -193,7 +193,8 @@
 
 .errors {
   display: flex;
-  padding: 12px;
+  flex-direction: column;
+  padding: 12px 12px 2px 12px;
   font-size: 16px;
   font-weight: 300;
   line-height: 14px;
@@ -209,4 +210,5 @@
 .li {
   margin-left: 15px;
   margin-right: 15px;
+  margin-bottom: 8px;
 }

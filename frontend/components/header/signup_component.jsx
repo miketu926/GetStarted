@@ -46,7 +46,7 @@ class SignupComponent extends React.Component {
     if (this.state.email === this.state.confirmEmail && this.state.password === this.state.confirmPassword) {
       this.props.createUser(this.state).then( () => this.props.history.push('/'));
     } else {
-        this.setState({errors: ['Email and/or password do not match']});
+      this.setState({errors: ['Email and/or password do not match']});
     }
   }
   // END TESTING

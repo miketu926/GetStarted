@@ -89,11 +89,11 @@ class SignupComponent extends React.Component {
 
     // ERRORS LIST (both react state and redux store)
     const errorsStateList = this.state.errors.map( (error, idx) => {
-      return (<li key={`stateErr${idx}`} class='li'>{error}</li>);
+      return (<li key={`stateErr${idx}`} className='li'>{error}</li>);
     });
 
     const errorsStoreList = this.props.errors.map( (error, idx) => {
-      return (<li key={`storeErr${idx}`} class='li'>{error}</li>);
+      return (<li key={`storeErr${idx}`} className='li'>{error}</li>);
     })
 
     let errorsBox = null;

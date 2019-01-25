@@ -59,7 +59,7 @@ class LoginComponent extends React.Component {
   render() {
     //ERRORS LIST
     const errorsList = this.props.errors.map((error, idx) => {
-      return (<li key={idx} class='li'>{error}</li>);
+      return (<li key={idx} className='li'>{error}</li>);
     });
 
     let errorsBox = null;

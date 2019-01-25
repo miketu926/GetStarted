@@ -16,8 +16,11 @@
 #
 
 class Project < ApplicationRecord
-  validates_presence_of :project, :description, :category, :goal_amt, :funded_amt, :duration_days, :user_id
+  validates :project, presence: true, uniqueness: true
+  validates_presence_of :description, :category, :goal_amt, :funded_amt, :duration_days
 
   belongs_to :user
+
+  
   
 end

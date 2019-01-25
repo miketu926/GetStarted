@@ -54,14 +54,9 @@ class LoginComponent extends React.Component {
     const demo = { email: 'demo_user@getstarted.com', password: "demouser" };
     this.props.login(demo);
   }
-
-
+  
 
   render() {
-    
-    // END EMAIL/PASSWORD APPEARANCE
-
-
     //ERRORS LIST
     const errorsList = this.props.errors.map((error, idx) => {
       return (<li key={idx} class='li'>{error}</li>);

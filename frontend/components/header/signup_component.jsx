@@ -149,7 +149,7 @@ class SignupComponent extends React.Component {
             <div className="txt">or</div>
           </div>
 
-          <button onClick={this.guestLogin} className="guest-submit guest margin-lr">Guest Log in</button>
+          <Link to='/login' className="demo-submit demo margin-lr">Log in as guest</Link>
         </form>
       </header>
     )

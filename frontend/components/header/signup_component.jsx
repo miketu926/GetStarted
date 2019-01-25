@@ -39,7 +39,6 @@ class SignupComponent extends React.Component {
     };
   }
 
-  // TESTING MATCHING EMAIL AND PASSWORD CONFIRMS
   handleSubmit(e) {
     e.preventDefault();
 
@@ -49,7 +48,6 @@ class SignupComponent extends React.Component {
       this.setState({errors: ['Email and/or password do not match']});
     }
   }
-  // END TESTING
 
   signinLink() {
     return (<Link to='/login'>Log in</Link>);

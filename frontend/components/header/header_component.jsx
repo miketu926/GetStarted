@@ -58,10 +58,21 @@ class HeaderComponent extends React.Component {
     );
   }
 
+  logoutNAV () {
+    return (
+      <button className='hover' onClick={this.props.logout}>Logout</button>
+    )
+  }
 
   render() {
-    const { currentUser, logout } = this.props;
+    const { currentUser } = this.props;
 
+    let profileBtn = this.signinNAV();
+    if (currentUser) {
+      profileBtn = this.logoutNAV();
+    };
+    
+    
     return (
       <header className='nav-bar'>
         <nav className='nav-left'>
@@ -71,7 +82,7 @@ class HeaderComponent extends React.Component {
           {this.logoNAV()}
         <nav className='nav-right'>
           {this.searchNAV()}
-          {this.signinNAV()}
+          {profileBtn}
         </nav>
       </header>
     );

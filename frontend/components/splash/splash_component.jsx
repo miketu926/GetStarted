@@ -26,7 +26,7 @@ class SplashComponent extends React.Component {
 
     return(
       <h1>HI I'M THE SPLASH PAGE</h1>
-    )
+    );
     
   }
   

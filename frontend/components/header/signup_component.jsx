@@ -25,7 +25,7 @@ class SignupComponent extends React.Component {
     super(props);
     this.state = { name: "", email: "", confirmEmail: "",
                     password: "", confirmPassword: "",
-                    emailClick: false, passwordClick: false, errors: this.props.errors };
+                    emailClick: false, passwordClick: false   };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleConfirmClicked = this.handleConfirmClicked.bind(this);
@@ -50,7 +50,8 @@ class SignupComponent extends React.Component {
       this.props.createUser(this.state).then( () => this.props.history.push('/'));
     } else {
       return () => {
-        this.setState({errors: ['Email and/or password confirmations do not match']});
+        // this.setState({errors: ['Email and/or password confirmations do not match']});
+        this.setState(this.props.errors.push('Email and/or password confirmations do not match'));
       };
     }
   }
@@ -63,7 +64,7 @@ class SignupComponent extends React.Component {
   }
 
   handleConfirmClicked(field) {
-    return (e) => {
+    return () => {
       this.setState({[field]: true})
     }
   }
@@ -94,6 +95,7 @@ class SignupComponent extends React.Component {
     }
     // END EMAIL/PASSWORD APPEARANCE
 
+    // ERRORS LIST
     const errorsList = this.props.errors.map( (error, idx) => {
       return (<li key={idx} class='li'>{error}</li>);
     });

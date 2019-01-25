@@ -25,6 +25,7 @@ class LoginComponent extends React.Component {
     this.state = { email: "", password: "" };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.guestLogin = this.guestLogin.bind(this);
   }
 
   componentDidMount() {
@@ -50,7 +51,7 @@ class LoginComponent extends React.Component {
 
   guestLogin(e) {
     e.preventDefault();
-    const guest = { user: { email: 'demo@getstarted.com', password: "demouser" } };
+    const guest = { email: 'demo_user@getstarted.com', password: "demouser" };
     this.props.login(guest);
   }
 
@@ -60,6 +61,8 @@ class LoginComponent extends React.Component {
     
     // END EMAIL/PASSWORD APPEARANCE
 
+
+    //ERRORS LIST
     const errorsList = this.props.errors.map((error, idx) => {
       return (<li key={idx} class='li'>{error}</li>);
     });

@@ -47,8 +47,10 @@ class SignupComponent extends React.Component {
     e.preventDefault();
 
     if (this.state.email === this.state.confirmEmail && this.state.password === this.state.confirmPassword) {
+      debugger
       this.props.createUser(this.state).then( () => this.props.history.push('/'));
     } else {
+      debugger
       return () => {
         // this.setState({errors: ['Email and/or password confirmations do not match']});
         this.setState(this.props.errors.push('Email and/or password confirmations do not match'));
@@ -58,9 +60,7 @@ class SignupComponent extends React.Component {
   // END TESTING
 
   signinLink() {
-    return (
-      <Link to='/login'>Log in</Link>
-    );
+    return (<Link to='/login'>Log in</Link>);
   }
 
   handleConfirmClicked(field) {

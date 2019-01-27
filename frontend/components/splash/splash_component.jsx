@@ -16,6 +16,8 @@ const mdp = (dispatch) => {
   });
 };
 
+
+
 class SplashComponent extends React.Component {
 
   componentDidMount() {
@@ -25,7 +27,69 @@ class SplashComponent extends React.Component {
   render() {
 
     return(
-      <h1>HI I'M THE SPLASH PAGE</h1>
+      <div>
+
+        <div>
+          <h2>category NAV bar</h2>
+        </div>
+
+        <div>
+          <h2>FEATURED PROJECT</h2>
+          <h2>RECOMMENDED</h2>
+        </div>
+
+        <div>
+          <h2>PODCAST ROW</h2>
+        </div>
+
+        <div>
+          <h2>FRESH FAVORITE cols</h2>
+          <h2>FRESH FAVORITE cols2</h2>
+          <h2>FRESH FAVORITE cols3</h2>
+          <h2>FRESH FAVORITE cols4</h2>
+        </div>
+
+        <div>
+          <h2>MAKE 100 project row</h2>
+        </div>
+
+        <div>
+          <h2>MAKE 100 projects cols</h2>
+          <h2>MAKE 100 projects cols2</h2>
+          <h2>MAKE 100 projects cols3</h2>
+          <h2>MAKE 100 projects cols4</h2>
+        </div>
+
+        <div>
+          <h2>The creative independent row with img and links to people</h2>
+        </div>
+
+        <div>
+          <h2>Home STRETCH projects col1</h2>
+          <h2>Home STRETCH projects col2</h2>
+          <h2>Home STRETCH projects col3</h2>
+          <h2>Home STRETCH projects col4</h2>
+        </div>
+
+        <div>
+          <h2>CREATOR STORIES col1</h2>
+          <h2>CREATOR STORIES col2</h2>
+        </div>
+
+        <div>
+          <h2>MORE TO EXPLORE col1</h2>
+          <h2>MORE TO EXPLORE col2</h2>
+          <h2>MORE TO EXPLORE col3</h2>
+          <h2>MORE TO EXPLORE col4</h2>
+        </div>
+
+        <div>
+          <h2>SUBSCRIBE TO KICKSTARTER</h2>
+        </div>
+
+
+
+      </div>
     );
     
   }

@@ -7,5 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Project.destroy_all
+
 User.create!(name: "demo_user", email: "demo_user@getstarted.com", password: "demouser")
 User.create!(name: "starwars", email: "starwars", password: "starwars")
+
+Project.create!(project: "sample1", description: "test", category: "design", goal_amt: 10, funded_amt: 3, duration_days: 3, user_id: 1)
+Project.create!(project: "sample2", description: "testing", category: "games", goal_amt: 25, funded_amt: 10, duration_days: 15, user_id: 2)

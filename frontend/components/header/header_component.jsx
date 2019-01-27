@@ -60,7 +60,7 @@ class HeaderComponent extends React.Component {
 
   logoutNAV () {
     return (
-      <button className='hover' onClick={this.props.logout}>Logout</button>
+      <button className='hover nav-font' onClick={this.props.logout}>Logout</button>
     )
   }
 

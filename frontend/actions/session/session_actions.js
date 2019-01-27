@@ -50,7 +50,6 @@ export const createUser = (formUser) => (dispatch) => {
 };
 
 export const login = (formUser) => dispatch => {
-
   return (
     SessionApiUtil.createSession(formUser)
     .then( user => {

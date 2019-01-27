@@ -27,10 +27,17 @@ class SplashComponent extends React.Component {
   render() {
 
     return(
-      <div>
+      <div className='flex flex-col'>
 
-        <div>
-          <h2>category NAV bar</h2>
+        <div className='categories-NAV flex row-wrap justify-center'>
+          <button className='hover cat'>Arts</button>
+          <button className='hover cat'>Comics & Illustration</button>
+          <button className='hover cat'>Design & Tech</button>
+          <button className='hover cat'>Film</button>
+          <button className='hover cat'>Food & Craft</button>
+          <button className='hover cat'>Games</button>
+          <button className='hover cat'>Music</button>
+          <button className='hover cat'>Publishing</button>
         </div>
 
         <div>

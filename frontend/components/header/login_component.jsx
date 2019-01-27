@@ -87,7 +87,7 @@ class LoginComponent extends React.Component {
             value={this.state.password}
             onChange={this.update("password")} />
 
-          <a href='./' className='login-forgot-password margin-lr'>Forgot your password?</a>
+          {/* <a href='./' className='login-forgot-password margin-lr'>Forgot your password?</a> */}
           <input className='session-submit margin-lr' type="submit" value="Log me in!" />
           {/* <div className='login-remember-me margin-lr'>Remember me CHECKBOX</div> */}
          

@@ -136,7 +136,7 @@ class SignupComponent extends React.Component {
           {confirmPassword}
 
 
-          <div className='for-now margin-lr'>CHECKBOX. Receive a weekly mix of handpicked projects, plus occasional GetStarted news.</div>
+          {/* <div className='for-now margin-lr'>CHECKBOX. Receive a weekly mix of handpicked projects, plus occasional GetStarted news.</div> */}
           <input className='session-submit margin-lr' type="submit" value="Create Account" />
           <div className='for-now margin-lr'>By signing up, you agree to our terms of use, privacy policy, and cookie policy.</div>
 

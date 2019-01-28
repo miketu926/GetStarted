@@ -9,8 +9,23 @@
 User.destroy_all
 Project.destroy_all
 
-User.create!(name: "demo_user", email: "demo_user@getstarted.com", password: "demouser")
-User.create!(name: "starwars", email: "starwars", password: "starwars")
+demo = User.create!(name: "demo_user", email: "demo_user@getstarted.com", password: "demouser")
+starwars = User.create!(name: "starwars", email: "starwars", password: "starwars")
+user1 = User.create!(name: "user1", email: "user1", password: "password")
+user2 = User.create!(name: "user2", email: "user2", password: "password")
+user3 = User.create!(name: "user3", email: "user3", password: "password")
+user4 = User.create!(name: "user4", email: "user4", password: "password")
+user5 = User.create!(name: "user5", email: "user5", password: "password")
+user6 = User.create!(name: "user6", email: "user6", password: "password")
+user7 = User.create!(name: "user7", email: "user7", password: "password")
+user8 = User.create!(name: "user8", email: "user8", password: "password")
+user9 = User.create!(name: "user9", email: "user9", password: "password")
+user10 = User.create!(name: "user10", email: "user10", password: "password")
 
-Project.create!(project: "sample1", description: "test", category: "design", goal_amt: 10, funded_amt: 3, duration_days: 3, user_id: 1)
-Project.create!(project: "sample2", description: "testing", category: "games", goal_amt: 25, funded_amt: 10, duration_days: 15, user_id: 2)
+project1 = Project.create!(project: "sample1", description: "test", category: "design", goal_amt: 10, funded_amt: 3, duration_days: 3, user_id: user1.id)
+project2 = Project.create!(project: "sample2", description: "testing", category: "games", goal_amt: 25, funded_amt: 10, duration_days: 56, user_id: user2.id)
+project3 = Project.create!(project: "sample3", description: "testing", category: "arts", goal_amt: 2500, funded_amt: 1000, duration_days: 15, user_id: user1.id)
+project4 = Project.create!(project: "sample4", description: "testing", category: "design", goal_amt: 10000, funded_amt: 1000000, duration_days: 25, user_id: user4.id)
+project5 = Project.create!(project: "sample5", description: "testing", category: "technology", goal_amt: 25000, funded_amt: 70000, duration_days: 10, user_id: user3.id)
+project6 = Project.create!(project: "sample6", description: "testing", category: "technology", goal_amt: 1000000, funded_amt: 1000, duration_days: 9, user_id: user2.id)
+project7 = Project.create!(project: "sample7", description: "testing", category: "technology", goal_amt: 300000, funded_amt: 300000, duration_days: 22, user_id: user1.id)

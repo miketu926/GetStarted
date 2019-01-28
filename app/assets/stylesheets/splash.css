@@ -14,6 +14,10 @@
   justify-content: center;
 }
 
+.flex-start {
+  justify-content: flex-start;
+}
+
 .categories-NAV {
   border-bottom: 1px solid #DCDEDD;
   margin-top: 22px;

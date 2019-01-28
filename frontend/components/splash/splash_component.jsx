@@ -40,14 +40,14 @@ class SplashComponent extends React.Component {
   
   render() {
 
-    let featuredBox = null
-    if (this.getFeatured()) {
-      featuredBox = (
-        <h2>
-          {this.getFeatured().project}
-        </h2>
-      )
-    }
+    let featuredBoxProjectName = null;
+    if (this.getFeatured()) { featuredBoxProjectName = (<h2>{this.getFeatured().project}</h2>) };
+    let featuredBoxProjectImg = null;
+    if (this.getFeatured()) { featuredBoxProjectImg = (<h2>{this.getFeatured().project_picture}</h2>) };
+    let featuredBoxProjectDesc = null;
+    if (this.getFeatured()) { featuredBoxProjectDesc = (<h2>{this.getFeatured().description}</h2>) };
+    let featuredBoxUser = null;
+    if (this.getFeatured()) { featuredBoxUser = (<h2>{this.getFeatured().user_id}</h2>) };
 
     return(
       <div className='flex flex-col'>
@@ -65,15 +65,14 @@ class SplashComponent extends React.Component {
 
         <div className='flex row-wrap justify-center'>
           <div className='flex flex-col'>
-            <h2>FEATURED PROJECT HEADER</h2>
-            {featuredBox}
-            <h2>FEATURED PROJECT IMAGE</h2>
-            <h2>FEATURED PROJECT TITLE</h2>
-            <h2>FEATURED DESCRIPTION</h2>
-            <h2>FEATURED USER</h2>
+            <h2>FEATURED PROJECT</h2>
+            {featuredBoxProjectImg}
+            {featuredBoxProjectName}
+            {featuredBoxProjectDesc}
+            {featuredBoxUser}
           </div>
           <div className='flex flex-col'>
-            <h2>RECOMMENDED TITLE</h2>
+            <h2>RECOMMENDED SECTION</h2>
             <h2>RECOMMENDED PROJECT1</h2>
             <h2>RECOMMENDED PROJECT2</h2>
             <h2>RECOMMENDED PROJECT3</h2>

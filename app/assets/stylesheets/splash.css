@@ -1,0 +1,29 @@
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.row-wrap {
+  flex-flow: row wrap;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.categories-NAV {
+  border-bottom: 1px solid #DCDEDD;
+  margin-top: 22px;
+  padding-bottom: 22px;
+}
+
+.cat {
+  font-family: 'roboto', sans-serif;
+  font-size: 14px;
+  color: #747474;
+  margin-left: 19px;
+  margin-right: 19px;
+}

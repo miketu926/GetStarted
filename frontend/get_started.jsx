@@ -10,13 +10,13 @@ import * as PROJECTTHUNKS from './actions/projects/project_actions';
 // END TESTING - REMOVE IN PROD
 
 document.addEventListener('DOMContentLoaded', () => {
-  // const store = configureStore();
   let store = {};
   let preloadedState = {};
+  
   if (window.currentUser) {
     preloadedState = {
       session: {
-        currentUser: { id: window.currentUser.id }
+        currentUserId: window.currentUser.id
       },
       entities: {
         users: { [window.currentUser.id]: window.currentUser }

@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { fetchAllProjects, fetchProject } from '../../actions/projects/project_actions';
 import { Link } from 'react-router-dom';
 
-const msp = (state) => {
+
+const msp = ({entities}) => {
   return({
-    
+    projects: entities.projects,
   });
 };
 
@@ -17,14 +18,36 @@ const mdp = (dispatch) => {
 };
 
 
-
 class SplashComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getFeatured = this.getFeatured.bind(this);
+  }
 
   componentDidMount() {
     this.props.fetchAllProjects();
   }
+
+  getFeatured() {
+    let featured = null;
+    let allProjects = Object.values(this.props.projects);
+    if (allProjects.length > 0) {
+      featured = allProjects[Math.floor(Math.random() * allProjects.length)];
+    }
+    return (featured);
+  }
+  
   
   render() {
+
+    let featuredBox = null
+    if (this.getFeatured()) {
+      featuredBox = (
+        <h2>
+          {this.getFeatured().project}
+        </h2>
+      )
+    }
 
     return(
       <div className='flex flex-col'>
@@ -41,11 +64,20 @@ class SplashComponent extends React.Component {
         </div>
 
         <div className='flex row-wrap justify-center'>
-          <h2>FEATURED PROJECT</h2>
           <div className='flex flex-col'>
+            <h2>FEATURED PROJECT HEADER</h2>
+            {featuredBox}
+            <h2>FEATURED PROJECT IMAGE</h2>
+            <h2>FEATURED PROJECT TITLE</h2>
+            <h2>FEATURED DESCRIPTION</h2>
+            <h2>FEATURED USER</h2>
+          </div>
+          <div className='flex flex-col'>
+            <h2>RECOMMENDED TITLE</h2>
             <h2>RECOMMENDED PROJECT1</h2>
             <h2>RECOMMENDED PROJECT2</h2>
             <h2>RECOMMENDED PROJECT3</h2>
+            <h2>Link to more projects</h2>
           </div>
         </div>
 

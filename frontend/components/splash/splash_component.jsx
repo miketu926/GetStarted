@@ -24,7 +24,7 @@ class SplashComponent extends React.Component {
     this.getFeatured = this.getFeatured.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount() { 
     this.props.fetchAllProjects();
   }
 
@@ -37,17 +37,63 @@ class SplashComponent extends React.Component {
     return (featured);
   }
   
-  
+  // CSS to handle max/min image sizing for window.mainIMG
+
   render() {
 
-    let featuredBoxProjectName = null;
-    if (this.getFeatured()) { featuredBoxProjectName = (<h2>{this.getFeatured().project}</h2>) };
-    let featuredBoxProjectImg = null;
-    if (this.getFeatured()) { featuredBoxProjectImg = (<h2>{this.getFeatured().project_picture}</h2>) };
-    let featuredBoxProjectDesc = null;
-    if (this.getFeatured()) { featuredBoxProjectDesc = (<h2>{this.getFeatured().description}</h2>) };
-    let featuredBoxUser = null;
-    if (this.getFeatured()) { featuredBoxUser = (<h2>{this.getFeatured().user_id}</h2>) };
+    let featuredBox = null;
+    if (this.getFeatured()) {
+      let featuredProject = this.getFeatured();
+      featuredBox = (
+        <div className='flex flex-col margin-lr'>
+          <h2>FEATURED PROJECT</h2>
+          <Link to={`/projects/${featuredProject.id}`}>{<img src={window.mainIMG} />}</Link>
+          <Link to={`/projects/${featuredProject.id}`}>{featuredProject.project}</Link>
+          <Link to={`/projects/${featuredProject.id}`}>{featuredProject.description}</Link>
+          <Link to={`/projects/${featuredProject.id}`}>{featuredProject.user_id}</Link>
+        </div>
+      )
+    };
+
+    let recommendedDiv = null;
+    let recommendedDiv2 = null;
+    let recommendedDiv3 = null;
+    if (this.getFeatured()) {
+      let recProject1 = this.getFeatured();
+      let recProject2 = this.getFeatured();
+      let recProject3 = this.getFeatured();
+      recommendedDiv = (
+        <div className='flex row-wrap flex-start'>
+          <Link to={`/projects/${recProject1.id}`}>{<img src={window.mainIMG} width={"160"} height={"90"} />}</Link>
+          <div className='flex flex-col'>
+            <Link to={`/projects/${recProject1.id}`}>{<h2>{recProject1.project}</h2>}</Link>
+            <h2>FUNDED AMT</h2>
+            <Link to={`/projects/${recProject1.id}`}>{<h2>{recProject1.user_id}</h2>}</Link>
+          </div>
+        </div>
+      );
+      recommendedDiv2 = (
+        <div className='flex row-wrap flex-start'>
+          <Link to={`/projects/${recProject2.id}`}>{<img src={window.mainIMG} width={"160"} height={"90"} />}</Link>
+          <div className='flex flex-col'>
+            <Link to={`/projects/${recProject2.id}`}>{<h2>{recProject2.project}</h2>}</Link>
+            <h2>FUNDED AMT</h2>
+            <Link to={`/projects/${recProject2.id}`}>{<h2>{recProject2.user_id}</h2>}</Link>
+          </div>
+        </div>
+      );
+      recommendedDiv3 = (
+        <div className='flex row-wrap flex-start'>
+          <Link to={`/projects/${recProject3.id}`}>{<img src={window.mainIMG} width={"160"} height={"90"} />}</Link>
+          <div className='flex flex-col'>
+            <Link to={`/projects/${recProject3.id}`}>{<h2>{recProject3.project}</h2>}</Link>
+            <h2>FUNDED AMT</h2>
+            <Link to={`/projects/${recProject3.id}`}>{<h2>{recProject3.user_id}</h2>}</Link>
+          </div>
+        </div>
+      );
+    };
+
 
     return(
       <div className='flex flex-col'>
@@ -64,18 +110,12 @@ class SplashComponent extends React.Component {
         </div>
 
         <div className='flex row-wrap justify-center'>
-          <div className='flex flex-col'>
-            <h2>FEATURED PROJECT</h2>
-            {featuredBoxProjectImg}
-            {featuredBoxProjectName}
-            {featuredBoxProjectDesc}
-            {featuredBoxUser}
-          </div>
-          <div className='flex flex-col'>
+          {featuredBox}
+          <div className='flex flex-col margin-lr'>
             <h2>RECOMMENDED SECTION</h2>
-            <h2>RECOMMENDED PROJECT1</h2>
-            <h2>RECOMMENDED PROJECT2</h2>
-            <h2>RECOMMENDED PROJECT3</h2>
+            {recommendedDiv}
+            {recommendedDiv2}
+            {recommendedDiv3}
             <h2>Link to more projects</h2>
           </div>
         </div>

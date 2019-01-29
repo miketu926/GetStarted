@@ -20,6 +20,7 @@ class Project < ApplicationRecord
   validates_presence_of :description, :category, :goal_amt, :funded_amt, :duration_days
 
   belongs_to :user
+  has_one_attached :project_picture
 
   
   

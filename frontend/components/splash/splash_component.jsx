@@ -37,7 +37,7 @@ class SplashComponent extends React.Component {
     return (featured);
   }
   
-
+  // CSS to handle max/min image sizing for window.mainIMG
 
   render() {
 
@@ -45,12 +45,14 @@ class SplashComponent extends React.Component {
     if (this.getFeatured()) {
       let featuredProject = this.getFeatured();
       featuredBox = (
-        <div className='flex flex-col'>
+        <div className='flex flex-col margin-lr'>
           <h2>FEATURED PROJECT</h2>
+          {/* BEGIN LINK */}
           <img src={window.mainIMG} />
           <h2>{featuredProject.project}</h2>
           <h2>{featuredProject.description}</h2>
           <h2>{featuredProject.user_id}</h2>
+          {/* END LINK */}
         </div>
       )
     };
@@ -111,7 +113,7 @@ class SplashComponent extends React.Component {
 
         <div className='flex row-wrap justify-center'>
           {featuredBox}
-          <div className='flex flex-col'>
+          <div className='flex flex-col margin-lr'>
             <h2>RECOMMENDED SECTION</h2>
             {recommendedDiv}
             {recommendedDiv2}

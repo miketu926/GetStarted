@@ -12,10 +12,11 @@ const receiveAllProjects = (projects) => {
     projects: projects,
   });
 };
-const receiveProject = (project) => {
+const receiveProject = ({project, user}) => {
   return ({
     type: RECEIVE_PROJECT,
     project: project,
+    user: user,
   });
 };
 const removeProject = (project) => {

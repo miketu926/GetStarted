@@ -6,7 +6,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id]);
+    @project = Project.includes(:user).find(params[:id]);
     render :show
   end
 
@@ -18,7 +18,7 @@ class Api::ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      render :show
+      render :new
     else
       render @project.errors.full_messages
     end
@@ -49,7 +49,7 @@ class Api::ProjectsController < ApplicationController
   
   def project_params
     params.require(:project).permit(:project, :description,
-    :category, :project_picture, :goal_amt,
+    :category, :photo, :goal_amt,
     :funded_amt, :duration_days, :user_id)
   end
   

@@ -24,7 +24,7 @@ class SplashComponent extends React.Component {
     this.getFeatured = this.getFeatured.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount() { 
     this.props.fetchAllProjects();
   }
 
@@ -47,12 +47,10 @@ class SplashComponent extends React.Component {
       featuredBox = (
         <div className='flex flex-col margin-lr'>
           <h2>FEATURED PROJECT</h2>
-          {/* BEGIN LINK */}
-          <img src={window.mainIMG} />
-          <h2>{featuredProject.project}</h2>
-          <h2>{featuredProject.description}</h2>
-          <h2>{featuredProject.user_id}</h2>
-          {/* END LINK */}
+          <Link to={`/projects/${featuredProject.id}`}>{<img src={window.mainIMG} />}</Link>
+          <Link to={`/projects/${featuredProject.id}`}>{featuredProject.project}</Link>
+          <Link to={`/projects/${featuredProject.id}`}>{featuredProject.description}</Link>
+          <Link to={`/projects/${featuredProject.id}`}>{featuredProject.user_id}</Link>
         </div>
       )
     };
@@ -66,32 +64,32 @@ class SplashComponent extends React.Component {
       let recProject3 = this.getFeatured();
       recommendedDiv = (
         <div className='flex row-wrap flex-start'>
-          <img src={window.mainIMG} width={"160"} height={"90"} />
-            <div className='flex flex-col'>
-              <h2>{recProject1.project}</h2>
-              <h2>{recProject1.description}</h2>
-              <h2>{recProject1.user_id}</h2>
-            </div>
+          <Link to={`/projects/${recProject1.id}`}>{<img src={window.mainIMG} width={"160"} height={"90"} />}</Link>
+          <div className='flex flex-col'>
+            <Link to={`/projects/${recProject1.id}`}>{<h2>{recProject1.project}</h2>}</Link>
+            <h2>FUNDED AMT</h2>
+            <Link to={`/projects/${recProject1.id}`}>{<h2>{recProject1.user_id}</h2>}</Link>
+          </div>
         </div>
       );
       recommendedDiv2 = (
         <div className='flex row-wrap flex-start'>
-          <img src={window.mainIMG} width={"160"} height={"90"} />
-            <div className='flex flex-col'>
-            <h2>{recProject2.project}</h2>
-            <h2>{recProject2.description}</h2>
-            <h2>{recProject2.user_id}</h2>
-            </div>
+          <Link to={`/projects/${recProject2.id}`}>{<img src={window.mainIMG} width={"160"} height={"90"} />}</Link>
+          <div className='flex flex-col'>
+            <Link to={`/projects/${recProject2.id}`}>{<h2>{recProject2.project}</h2>}</Link>
+            <h2>FUNDED AMT</h2>
+            <Link to={`/projects/${recProject2.id}`}>{<h2>{recProject2.user_id}</h2>}</Link>
+          </div>
         </div>
       );
       recommendedDiv3 = (
         <div className='flex row-wrap flex-start'>
-          <img src={window.mainIMG} width={"160"} height={"90"} />
-            <div className='flex flex-col'>
-            <h2>{recProject3.project}</h2>
-            <h2>{recProject3.description}</h2>
-            <h2>{recProject3.user_id}</h2>
-            </div>
+          <Link to={`/projects/${recProject3.id}`}>{<img src={window.mainIMG} width={"160"} height={"90"} />}</Link>
+          <div className='flex flex-col'>
+            <Link to={`/projects/${recProject3.id}`}>{<h2>{recProject3.project}</h2>}</Link>
+            <h2>FUNDED AMT</h2>
+            <Link to={`/projects/${recProject3.id}`}>{<h2>{recProject3.user_id}</h2>}</Link>
+          </div>
         </div>
       );
     };

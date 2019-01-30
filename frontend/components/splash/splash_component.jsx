@@ -47,11 +47,11 @@ class SplashComponent extends React.Component {
       let featuredProject = this.getFeatured();
       featuredBox = (
         <div className='flex flex-col margin-lr'>
-          <h2>FEATURED PROJECT</h2>
-          <Link to={`/projects/${featuredProject.id}`}>{<img src={featuredProject.photo} />}</Link>
-          <Link to={`/projects/${featuredProject.id}`}>{featuredProject.project}</Link>
-          <Link to={`/projects/${featuredProject.id}`}>{featuredProject.description}</Link>
-          <Link to={`/projects/${featuredProject.id}`}>{featuredProject.user_id}</Link>
+          <h2 className='title-section padding-bot-20'>FEATURED PROJECT</h2>
+          <Link to={`/projects/${featuredProject.id}`}>{<img src={featuredProject.photo} width={"630"} height={"360"} />}</Link>
+          <Link className='large-title' to={`/projects/${featuredProject.id}`}>{featuredProject.project}</Link>
+          <Link className='medium-desc' to={`/projects/${featuredProject.id}`}>{featuredProject.description}</Link>
+          <Link className='small-name' to={`/projects/${featuredProject.id}`}>By {featuredProject.user_id}</Link>
         </div>
       )
     };
@@ -72,37 +72,37 @@ class SplashComponent extends React.Component {
       let freshProject3 = this.getFeatured();
       let freshProject4 = this.getFeatured();
       recommendedDiv = (
-        <div className='flex row-wrap flex-start'>
+        <div className='flex row-wrap flex-start padding-bot-30'>
           <Link to={`/projects/${recProject1.id}`}>{<img src={recProject1.photo} width={"160"} height={"90"} />}</Link>
-          <div className='flex flex-col'>
-            <Link to={`/projects/${recProject1.id}`}>{<h2>{recProject1.project}</h2>}</Link>
-            <h2>{(recProject1.funded_amt / recProject1.goal_amt)*100}% funded</h2>
-            <Link to={`/projects/${recProject1.id}`}>{<h2>{recProject1.user_id}</h2>}</Link>
+          <div className='flex flex-col margin-l-25'>
+            <Link className='medium-name-1' to={`/projects/${recProject1.id}`}>{<h2>{recProject1.project}</h2>}</Link>
+            <h2 className='medium-name-2'>{(recProject1.funded_amt / recProject1.goal_amt)*100}% funded</h2>
+            <Link className='small-name' to={`/projects/${recProject1.id}`}>{<h2>By {recProject1.user_id}</h2>}</Link>
           </div>
         </div>
       );
       recommendedDiv2 = (
-        <div className='flex row-wrap flex-start'>
+        <div className='flex row-wrap flex-start padding-bot-30'>
           <Link to={`/projects/${recProject2.id}`}>{<img src={recProject2.photo} width={"160"} height={"90"} />}</Link>
-          <div className='flex flex-col'>
-            <Link to={`/projects/${recProject2.id}`}>{<h2>{recProject2.project}</h2>}</Link>
-            <h2>{(recProject2.funded_amt / recProject2.goal_amt) * 100}% funded</h2>
-            <Link to={`/projects/${recProject2.id}`}>{<h2>{recProject2.user_id}</h2>}</Link>
+          <div className='flex flex-col margin-l-25'>
+            <Link className='medium-name-1' to={`/projects/${recProject2.id}`}>{<h2>{recProject2.project}</h2>}</Link>
+            <h2 className='medium-name-2'>{(recProject2.funded_amt / recProject2.goal_amt) * 100}% funded</h2>
+            <Link className='small-name' to={`/projects/${recProject2.id}`}>{<h2>By {recProject2.user_id}</h2>}</Link>
           </div>
         </div>
       );
       recommendedDiv3 = (
-        <div className='flex row-wrap flex-start'>
+        <div className='flex row-wrap flex-start ppadding-bot-30'>
           <Link to={`/projects/${recProject3.id}`}>{<img src={recProject3.photo} width={"160"} height={"90"} />}</Link>
-          <div className='flex flex-col'>
-            <Link to={`/projects/${recProject3.id}`}>{<h2>{recProject3.project}</h2>}</Link>
-            <h2>{(recProject3.funded_amt / recProject3.goal_amt) * 100}% funded</h2>
-            <Link to={`/projects/${recProject3.id}`}>{<h2>{recProject3.user_id}</h2>}</Link>
+          <div className='flex flex-col margin-l-25'>
+            <Link className='medium-name-1' to={`/projects/${recProject3.id}`}>{<h2>{recProject3.project}</h2>}</Link>
+            <h2 className='medium-name-2'>{(recProject3.funded_amt / recProject3.goal_amt) * 100}% funded</h2>
+            <Link className='small-name' to={`/projects/${recProject3.id}`}>{<h2>By {recProject3.user_id}</h2>}</Link>
           </div>
         </div>
       );
       freshFavoriteDiv = (
-        <div className='flex flex-col margin-lr-20'>
+        <div className='flex flex-col margin-lr-17'>
           <Link to={`/projects/${freshProject1.id}`}>{<img src={freshProject1.photo} width={"290"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject1.id}`}>{<h2>{freshProject1.project}</h2>}</Link>
           <Link to={`/projects/${freshProject1.id}`}>{<h2>{freshProject1.description}</h2>}</Link>
@@ -110,7 +110,7 @@ class SplashComponent extends React.Component {
         </div>
       );
       freshFavoriteDiv2 = (
-        <div className='flex flex-col margin-lr-20'>
+        <div className='flex flex-col margin-lr-17'>
           <Link to={`/projects/${freshProject2.id}`}>{<img src={freshProject2.photo} width={"290"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject2.id}`}>{<h2>{freshProject2.project}</h2>}</Link>
           <Link to={`/projects/${freshProject2.id}`}>{<h2>{freshProject2.description}</h2>}</Link>
@@ -118,7 +118,7 @@ class SplashComponent extends React.Component {
         </div>
       );
       freshFavoriteDiv3 = (
-        <div className='flex flex-col margin-lr-20'>
+        <div className='flex flex-col margin-lr-17'>
           <Link to={`/projects/${freshProject3.id}`}>{<img src={freshProject3.photo} width={"290"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject3.id}`}>{<h2>{freshProject3.project}</h2>}</Link>
           <Link to={`/projects/${freshProject3.id}`}>{<h2>{freshProject3.description}</h2>}</Link>
@@ -126,7 +126,7 @@ class SplashComponent extends React.Component {
         </div>
       );
       freshFavoriteDiv4 = (
-        <div className='flex flex-col margin-lr-20'>
+        <div className='flex flex-col margin-lr-17'>
           <Link to={`/projects/${freshProject4.id}`}>{<img src={freshProject4.photo} width={"290"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject4.id}`}>{<h2>{freshProject4.project}</h2>}</Link>
           <Link to={`/projects/${freshProject4.id}`}>{<h2>{freshProject4.description}</h2>}</Link>
@@ -150,10 +150,10 @@ class SplashComponent extends React.Component {
           <button className='hover cat'>Publishing</button>
         </div>
 
-        <div className='flex row-wrap justify-center'>
+        <div className='flex row-wrap justify-center featured'>
           {featuredBox}
-          <div className='flex flex-col margin-lr'>
-            <h2>RECOMMENDED SECTION</h2>
+          <div className='flex flex-col margin-lr margin-right-260'>
+            <h2 className='title-section padding-bot-20'>RECOMMENDED</h2>
             {recommendedDiv}
             {recommendedDiv2}
             {recommendedDiv3}
@@ -163,7 +163,7 @@ class SplashComponent extends React.Component {
 
         <div className='flex flex-col'>
           <div>
-            <h2>FRESH FAVORITES</h2>
+            <h2 className='title-section'>FRESH FAVORITES</h2>
           </div>
           <div className='flex row-wrap justify-center' >
             {freshFavoriteDiv}

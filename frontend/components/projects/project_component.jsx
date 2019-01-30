@@ -25,6 +25,10 @@ class ProjectShowComponent extends React.Component {
   componentDidMount() {
     this.props.fetchProject(this.props.project.id);
   }
+
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   
   render() {
 
@@ -35,7 +39,7 @@ class ProjectShowComponent extends React.Component {
     }
 
     return (
-      <div>
+      <div className='main-background'>
         <div className='flex flex-col'>
           <div className='flex row-wrap justify-center'>
             <h2>{this.props.user.name}</h2>
@@ -50,21 +54,20 @@ class ProjectShowComponent extends React.Component {
               <h2>{project.category} | {project.location}</h2>
             </div>
             <div className='flex flex-col'>
-              <h2>funding status bar</h2>
-              <h2>{project.funded_amt}</h2>
-              <h2>{`pledged of $${project.goal_amt} goal`}</h2>
-              <h2>backers</h2>
-              <h2>{project.duration_days}</h2>
+              <progress className='progress-bar' max="1" value={project.funded_amt/project.goal_amt}></progress>
+              <h2>${this.numberWithCommas(project.funded_amt)}</h2>
+              <h2>{`pledged of $${this.numberWithCommas(project.goal_amt)} goal`}</h2>
+              <h2>number of backers here</h2>
+              <h2>{this.numberWithCommas(project.duration_days)}</h2>
               <h2>days to go</h2>
               <h2>BACK THIS PROJECT</h2>
               <h2>This project will only be funded if it reaches its goal by...</h2>
             </div>
           </div>
-          <div className='flex row-wrap justify-start'>
-            <h2>CAMPAIGN</h2>
-            <h2>FAQ</h2>
-            <h2>UPDATES</h2>
-            <h2>COMMENTS</h2>
+
+          <div className='cat-project flex row-wrap justify-center'>
+            <button className='hover cat-proj'>Campaign</button>
+            <button className='hover cat-proj'>FAQ</button>
           </div>
         </div>
 
@@ -72,8 +75,10 @@ class ProjectShowComponent extends React.Component {
           <div className="flex row-wrap justify-center">
             <div className='flex flex-col'>
               <h2>ABOUT</h2>
+              <h3>project description</h3>
             </div>
             <div className='flex flex-col'>
+              <h2>SUPPORT</h2>
               <h2>MAKE A PLEDGE W/O A REWARD</h2>
               <h2>REWARD TIER 1</h2>
               <h2>REWARD TIER 2</h2>

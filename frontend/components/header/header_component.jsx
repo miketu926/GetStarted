@@ -30,7 +30,7 @@ class HeaderComponent extends React.Component {
   }
   createProjectNAV () {
     return (
-      <button className='hover'>Start a project</button>
+      <button className='hover'><Link to='/projects/new'>Start a project</Link></button>
     );
   }
   logoNAV () {

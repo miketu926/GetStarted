@@ -1,0 +1,34 @@
+.main-background {
+  background-color: #fcfcfc
+}
+
+.progress-bar {
+  width: 100%;
+  height: 3px;  
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #E8E8E8;
+}
+
+progress[value]::-webkit-progress-value {
+  color: #037362;
+}
+
+.cat-project {
+  border-top: 1px solid #DCDEDD;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #DCDEDD;
+}
+
+.cat-proj {
+  font-family: 'roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #282828;
+  padding-left: 19px;
+  padding-right: 19px;
+}

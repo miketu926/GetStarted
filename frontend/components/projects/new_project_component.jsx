@@ -22,10 +22,13 @@ class NewProjectComponent extends React.Component {
     super(props);
     this.state = {
       project: "", description: "", category: "",
-      goalAmt: "", fundedAmt: 0, durationDays: 30, location: "",
+      goalAmt: 0, fundedAmt: 0, durationDays: 30, location: "",
+      photoFile: null,
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.update = this.update.bind(this); 
+    this.update = this.update.bind(this);
+    this.handlePhoto = this.handlePhoto.bind(this);
   }
 
   update(field) {
@@ -34,12 +37,24 @@ class NewProjectComponent extends React.Component {
     };
   }
 
+  handlePhoto(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('project[photo]', this.state.photoFile);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createProject(this.state).then ( 
-      () => this.props.history.push(`/projects/${this.state.project.id}`)
-    );
+    debugger
+    this.props.createProject(this.state);
   }
+
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  //   this.props.createProject(this.state).then ( 
+  //     () => this.props.history.push(`/projects/${this.state.project.id}`)
+  //   );
+  // }
 
   render() {
 
@@ -124,7 +139,7 @@ class NewProjectComponent extends React.Component {
             <h2>Add an image that clearly represents your project.</h2>
           </div>
           <div>
-            <h2>IMAGE INPUT FORM</h2>
+            <input type="file" onChange={this.handlePhoto} />
           </div>
         </div>
 
@@ -136,7 +151,7 @@ class NewProjectComponent extends React.Component {
           <div>
             <input type="text"
               placeholder='500'
-              value={this.state.goalAmt}
+              value={parseInt(this.state.goalAmt)}
               onChange={this.update("goalAmt")} />
           </div>
         </div>

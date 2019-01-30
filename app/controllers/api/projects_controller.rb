@@ -12,6 +12,7 @@ class Api::ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.new
+    debugger
     current_user
     render :new
   end
@@ -20,9 +21,11 @@ class Api::ProjectsController < ApplicationController
     @project = current_user.projects.new(project_params)
 
     if @project.save
+      debugger
       render :new
     else
       render @project.errors.full_messages
+      debugger
     end
   end
 

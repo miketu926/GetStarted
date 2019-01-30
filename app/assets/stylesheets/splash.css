@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.width-auto {
+  width: auto;
+}
+
 .row-wrap {
   flex-flow: row wrap;
 }
@@ -36,14 +40,14 @@
   margin-right: 19px;
 }
 
-.margin-lr {
-  margin-left: 55px;
-  margin-right: 55px;
+.padding-lr {
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
-.margin-lr-17 {
-  margin-left: 17px;
-  margin-right: 17px;
+.padding-lr-17 {
+  padding-left: 17px;
+  padding-right: 17px;
 }
 
 .featured {
@@ -114,6 +118,6 @@
   margin-top: 5px;
 }
 
-.margin-l-25 {
-  margin-left: 25px;
+.padding-l-25 {
+  padding-left: 25px;
 }

@@ -4,9 +4,9 @@ import { fetchProject } from '../../actions/projects/project_actions';
 import { Link } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
-
   const project = state.entities.projects[ownProps.match.params.projectId];
   const user = state.entities.users[project.user_id];
+
   return ({
     project: project,
     user: user
@@ -29,7 +29,8 @@ class ProjectShowComponent extends React.Component {
   render() {
 
     const project = this.props.project;
-    if (!project) {
+    const user = this.props.user;
+    if (!project || !user) {
       return <div>Loading...</div>
     }
 
@@ -37,7 +38,7 @@ class ProjectShowComponent extends React.Component {
       <div>
         <div className='flex flex-col'>
           <div className='flex row-wrap justify-center'>
-            {/* <h2>{this.props.user.name}</h2> */}
+            <h2>{this.props.user.name}</h2>
             <div className='flex flex-col'>
               <h2>{project.project}</h2>
               <h2>{project.description}</h2>

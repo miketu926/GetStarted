@@ -71,6 +71,10 @@
   padding-bottom: 30px;
 }
 
+.bottom-border {
+  border-bottom: 1px solid #DCDEDD;
+}
+
 .large-title {
   font-family: 'roboto', sans-serif;
   font-size: 28px;

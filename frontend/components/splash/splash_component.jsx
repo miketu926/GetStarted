@@ -72,7 +72,7 @@ class SplashComponent extends React.Component {
       let freshProject3 = this.getFeatured();
       let freshProject4 = this.getFeatured();
       recommendedDiv = (
-        <div className='flex row-wrap flex-start padding-bot-30'>
+        <div className='flex row-wrap flex-start padding-bot-30 bottom-border'>
           <Link to={`/projects/${recProject1.id}`}>{<img src={recProject1.photo} width={"160"} height={"90"} />}</Link>
           <div className='flex flex-col margin-l-25'>
             <Link className='medium-name-1' to={`/projects/${recProject1.id}`}>{<h2>{recProject1.project}</h2>}</Link>

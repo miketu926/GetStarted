@@ -17,12 +17,15 @@ const mdp = (dispatch) => {
 
 
 class NewProjectComponent extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       project: "", description: "", category: "",
       goalAmt: "", fundedAmt: 0, durationDays: 30, location: "",
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this); 
   }
 
   update(field) {
@@ -33,7 +36,9 @@ class NewProjectComponent extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createProject(this.state).then( () => this.props.history.push('/'));
+    this.props.createProject(this.state).then ( 
+      () => this.props.history.push(`/projects/${this.state.project.id}`)
+    );
   }
 
   render() {
@@ -43,7 +48,6 @@ class NewProjectComponent extends React.Component {
 
       <div>
         <h2>BASICS NAV</h2>
-        <h2>STORY NAV</h2>
       </div>
 
       <form onSubmit={this.handleSubmit}>
@@ -64,6 +68,22 @@ class NewProjectComponent extends React.Component {
               placeholder='App Academy: A Party That Never Ends'
               value={this.state.project}
               onChange={this.update("project")} />
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <h2>Projection Description</h2>
+            <h2>Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you are. Your description should tell backers everything they need to know. If possible, include images to show them what your project is all about and what rewards look like.</h2>
+          </div>
+          <div>
+            <h2>Description</h2>
+              <textarea 
+                cols="80"
+                rows="10"
+                value={this.state.description} 
+                placeholder='Write about your project'
+                onChange={this.update("description")} />
           </div>
         </div>
 
@@ -134,7 +154,7 @@ class NewProjectComponent extends React.Component {
           </div>
         </div>
 
-        <input type="submit" value=""/>
+        <input type="submit" value="Create Project"/>
 
       </form>
       

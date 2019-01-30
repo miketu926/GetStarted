@@ -25,16 +25,12 @@ const mdp = (dispatch) => {
 class HeaderComponent extends React.Component {
   exploreNAV () {
     return (
-      <div className='explore-nav nav-font'>
-        <button className='hover'>Explore</button>
-      </div>
+      <button className='hover'>Explore</button>
     );
   }
   createProjectNAV () {
     return (
-      <div className='start-project-nav nav-font'>
-        <button className='hover'>Start a project</button>
-      </div>
+      <button className='hover'>Start a project</button>
     );
   }
   logoNAV () {
@@ -44,9 +40,7 @@ class HeaderComponent extends React.Component {
   }
   searchNAV () {
     return (
-      <div className='search-nav nav-font'>
-        <button className='hover'>Search</button>
-      </div>
+      <button className='hover'>Search</button>
     );
   }
 
@@ -60,7 +54,9 @@ class HeaderComponent extends React.Component {
 
   logoutNAV () {
     return (
-      <button className='hover nav-font' onClick={this.props.logout}>Logout</button>
+      <div className='login-nav nav-font'>
+        <button className='hover nav-font' onClick={this.props.logout}>Logout</button>
+      </div>
     )
   }
 
@@ -76,12 +72,12 @@ class HeaderComponent extends React.Component {
     return (
       <header className='nav-bar'>
         <nav className='nav-left'>
-          {this.exploreNAV()} 
-          {this.createProjectNAV()}
+          <div className='explore-nav nav-font'>{this.exploreNAV()}</div>
+          <div className='start-project-nav nav-font'>{this.createProjectNAV()}</div>
         </nav>
           {this.logoNAV()}
         <nav className='nav-right'>
-          {this.searchNAV()}
+          <div className='search-nav nav-font'>{this.searchNAV()}</div>
           {profileBtn}
         </nav>
       </header>

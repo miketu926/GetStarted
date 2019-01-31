@@ -28,7 +28,6 @@ class NewProjectComponent extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.handleFile = this.handleFile.bind(this);
   }
 
   update(field) {
@@ -62,40 +61,42 @@ class NewProjectComponent extends React.Component {
 
     return (
     <div>
-
+{/* 
       <div>
         <h2>BASICS NAV</h2>
-      </div>
+      </div> */}
 
-      <form onSubmit={this.handleSubmit}>
+      <form className='flex flex-col' onSubmit={this.handleSubmit}>
 
-        <div>
-          <h1>START WITH BASICS</h1>
-          <h2>Make it easy for people to learn about your project.</h2>
+        <div className='basics-box'>
+          <h1 className='black-funded-amt basics-line-h'>Start with the basics</h1>
+          <h2 className='proj-desc basics-line-h'>Make it easy for people to learn about your project.</h2>
         </div>
 
-        <div>
-          <div>
-            <h2>PROJECT TITLE</h2>
-            <h2>Write a clear, brief title that helps people quickly understand the gist of your project.</h2>
+        <div className='create-bot-border row-wrap'>
+          <div className='basics-left-w'>
+            <h2 className='basics-title'>Project title</h2>
+            <h2 className='basics-deets'>Write a clear, brief title that helps people quickly understand the gist of your project.</h2>
           </div>
-          <div>
-            <h2>TITLE</h2>
-            <input type="text" 
-              placeholder='App Academy: A Party That Never Ends'
+          <div className='basics-right-w'>
+            <h2 className='basics-title2'>Title</h2>
+            <input type="text"
+              className='session-input input-box'
+              placeholder='App Academy: The Final Cohort'
               value={this.state.project}
               onChange={this.update("project")} />
           </div>
         </div>
 
-        <div>
-          <div>
-            <h2>Projection Description</h2>
-            <h2>Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you are. Your description should tell backers everything they need to know. If possible, include images to show them what your project is all about and what rewards look like.</h2>
+        <div className='create-bot-border row-wrap'>
+          <div className='basics-left-w'>
+            <h2 className='basics-title'>Projection Description</h2>
+            <h2 className='basics-deets'>Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you are. Your description should tell backers everything they need to know. If possible, include images to show them what your project is all about and what rewards look like.</h2>
           </div>
-          <div>
-            <h2>Description</h2>
-              <textarea 
+          <div className='basics-right-w'>
+            <h2 className='basics-title2'>Description</h2>
+              <textarea
+                className='session-input input-box'
                 cols="80"
                 rows="10"
                 value={this.state.description} 
@@ -104,13 +105,13 @@ class NewProjectComponent extends React.Component {
           </div>
         </div>
 
-        <div>
-          <div>
-            <h2>PROJECT CATEGORY</h2>
-            <h2>Choose the category that most closely aligns with your project.</h2>
+        <div className='create-bot-border row-wrap'>
+          <div className='basics-left-w'>
+            <h2 className='basics-title'>Project category</h2>
+            <h2 className='basics-deets'>Choose the category that most closely aligns with your project.</h2>
           </div>
-          <div>
-              <select value={this.state.category}
+          <div className='basics-right-w'>
+              <select className='session-input input-box cat-drop' value={this.state.category}
                       onChange={this.update('category')} >
                 <option value="Arts">Arts</option>
                 <option value="Design">Design</option>
@@ -122,56 +123,61 @@ class NewProjectComponent extends React.Component {
           </div>
         </div>
 
-        <div>
-          <div>
-            <h2>PROJECT LOCATION</h2>
-            <h2>Enter the location that best describes where your project is based.</h2>
+        <div className='create-bot-border row-wrap'>
+          <div className='basics-left-w'>
+            <h2 className='basics-title'>Project Location</h2>
+            <h2 className='basics-deets'>Enter the location that best describes where your project is based.</h2>
           </div>
-          <div>
+          <div className='basics-right-w'>
             <input type="text"
+              className='session-input input-box'
               placeholder='New York, New York'
               value={this.state.location}
               onChange={this.update("location")} />
           </div>
         </div>
 
-        <div>
-          <div>
-            <h2>PROJECT IMAGE</h2>
-            <h2>Add an image that clearly represents your project.</h2>
+        <div className='create-bot-border row-wrap'>
+          <div className='basics-left-w'>
+            <h2 className='basics-title'>Project Image</h2>
+            <h2 className='basics-deets'>Add an image that clearly represents your project.</h2>
           </div>
-          <div>
-            <input type="file" onChange={this.update("project_picture")}/>
+          <div className='basics-right-w'>
+            <input type="file" className='session-input input-box' onChange={this.update("project_picture")}/>
           </div>
         </div>
 
-        <div>
-          <div>
-            <h2>FUNDING GOAL</h2>
-            <h2>Set an achievable goal that covers what you need to complete your project.</h2>
+        <div className='create-bot-border row-wrap'>
+          <div className='basics-left-w'>
+            <h2 className='basics-title'>Funding Goal</h2>
+            <h2 className='basics-deets'>Set an achievable goal that covers what you need to complete your project.</h2>
           </div>
-          <div>
+          <div className='basics-right-w'>
+            <h2 className='basics-title2'>Goal amount</h2>
             <input type="text"
+              className='session-input input-box'
               placeholder='500'
               value={this.state.goal_amt}
               onChange={this.update("goal_amt")} />
           </div>
         </div>
 
-        <div>
-          <div>
-            <h2>CAMPAIGN DURATION</h2>
-            <h2>Set a time limit for your campaign. You won’t be able to change this after you launch.</h2>
+        <div className='create-bot-border row-wrap'>
+          <div className='basics-left-w'>
+            <h2 className='basics-title'>Campaign duration</h2>
+            <h2 className='basics-deets'>Set a time limit for your campaign. You won’t be able to change this after you launch.</h2>
           </div>
-          <div>
+          <div className='basics-right-w'>
+            <h2 className='basics-title2'>Fixed number of days (1-60)</h2>
             <input type="text"
-              placeholder='30'
+              className='session-input input-box'
+              placeholder='Fixed number of days (1-60)'
               value={this.state.duration_days}
               onChange={this.update("duration_days")} />
           </div>
         </div>
 
-        <input type="submit" value="Create Project"/>
+        <input type="submit" className='back-this-project create-project' value="Create Project"/>
 
       </form>
       

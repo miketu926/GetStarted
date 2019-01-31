@@ -1,7 +1,5 @@
 class Api::ProjectsController < ApplicationController
 
-
-  
   def index
     @projects = Project.all
     render :index
@@ -21,12 +19,9 @@ class Api::ProjectsController < ApplicationController
   def create
     debugger
     @project = current_user.projects.new(project_params)
-    # @project = Project.new(project_params)
-    debugger
     if @project.save
       render :show
     else
-      debugger
       render json: @project.errors.full_messages, status: 422
     end
   end

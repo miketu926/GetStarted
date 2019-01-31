@@ -1,0 +1,103 @@
+.basics-box {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  border-top: 1px solid #DCDEDD;
+  border-bottom: 1px solid #DCDEDD;
+  text-align: center;
+}
+
+.basics-line-h {
+  line-height: 35px;
+  letter-spacing: 0.5px;
+}
+
+.create-bot-border {
+  border-bottom: 1px solid #DCDEDD;
+  padding-top: 50px;
+  padding-bottom: 60px;
+  justify-content: center;
+  display: flex;
+}
+
+.basics-title {
+  font-family: 'roboto', sans-serif;
+  color: #282828;
+  font-size: 19px;
+  font-weight: 200;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.basics-title2 {
+  font-family: 'roboto', sans-serif;
+  color: #282828;
+  font-size: 16px;
+  font-weight: 200;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.basics-deets {
+  margin-bottom: 25px;
+  color: #656969;
+  font-family: 'roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  letter-spacing: 0.3px;
+  line-height: 24px;
+}
+
+.basics-left-w {
+  width: 400px
+}
+
+.basics-right-w {
+  width: 710px;
+  margin-left: 150px;
+}
+
+.input-box {
+  width: 100%;
+}
+
+::placeholder {
+ color: #bababa;
+}
+
+.cat-drop-down {
+  cursor: pointer;
+  height: 20px;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 14px;
+  margin-bottom: 18px;
+  box-sizing: border-box;
+  border: 1px solid #DCDEDD;
+  transition: all 0.3s;
+  overflow: visible !important;
+  -webkit-appearance: menulist;
+  align-items: center;
+  white-space: pre;
+  -webkit-rtl-ordering: logical;
+  -webkit-writing-mode: horizontal-tb !important;
+}
+
+.cat-drop-down:focus {
+  border: 1px solid #009E74;
+  outline: 0;
+}
+
+.cat-drop {
+  height: 20px;
+}
+
+.create-project {
+  margin-top: 20px;
+  width: 165px;
+  align-self: flex-end;
+  margin-right: 25px;
+  margin-left: 100%;
+}
+

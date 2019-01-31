@@ -27,6 +27,7 @@ class NewProjectComponent extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
     this.update = this.update.bind(this);
   }
 
@@ -34,6 +35,10 @@ class NewProjectComponent extends React.Component {
     return (e) => {
       this.setState({ [field]: e.target.value });
     };
+  }
+
+  handleFile(e) {
+    this.setState({project_picture: e.currentTarget.files[0]});
   }
 
   handleSubmit(e) {
@@ -139,7 +144,7 @@ class NewProjectComponent extends React.Component {
             <h2 className='basics-deets'>Add an image that clearly represents your project.</h2>
           </div>
           <div className='basics-right-w'>
-            <input type="file" className='session-input input-box' onChange={this.update("project_picture")}/>
+            <input type="file" className='session-input input-box' onChange={this.handleFile}/>
           </div>
         </div>
 

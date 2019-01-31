@@ -62,7 +62,7 @@ class SplashComponent extends React.Component {
           <Link to={`/projects/${featuredProject.id}`}>{<img src={featuredProject.photo} width={"630"} height={"360"} />}</Link>
           <Link className='large-title med-desc-width' to={`/projects/${featuredProject.id}`}>{featuredProject.project}</Link>
           <Link className='medium-desc med-desc-width' to={`/projects/${featuredProject.id}`}>{featuredProject.description}</Link>
-          <Link className='small-name' to={`/projects/${featuredProject.id}`}>By {featuredProject.id}</Link>
+          <Link className='small-name' to={`/projects/${featuredProject.id}`}>By {this.props.users[featuredProject.user_id].name}</Link>
           {/* <Link className='small-name' to={`/projects/${featuredProject.id}`}>By {featuredUser.name}</Link> */}
         </div>
       )

@@ -6,10 +6,11 @@ export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
 export const REMOVE_PROJECT = "REMOVE_PROJECT";
 
 // ACTION CREATORS
-const receiveAllProjects = (projects) => {
+const receiveAllProjects = ({projects, users}) => {
   return ({
     type: RECEIVE_ALL_PROJECTS,
     projects: projects,
+    users: users,
   });
 };
 const receiveProject = ({project, user}) => {
@@ -28,7 +29,7 @@ const removeProject = (project) => {
 
 // THUNK ACTIONS
 export const fetchAllProjects = () => dispatch => {
-  return ProjectsApiUtil.fetchProjects().then( projects => dispatch(receiveAllProjects(projects)));
+  return ProjectsApiUtil.fetchProjects().then( payload => dispatch(receiveAllProjects(payload)));
 };
 
 export const fetchProject = (id) => dispatch => {

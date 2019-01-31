@@ -32,6 +32,10 @@ class SplashComponent extends React.Component {
     this.props.fetchAllProjects();
   }
 
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   getFeatured() {
     let featured = null;
     let allProjects = Object.values(this.props.projects);
@@ -85,31 +89,31 @@ class SplashComponent extends React.Component {
       let freshProject4 = this.getFeatured();
       recommendedDiv = (
         <div className='flex row-wrap flex-start padding-bot-30 bottom-border'>
-          <Link to={`/projects/${recProject1.id}`}>{<img src={recProject1.photo} width={"160"} height={"90"} />}</Link>
-          <div className='flex flex-col padding-l-25'>
+          <Link className='padding-r-25' to={`/projects/${recProject1.id}`}>{<img src={recProject1.photo} width={"160"} height={"90"} />}</Link>
+          <div className='flex flex-col'>
             <Link className='medium-name-1' to={`/projects/${recProject1.id}`}>{<h2>{recProject1.project}</h2>}</Link>
-            <h2 className='medium-name-2'>{(recProject1.funded_amt / recProject1.goal_amt)*100}% funded</h2>
-            <Link className='small-name' to={`/projects/${recProject1.id}`}>{<h2>By {recProject1.user_id}</h2>}</Link>
+            <h2 className='medium-name-2'>{this.numberWithCommas((recProject1.funded_amt / recProject1.goal_amt)*100)}% funded</h2>
+            <Link className='small-name' to={`/projects/${recProject1.id}`}>{<h2>By {this.props.users[recProject1.user_id].name}</h2>}</Link>
           </div>
         </div>
       );
       recommendedDiv2 = (
         <div className='flex row-wrap flex-start padding-bot-30 bottom-border'>
-          <Link to={`/projects/${recProject2.id}`}>{<img src={recProject2.photo} width={"160"} height={"90"} />}</Link>
-          <div className='flex flex-col padding-l-25'>
+          <Link className='padding-r-25' to={`/projects/${recProject2.id}`}>{<img src={recProject2.photo} width={"160"} height={"90"} />}</Link>
+          <div className='flex flex-col'>
             <Link className='medium-name-1' to={`/projects/${recProject2.id}`}>{<h2>{recProject2.project}</h2>}</Link>
-            <h2 className='medium-name-2'>{(recProject2.funded_amt / recProject2.goal_amt) * 100}% funded</h2>
-            <Link className='small-name' to={`/projects/${recProject2.id}`}>{<h2>By {recProject2.user_id}</h2>}</Link>
+            <h2 className='medium-name-2'>{this.numberWithCommas((recProject2.funded_amt / recProject2.goal_amt) * 100)}% funded</h2>
+            <Link className='small-name' to={`/projects/${recProject2.id}`}>{<h2>By {this.props.users[recProject2.user_id].name}</h2>}</Link>
           </div>
         </div>
       );
       recommendedDiv3 = (
         <div className='flex row-wrap flex-start padding-bot-30 bottom-border'>
-          <Link to={`/projects/${recProject3.id}`}>{<img src={recProject3.photo} width={"160"} height={"90"} />}</Link>
-          <div className='flex flex-col padding-l-25'>
+          <Link className='padding-r-25' to={`/projects/${recProject3.id}`}>{<img src={recProject3.photo} width={"160"} height={"90"} />}</Link>
+          <div className='flex flex-col'>
             <Link className='medium-name-1' to={`/projects/${recProject3.id}`}>{<h2>{recProject3.project}</h2>}</Link>
-            <h2 className='medium-name-2'>{(recProject3.funded_amt / recProject3.goal_amt) * 100}% funded</h2>
-            <Link className='small-name' to={`/projects/${recProject3.id}`}>{<h2>By {recProject3.user_id}</h2>}</Link>
+            <h2 className='medium-name-2'>{this.numberWithCommas((recProject3.funded_amt / recProject3.goal_amt) * 100)}% funded</h2>
+            <Link className='small-name' to={`/projects/${recProject3.id}`}>{<h2>By {this.props.users[recProject3.user_id].name}</h2>}</Link>
           </div>
         </div>
       );
@@ -119,7 +123,7 @@ class SplashComponent extends React.Component {
           <Link to={`/projects/${freshProject1.id}`}>{<img src={freshProject1.photo} width={"285"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject1.id}`} className='medium-desc' >{<h2>{freshProject1.project}</h2>}</Link>
           <Link to={`/projects/${freshProject1.id}`} className='small-desc' >{<h2>{freshProject1.description}</h2>}</Link>
-          <Link to={`/projects/${freshProject1.id}`} className='small-name' >{<h2>By {freshProject1.user_id}</h2>}</Link>
+          <Link to={`/projects/${freshProject1.id}`} className='small-name' >{<h2>By {this.props.users[freshProject1.user_id].name}</h2>}</Link>
         </div>
       );
       freshFavoriteDiv2 = (
@@ -127,7 +131,7 @@ class SplashComponent extends React.Component {
           <Link to={`/projects/${freshProject2.id}`}>{<img src={freshProject2.photo} width={"285"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject2.id}`} className='medium-desc' >{<h2>{freshProject2.project}</h2>}</Link>
           <Link to={`/projects/${freshProject2.id}`} className='small-desc' >{<h2>{freshProject2.description}</h2>}</Link>
-          <Link to={`/projects/${freshProject2.id}`} className='small-name' >{<h2>By {freshProject2.user_id}</h2>}</Link>
+          <Link to={`/projects/${freshProject2.id}`} className='small-name' >{<h2>By {this.props.users[freshProject2.user_id].name}</h2>}</Link>
         </div>
       );
       freshFavoriteDiv3 = (
@@ -135,7 +139,7 @@ class SplashComponent extends React.Component {
           <Link to={`/projects/${freshProject3.id}`}>{<img src={freshProject3.photo} width={"285"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject3.id}`} className='medium-desc' >{<h2>{freshProject3.project}</h2>}</Link>
           <Link to={`/projects/${freshProject3.id}`} className='small-desc' >{<h2>{freshProject3.description}</h2>}</Link>
-          <Link to={`/projects/${freshProject3.id}`} className='small-name' >{<h2>By {freshProject3.user_id}</h2>}</Link>
+          <Link to={`/projects/${freshProject3.id}`} className='small-name' >{<h2>By {this.props.users[freshProject3.user_id].name}</h2>}</Link>
         </div>
       );
       freshFavoriteDiv4 = (
@@ -143,7 +147,7 @@ class SplashComponent extends React.Component {
           <Link to={`/projects/${freshProject4.id}`}>{<img src={freshProject4.photo} width={"285"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject4.id}`} className='medium-desc' >{<h2>{freshProject4.project}</h2>}</Link>
           <Link to={`/projects/${freshProject4.id}`} className='small-desc' >{<h2>{freshProject4.description}</h2>}</Link>
-          <Link to={`/projects/${freshProject4.id}`} className='small-name' >{<h2>By {freshProject4.user_id}</h2>}</Link>
+          <Link to={`/projects/${freshProject4.id}`} className='small-name' >{<h2>By {this.props.users[freshProject4.user_id].name}</h2>}</Link>
         </div>
       );
     };

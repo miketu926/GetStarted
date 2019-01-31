@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createProject } from '../../actions/projects/project_actions';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const msp = (state) => {
   return ({
@@ -23,7 +23,7 @@ class NewProjectComponent extends React.Component {
     this.state = {
       project: "", description: "", category: "",
       goal_amt: 0, funded_amt: 0, duration_days: 30, location: "",
-      project_picture: null,
+      project_picture: null, redirectToShow: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -47,21 +47,17 @@ class NewProjectComponent extends React.Component {
     formData.append('project[duration_days]', this.state.duration_days);
     formData.append('project[location]', this.state.location);
     formData.append('project[project_picture]', this.state.project_picture);
-    this.props.createProject(formData);
-  }
+    this.props.createProject(formData).then (
+      (object) => this.props.history.push(`/projects/${object.project.id}`)
+    );
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   this.props.createProject(this.state).then ( 
-  //     () => this.props.history.push(`/projects/${this.state.project.id}`)
-  //   );
-  // }
+  }
 
   render() {
 
     return (
     <div>
-{/* 
+      {/* 
       <div>
         <h2>BASICS NAV</h2>
       </div> */}

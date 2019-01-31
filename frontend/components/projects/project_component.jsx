@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchProject } from '../../actions/projects/project_actions';
+import { fetchProject, deleteProject } from '../../actions/projects/project_actions';
 import { Link } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
@@ -16,6 +16,7 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => {
   return ({
     fetchProject: (id) => dispatch(fetchProject(id)),
+    deleteProject: (id) => dispatch(deleteProject(id)),
   });
 };
 
@@ -76,7 +77,7 @@ class ProjectShowComponent extends React.Component {
           <div className="flex row-wrap justify-center">
             <div className='flex flex-col left-detail width-650'>
               <h2 className='about'>About</h2>
-              <h3 className='about-deets'>Whether you use Amazon Alexa, own a Tesla, play mobile games, or use Google Maps, artificial intelligence (AI) is everywhere. Like coding, learning how AI works will soon become an integral skill of everyday life. Getstarted is the first educational self-driving car kit that will teach you about the concept of artificial intelligence and self-driving car technology in a fun and engaging way. With our friendly step-by-step tutorials, you will be able to train her on how to navigate through a miniature map in less than an hour. The more she learns, the better she'll get.</h3>
+              <h3 className='about-deets'>{this.props.project.description}</h3>
             </div>
             <div className='flex flex-col right-detail width-350'>
               <h2 className='about'>Support</h2>

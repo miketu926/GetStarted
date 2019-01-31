@@ -55,6 +55,36 @@ class LoginComponent extends React.Component {
     const demo = { email: 'demo_user@getstarted.com', password: "demouser" };
     this.props.login(demo);
   }
+  // demoLogin(e) {
+  //   e.preventDefault();
+  //   const email = 'demo_user@getstarted.com'.split('');
+  //   const password = 'demouser'.split('');
+  //   const submit = document.getElementById('session-submit');
+  //   this.setState({ email: '', password: '' }, () => {
+  //     this.demoLoginHelper(email, password, submit);
+  //   });
+  // }
+
+  // demoLoginHelper(email, password, submit) {
+  //   if (email.length > 0) {
+  //     this.setState(
+  //       { email: this.state.email + email.shift() }, () => {
+  //         window.setTimeout(() =>
+  //           this.demoLoginHelper(email, password, submit), 50);
+  //       }
+  //     );
+  //   }
+  //   else if (password.length > 0) {
+  //     this.setState(
+  //       { password: this.state.password + password.shift() }, () => {
+  //         window.setTimeout(() =>
+  //           this.demoLoginHelper(email, password, submit), 50);
+  //       }
+  //     );
+  //   } else {
+  //     this.props.login();
+  //   }
+  // }
   
 
   render() {

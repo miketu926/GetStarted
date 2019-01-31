@@ -92,7 +92,7 @@ class SplashComponent extends React.Component {
           <Link className='padding-r-25' to={`/projects/${recProject1.id}`}>{<img src={recProject1.photo} width={"160"} height={"90"} />}</Link>
           <div className='flex flex-col'>
             <Link className='medium-name-1' to={`/projects/${recProject1.id}`}>{<h2>{recProject1.project}</h2>}</Link>
-            <h2 className='medium-name-2'>{this.numberWithCommas((recProject1.funded_amt / recProject1.goal_amt)*100)}% funded</h2>
+            <h2 className='medium-name-2'>{this.numberWithCommas(Math.round((recProject1.funded_amt / recProject1.goal_amt)*100))}% funded</h2>
             <Link className='small-name' to={`/projects/${recProject1.id}`}>{<h2>By {this.props.users[recProject1.user_id].name}</h2>}</Link>
           </div>
         </div>
@@ -102,7 +102,7 @@ class SplashComponent extends React.Component {
           <Link className='padding-r-25' to={`/projects/${recProject2.id}`}>{<img src={recProject2.photo} width={"160"} height={"90"} />}</Link>
           <div className='flex flex-col'>
             <Link className='medium-name-1' to={`/projects/${recProject2.id}`}>{<h2>{recProject2.project}</h2>}</Link>
-            <h2 className='medium-name-2'>{this.numberWithCommas((recProject2.funded_amt / recProject2.goal_amt) * 100)}% funded</h2>
+            <h2 className='medium-name-2'>{this.numberWithCommas(Math.round((recProject2.funded_amt / recProject2.goal_amt) * 100))}% funded</h2>
             <Link className='small-name' to={`/projects/${recProject2.id}`}>{<h2>By {this.props.users[recProject2.user_id].name}</h2>}</Link>
           </div>
         </div>
@@ -112,7 +112,7 @@ class SplashComponent extends React.Component {
           <Link className='padding-r-25' to={`/projects/${recProject3.id}`}>{<img src={recProject3.photo} width={"160"} height={"90"} />}</Link>
           <div className='flex flex-col'>
             <Link className='medium-name-1' to={`/projects/${recProject3.id}`}>{<h2>{recProject3.project}</h2>}</Link>
-            <h2 className='medium-name-2'>{this.numberWithCommas((recProject3.funded_amt / recProject3.goal_amt) * 100)}% funded</h2>
+            <h2 className='medium-name-2'>{this.numberWithCommas(Math.round((recProject3.funded_amt / recProject3.goal_amt) * 100))}% funded</h2>
             <Link className='small-name' to={`/projects/${recProject3.id}`}>{<h2>By {this.props.users[recProject3.user_id].name}</h2>}</Link>
           </div>
         </div>

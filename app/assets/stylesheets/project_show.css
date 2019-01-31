@@ -7,6 +7,7 @@
   height: 3px;  
   -webkit-appearance: none;
   appearance: none;
+  margin-bottom: 25px;
 }
 
 progress[value]::-webkit-progress-bar {
@@ -31,4 +32,149 @@ progress[value]::-webkit-progress-value {
   color: #282828;
   padding-left: 19px;
   padding-right: 19px;
+}
+
+.proj-title {
+  font-family: 'roboto', sans-serif;
+  color: #282828;
+  font-size: 38px;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.proj-desc {
+  font-family: 'roboto', sans-serif;
+  color: #656969;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.proj-mt-50 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.profile {
+  margin-right: 20px;
+  font-family: 'roboto', sans-serif;
+  color: #656969;
+  font-size: 14px;
+  font-weight: 200;
+  padding-top: 24px;
+  width: 100px;
+}
+
+.title-spacing {
+  width: 950px;
+}
+
+.large-piece {
+  padding-right: 40px;
+}
+
+.detail-bar {
+  width: 400px;
+}
+
+.details-small {
+  margin-bottom: 25px;
+  color: #656969;
+  font-family: 'roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+}
+
+.details-smaller {
+  color: #656969;
+  font-family: 'roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 200;
+  letter-spacing: 0.1px;
+}
+
+.green-funded-amt {
+  font-family: 'roboto', sans-serif;
+  color: #037362;
+  font-size: 24px;
+  font-weight: 200;
+  margin-bottom: 3px;
+}
+
+.black-funded-amt {
+  font-family: 'roboto', sans-serif;
+  color: #282828;
+  font-size: 24px;
+  font-weight: 200;
+  margin-bottom: 3px;
+}
+
+.back-this-project {
+  font-family: 'roboto', sans-serif;
+  border: none;
+  color: white;
+  transition: all 0.25s;
+  font-size: 14px;
+  letter-spacing: 1px;
+  height: 42px;
+  line-height: 2;
+  padding: 6px;
+  font-weight: 300;
+  border-radius: 0px;
+  background-color: #009E74;
+  cursor: pointer;
+  letter-spacing: 0.07em;
+  margin-bottom: 15px;
+}
+
+.back-this-project:hover {
+  background-color: #037362;
+  transform: translateY(-1px);
+}
+
+.back-this-project:focus {
+  outline: 0;
+}
+
+.line-h-60 {
+  line-height: 60px;
+}
+
+.width-650 {
+  width: 650px;
+}
+
+.width-350 {
+  width: 320px;
+}
+
+.left-detail {
+  margin-right: 20px;
+}
+
+.right-detail {
+  margin-left: 20px;
+}
+
+.detail-box {
+  margin-top: 60px;
+}
+
+.about {
+  font-family: 'roboto', sans-serif;
+  color: #282828;
+  font-size: 22px;
+  font-weight: 200;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+}
+
+.about-deets {
+  margin-bottom: 25px;
+  color: #282828;
+  font-family: 'roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+  line-height: 30px;
 }

@@ -22,13 +22,13 @@ class NewProjectComponent extends React.Component {
     super(props);
     this.state = {
       project: "", description: "", category: "",
-      goalAmt: 0, fundedAmt: 0, durationDays: 30, location: "",
-      photoFile: null,
+      goal_amt: 0, funded_amt: 0, duration_days: 30, location: "",
+      project_picture: null,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.handlePhoto = this.handlePhoto.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   update(field) {
@@ -37,16 +37,18 @@ class NewProjectComponent extends React.Component {
     };
   }
 
-  handlePhoto(e) {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('project[photo]', this.state.photoFile);
-  }
-
   handleSubmit(e) {
     e.preventDefault();
-    debugger
-    this.props.createProject(this.state);
+    const formData = new FormData();
+    formData.append('project[project]', this.state.project);
+    formData.append('project[description]', this.state.description);
+    formData.append('project[goal_amt]', this.state.goal_amt);
+    formData.append('project[category]', this.state.category);
+    formData.append('project[funded_amt]', this.state.funded_amt);
+    formData.append('project[duration_days]', this.state.duration_days);
+    formData.append('project[location]', this.state.location);
+    formData.append('project[project_picture]', this.state.project_picture);
+    this.props.createProject(formData);
   }
 
   // handleSubmit(e) {
@@ -139,7 +141,7 @@ class NewProjectComponent extends React.Component {
             <h2>Add an image that clearly represents your project.</h2>
           </div>
           <div>
-            <input type="file" onChange={this.handlePhoto} />
+            <input type="file" onChange={this.update("project_picture")}/>
           </div>
         </div>
 
@@ -151,8 +153,8 @@ class NewProjectComponent extends React.Component {
           <div>
             <input type="text"
               placeholder='500'
-              value={parseInt(this.state.goalAmt)}
-              onChange={this.update("goalAmt")} />
+              value={this.state.goal_amt}
+              onChange={this.update("goal_amt")} />
           </div>
         </div>
 
@@ -164,8 +166,8 @@ class NewProjectComponent extends React.Component {
           <div>
             <input type="text"
               placeholder='30'
-              value={this.state.durationDays}
-              onChange={this.update("durationDays")} />
+              value={this.state.duration_days}
+              onChange={this.update("duration_days")} />
           </div>
         </div>
 

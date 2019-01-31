@@ -1,5 +1,7 @@
 class Api::ProjectsController < ApplicationController
 
+
+  
   def index
     @projects = Project.all
     render :index
@@ -12,20 +14,20 @@ class Api::ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.new
-    debugger
     current_user
     render :new
   end
 
   def create
+    debugger
     @project = current_user.projects.new(project_params)
-
+    # @project = Project.new(project_params)
+    debugger
     if @project.save
-      debugger
-      render :new
+      render :show
     else
-      render @project.errors.full_messages
       debugger
+      render json: @project.errors.full_messages, status: 422
     end
   end
 
@@ -39,7 +41,7 @@ class Api::ProjectsController < ApplicationController
     if @project.update_attributes
       render :show
     else
-      render @project.errors.full_messages
+      render json: @project.errors.full_messages, status: 422
     end
   end
 
@@ -53,9 +55,8 @@ class Api::ProjectsController < ApplicationController
   private
   
   def project_params
-    params.require(:project).permit(:project, :description,
-    :category, :photo, :goal_amt,
-    :funded_amt, :duration_days, :user_id)
+    params.require(:project).permit(:project, :description, :category,
+      :photo, :goal_amt, :project_picture, :location, :funded_amt, :duration_days, :user_id)
   end
   
 end

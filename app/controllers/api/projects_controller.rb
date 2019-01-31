@@ -1,7 +1,7 @@
 class Api::ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    @projects = Project.includes(:user).all
     render :index
   end
 
@@ -18,7 +18,7 @@ class Api::ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
-    @project.project_picture.attach(params[:project][:project_image])
+    # attached_return = @project.project_picture.attach(params[:project][:project_image])
     if @project.save
       render :show
     else
@@ -51,7 +51,7 @@ class Api::ProjectsController < ApplicationController
   
   def project_params
     params.require(:project).permit(:project, :description, :category,
-      :photo, :goal_amt, :location, :funded_amt, :duration_days, :user_id)
+      :photo, :goal_amt, :location, :project_picture, :funded_amt, :duration_days, :user_id)
   end
   
 end

@@ -4,10 +4,13 @@ import { fetchAllProjects, fetchProject } from '../../actions/projects/project_a
 import { Link } from 'react-router-dom';
 
 
-const msp = ({entities}) => {
+const msp = (state) => {
+  const projects = state.entities.projects;
+  const users = state.entities.users;
 
   return({
-    projects: entities.projects,
+    projects: projects,
+    users: users,
   });
 };
 
@@ -42,16 +45,25 @@ class SplashComponent extends React.Component {
 
   render() {
 
+    const projects = this.props.projects;
+    const users = this.props.users;
+    if (!projects || !users) {
+      return <div>Loading...</div>
+    }
+
+
     let featuredBox = null;
     if (this.getFeatured()) {
       let featuredProject = this.getFeatured();
+      // let featuredUser = this.props.users[featuredProject.user_id];
       featuredBox = (
         <div className='flex flex-col padding-lr featured-border'>
           <h2 className='title-section padding-bot-20'>FEATURED PROJECT</h2>
           <Link to={`/projects/${featuredProject.id}`}>{<img src={featuredProject.photo} width={"630"} height={"360"} />}</Link>
-          <Link className='large-title' to={`/projects/${featuredProject.id}`}>{featuredProject.project}</Link>
-          <Link className='medium-desc' to={`/projects/${featuredProject.id}`}>{featuredProject.description}</Link>
-          <Link className='small-name' to={`/projects/${featuredProject.id}`}>By {featuredProject.user_id}</Link>
+          <Link className='large-title med-desc-width' to={`/projects/${featuredProject.id}`}>{featuredProject.project}</Link>
+          <Link className='medium-desc med-desc-width' to={`/projects/${featuredProject.id}`}>{featuredProject.description}</Link>
+          <Link className='small-name' to={`/projects/${featuredProject.id}`}>By {featuredProject.id}</Link>
+          {/* <Link className='small-name' to={`/projects/${featuredProject.id}`}>By {featuredUser.name}</Link> */}
         </div>
       )
     };
@@ -102,7 +114,7 @@ class SplashComponent extends React.Component {
         </div>
       );
       freshFavoriteDiv = (
-        <div className='flex flex-col padding-lr-17 margin-top-50'>
+        <div className='flex flex-col padding-lr-17 margin-top-50 fresh-width'>
           <h2 className='title-section fresh-fav'>FRESH FAVORITES</h2>
           <Link to={`/projects/${freshProject1.id}`}>{<img src={freshProject1.photo} width={"285"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject1.id}`} className='medium-desc' >{<h2>{freshProject1.project}</h2>}</Link>
@@ -111,7 +123,7 @@ class SplashComponent extends React.Component {
         </div>
       );
       freshFavoriteDiv2 = (
-        <div className='flex flex-col padding-lr-17 margin-top-65'>
+        <div className='flex flex-col padding-lr-17 margin-top-65 fresh-width'>
           <Link to={`/projects/${freshProject2.id}`}>{<img src={freshProject2.photo} width={"285"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject2.id}`} className='medium-desc' >{<h2>{freshProject2.project}</h2>}</Link>
           <Link to={`/projects/${freshProject2.id}`} className='small-desc' >{<h2>{freshProject2.description}</h2>}</Link>
@@ -119,7 +131,7 @@ class SplashComponent extends React.Component {
         </div>
       );
       freshFavoriteDiv3 = (
-        <div className='flex flex-col padding-lr-17 margin-top-65'>
+        <div className='flex flex-col padding-lr-17 margin-top-65 fresh-width'>
           <Link to={`/projects/${freshProject3.id}`}>{<img src={freshProject3.photo} width={"285"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject3.id}`} className='medium-desc' >{<h2>{freshProject3.project}</h2>}</Link>
           <Link to={`/projects/${freshProject3.id}`} className='small-desc' >{<h2>{freshProject3.description}</h2>}</Link>
@@ -127,7 +139,7 @@ class SplashComponent extends React.Component {
         </div>
       );
       freshFavoriteDiv4 = (
-        <div className='flex flex-col padding-lr-17 margin-top-65'>
+        <div className='flex flex-col padding-lr-17 margin-top-65 fresh-width'>
           <Link to={`/projects/${freshProject4.id}`}>{<img src={freshProject4.photo} width={"285"} height={"165"} />}</Link>
           <Link to={`/projects/${freshProject4.id}`} className='medium-desc' >{<h2>{freshProject4.project}</h2>}</Link>
           <Link to={`/projects/${freshProject4.id}`} className='small-desc' >{<h2>{freshProject4.description}</h2>}</Link>
@@ -169,7 +181,7 @@ class SplashComponent extends React.Component {
           {freshFavoriteDiv4}
         </div>
 
-        <div className='flex row-wrap justify-center'>
+        {/* <div className='flex row-wrap justify-center'>
           <h2>MAKE 100 project row</h2>
         </div>
 
@@ -205,7 +217,7 @@ class SplashComponent extends React.Component {
 
         <div className='flex row-wrap justify-center'>
           <h2>SUBSCRIBE TO KICKSTARTER</h2>
-        </div>
+        </div> */}
 
         <div className='cat-bot flex row-wrap justify-center'>
           <button className='hover cat'>Arts</button>

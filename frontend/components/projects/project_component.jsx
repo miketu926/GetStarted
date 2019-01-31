@@ -57,7 +57,7 @@ class ProjectShowComponent extends React.Component {
               <progress className='progress-bar' max="1" value={project.funded_amt/project.goal_amt}></progress>
               <h2 className='green-funded-amt'>${this.numberWithCommas(project.funded_amt)}</h2>
               <h2 className='details-small'>{`pledged of $${this.numberWithCommas(project.goal_amt)} goal`}</h2>
-              <h2 className='black-funded-amt'>493</h2>
+              <h2 className='black-funded-amt'>187</h2>
               <h2 className='details-small'>backers</h2>
               <h2 className='black-funded-amt'>{this.numberWithCommas(project.duration_days)}</h2>
               <h2 className='details-small'>days to go</h2>

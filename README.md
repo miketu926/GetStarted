@@ -1,23 +1,28 @@
-# README
+# GetStarted
 
-GetStarted, a Kickstarter clone, is a platform that allows users to fundraise project ideas in order to meet production goals. Users who are interested in other project ideas are able to provide funding to see the project come to fruition.
+[GetStarted](https://www.getstart3d.herokuapp.com "GetStarted") is a platform inspired by Kickstarter that allows users to fundraise project ideas in order to meet production goals. Users who are interested in other project ideas are able to provide funding to see the project come to fruition.
 
-Things you may want to cover:
+![alt text](https://s3.amazonaws.com/getstarted-dev/Screen+Shot+2019-02-01+at+11.30.49+AM.png "GetStarted")
 
-* Ruby version
+## Features
+-----------
+  * User Authentication
+  * Home Page
+    * Featured Project
+    * Recommended Projects
+  * Launch
+    * Create a project with ease using the easy-builder tool
+    * Develop a personal product landing page to maximize funding goals
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Technology
+-------------
+  * Ruby on Rails (backend)
+    * ActiveRecord
+    * ActiveStorage (AWS)
+  * React/Redux (frontend)
+  * PostgreSQL
+  * User Authentication
+  * jQuery
+  * DOM Manipulation
+  * ES6

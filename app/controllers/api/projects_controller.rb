@@ -6,6 +6,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
+    current_user
     @project = Project.includes(:user).find(params[:id]);
     render :show
   end
@@ -41,6 +42,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def destroy
+    @projects = Project.includes(:user).all
     @project = current_user.projects.find(params[:id])
     @project.destroy
     render :index

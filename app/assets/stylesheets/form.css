@@ -82,6 +82,7 @@
   white-space: pre;
   -webkit-rtl-ordering: logical;
   -webkit-writing-mode: horizontal-tb !important;
+  z-index: 1;
 }
 
 .cat-drop-down:focus {

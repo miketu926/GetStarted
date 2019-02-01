@@ -150,7 +150,5 @@ project30.project_picture.attach(io: file30, filename: 'image30.jpg')
 project30.save!
 project31.project_picture.attach(io: file31, filename: 'image31.jpg')
 project31.save!
-project31.project_picture.attach(io: file31, filename: 'image31.jpg')
-project31.save!
 project32.project_picture.attach(io: file32, filename: 'image32.jpg')
 project32.save!

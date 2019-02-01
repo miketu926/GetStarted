@@ -5,7 +5,6 @@
 ![alt text](https://s3.amazonaws.com/getstarted-dev/Screen+Shot+2019-02-01+at+11.30.49+AM.png "GetStarted")
 
 ## Features
------------
   * User Authentication
   * Home Page
     * Featured Project
@@ -16,7 +15,6 @@
 
 
 ## Technology
--------------
   * Ruby on Rails (backend)
     * ActiveRecord
     * ActiveStorage (AWS)

@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom';
 const msp = (state, ownProps) => {
   const project = state.entities.projects[ownProps.match.params.projectId];
   const user = state.entities.users[project.user_id];
+  const currentUserId = state.session.currentUserId;
 
   return ({
     project: project,
-    user: user
+    user: user,
+    currentUserId: currentUserId,
   });
 };
 
@@ -24,19 +26,34 @@ const mdp = (dispatch) => {
 class ProjectShowComponent extends React.Component {
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.fetchProject(this.props.project.id);
   }
 
   numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+
+  handleRemove(e) {
+    e.preventDefault();
+    this.props.deleteProject(this.props.project.id).then( () => this.props.history.push('/'));
+  }
   
   render() {
-
+    
     const project = this.props.project;
     const user = this.props.user;
     if (!project || !user) {
       return <div>Loading...</div>
+    }
+
+    let deleteProjectBox = null;
+    if (this.props.project.user_id === this.props.currentUserId) {
+      deleteProjectBox = (
+        <div className='flex flex-col'>
+          <button className='delete-project' onClick={this.handleRemove.bind(this)}>Remove Project</button>
+        </div>
+      )
     }
 
     return (
@@ -88,6 +105,12 @@ class ProjectShowComponent extends React.Component {
             </div>
           </div>
         </div>
+
+        {deleteProjectBox}
+        {/* <div className='flex flex-col'>
+          <button className='delete-project' onClick={this.handleRemove.bind(this)}>Remove Project</button>
+        </div> */}
+
       </div>
     )
 

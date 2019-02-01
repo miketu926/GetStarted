@@ -158,6 +158,8 @@ progress[value]::-webkit-progress-value {
 
 .detail-box {
   margin-top: 60px;
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 70px;
 }
 
 .about {
@@ -177,4 +179,36 @@ progress[value]::-webkit-progress-value {
   font-weight: 200;
   letter-spacing: 0.5px;
   line-height: 30px;
+}
+
+.delete-project {
+  font-family: 'roboto', sans-serif;
+  border: none;
+  color: white;
+  transition: all 0.25s;
+  font-size: 14px;
+  letter-spacing: 1px;
+  height: 42px;
+  line-height: 2;
+  padding: 6px;
+  font-weight: 300;
+  border-radius: 2px;
+  background-color: #803838;
+  cursor: pointer;
+  letter-spacing: 0.07em;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  width: 165px;
+  align-self: flex-end;
+  margin-right: 25px;
+  margin-left: 100%;
+}
+
+.delete-project:hover {
+  background-color: #612929;
+  transform: translateY(-1px);
+}
+
+.delete-project:focus {
+  outline: 0;
 }

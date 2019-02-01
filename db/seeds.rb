@@ -36,14 +36,24 @@ project11 = Project.create!(project: "Everlasting Headphones That Doubles as a H
 project12 = Project.create!(project: "The Greatest Invention Ever", location: "New York, New York", description: "A box that puts pressure on a pack of juice to serve, automated!", category: "Technology", goal_amt: 9999, funded_amt: 13728372, duration_days: 11, user_id: user5.id)
 project13 = Project.create!(project: "Maple Syrup - For Everything", location: "Montreal, Canada", description: "It's maple syrup, what's there to not like?", category: "Design", goal_amt: 7000, funded_amt: 2310, duration_days: 1, user_id: starwars.id)
 project14 = Project.create!(project: "A Roll of Cash", location: "New York, New York", description: "This isn't a thing anymore, because Venmo.", category: "Arts", goal_amt: 209000, funded_amt: 33000, duration_days: 16, user_id: demo.id)
-project15 = Project.create!(project: "THE SWITCH", location: "New York, New York", description: "You know what time it is. Lunch time.", category: "Technology", goal_amt: 1, funded_amt: 0, duration_days: 1, user_id: starwars.id)
+project15 = Project.create!(project: "THE SWITCH", location: "App Academy, New York", description: "You know what time it is. Lunch time.", category: "Technology", goal_amt: 1, funded_amt: 0, duration_days: 1, user_id: starwars.id)
 project16 = Project.create!(project: "Opal The Cat", location: "New York, New York", description: "Opal the Cat, in his spetacular cat form", category: "Arts", goal_amt: 11000, funded_amt: 9000, duration_days: 29, user_id: user9.id)
 project17 = Project.create!(project: "The Only Passport You'll Ever Need", location: "Las Vegas, Nevada", description: "Identity theft is a thing, and so is this passport.", category: "Film", goal_amt: 10, funded_amt: 9000, duration_days: 29, user_id: user2.id)
 project18 = Project.create!(project: "Coffee To Go", location: "New York, New York", description: "A portable devive that carries coffee for when you need coffee the most on a daily basis.", category: "Design", goal_amt: 11000, funded_amt: 9000, duration_days: 22, user_id: user1.id)
 project19 = Project.create!(project: "Goggles", location: "San Francisco, California", description: "A goggle that you need for skiing or snowboarding.", category: "Technology", goal_amt: 400000, funded_amt: 9000, duration_days: 23, user_id: user7.id)
 project20 = Project.create!(project: "Storage 2 Go", location: "New York, New York", description: "A USB strip that carries big data.", category: "Tecchnology", goal_amt: 1000000, funded_amt: 1252, duration_days: 2, user_id: user7.id)
 project21 = Project.create!(project: "Virtual Reality 2 Go", location: "San Diego, California", description: "A VR personal device that you will need.", category: "Design", goal_amt: 11000, funded_amt: 9000, duration_days: 29, user_id: user8.id)
-
+project22 = Project.create!(project: "Viking Action Figures", location: "New York, New York", description: "Action figures for collectors.", category: "Arts", goal_amt: 11000, funded_amt: 9153, duration_days: 26, user_id: user3.id)
+project23 = Project.create!(project: "Zen Art Table", location: "Chicago, Illinois", description: "Forget the Zen garden. Upgrade and get the ultimate Zen Art Table. Spend your entire day on this to feel at peace.", category: "Design", goal_amt: 15000, funded_amt: 223452, duration_days: 13, user_id: demo.id)
+project24 = Project.create!(project: "Hipster Bike", location: "Brooklyn, New York", description: "A bike made only for hipsters. If you're not a hipster, you can't ride.", category: "Technology", goal_amt: 25000, funded_amt: 234743, duration_days: 4, user_id: user5.id)
+project25 = Project.create!(project: "The Only MacBook Accessory You'll Ever Need", location: "Miami, Florida", description: "A MacBook accessory that does 40 things in 1. This will be life changing.", category: "Technology", goal_amt: 111000, funded_amt: 7000, duration_days: 22, user_id: user3.id)
+project26 = Project.create!(project: "Modular Watch - The Only Time Piece You'll Need.", location: "New York, New York", description: "A watch that you attach and detatch accessories that fit your everyday needs.", category: "Technology", goal_amt: 11111, funded_amt: 9999, duration_days: 1, user_id: demo.id)
+project27 = Project.create!(project: "Fidget Gadgets", location: "Brooklyn, New York", description: "Another fidget spinner in another form.", category: "Arts", goal_amt: 1000, funded_amt: 2598722, duration_days: 13, user_id: demo.id)
+project28 = Project.create!(project: "Modular iPhone Charger", location: "New York, New York", description: "A modular iPhone charger that will charge your phone.", category: "Design", goal_amt: 11000, funded_amt: 9000, duration_days: 5, user_id: demo.id)
+project29 = Project.create!(project: "A Compact Solar Phone Charger", location: "New York, New York", description: "An USB phone charger that rolls out solar panels for a quick phone boost.", category: "Technology", goal_amt: 5000, funded_amt: 4500, duration_days: 1, user_id: demo.id)
+project30 = Project.create!(project: "A Stir Stick", location: "Brooklyn, New York", description: "A stirring tool that will fit into your lifestyle.", category: "Design", goal_amt: 11000, funded_amt: 9000, duration_days: 29, user_id: demo.id)
+project31 = Project.create!(project: "A Smart Bottle", location: "New York, New York", description: "A Smart Bottle that fits every day life styles.", category: "Arts", goal_amt: 11000, funded_amt: 9000, duration_days: 29, user_id: demo.id)
+project32 = Project.create!(project: "A Revolutionary Smart Watch Bracelet", location: "New York, New York", description: "A bracelet and a smart watch combined.", category: "Design", goal_amt: 11000, funded_amt: 9000, duration_days: 29, user_id: demo.id)
 
 file1 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/biketireguard.jpg')
 file2 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/brainstarter.jpg')
@@ -66,6 +76,17 @@ file18 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/portablecpffee
 file19 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/skigoggles.jpg')
 file20 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/storage2go.jpg')
 file21 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/VR.jpg')
+file22 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1actionfigures.jpg')
+file23 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1arttable.jpeg')
+file24 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1bike.jpg')
+file25 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1macdock.jpg')
+file26 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1modularwatch.jpg')
+file27 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1morefidgets.jpg')
+file28 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1phonecharger.jpg')
+file29 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1solarusbcharger.jpg')
+file30 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1stir.jpeg')
+file31 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1waterbottle.jpg')
+file32 = EzDownload.open('https://s3.amazonaws.com/getstarted-dev/1wristwatch.jpg')
 
 project1.project_picture.attach(io: file1, filename: 'image1.jpg')
 project1.save!
@@ -109,3 +130,27 @@ project20.project_picture.attach(io: file20, filename: 'image20.jpg')
 project20.save!
 project21.project_picture.attach(io: file21, filename: 'image21.jpg')
 project21.save!
+project22.project_picture.attach(io: file22, filename: 'image22.jpg')
+project22.save!
+project23.project_picture.attach(io: file23, filename: 'image23.jpg')
+project23.save!
+project24.project_picture.attach(io: file24, filename: 'image24.jpg')
+project24.save!
+project25.project_picture.attach(io: file25, filename: 'image25.jpg')
+project25.save!
+project26.project_picture.attach(io: file26, filename: 'image26.jpg')
+project26.save!
+project27.project_picture.attach(io: file27, filename: 'image27.jpg')
+project27.save!
+project28.project_picture.attach(io: file28, filename: 'image28.jpg')
+project28.save!
+project29.project_picture.attach(io: file29, filename: 'image29.jpg')
+project29.save!
+project30.project_picture.attach(io: file30, filename: 'image30.jpg')
+project30.save!
+project31.project_picture.attach(io: file31, filename: 'image31.jpg')
+project31.save!
+project31.project_picture.attach(io: file31, filename: 'image31.jpg')
+project31.save!
+project32.project_picture.attach(io: file32, filename: 'image32.jpg')
+project32.save!

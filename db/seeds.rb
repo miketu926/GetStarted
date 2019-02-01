@@ -10,7 +10,7 @@ User.destroy_all
 Project.destroy_all
 
 demo = User.create!(name: "demo_user", email: "demo_user@getstarted.com", password: "demouser")
-starwars = User.create!(name: "starwars", email: "starwars", password: "starwars")
+starwars = User.create!(name: "Starwars", email: "starwars@gmail.com", password: "starwars")
 user1 = User.create!(name: "Mike", email: "user1@gmail.com", password: "password")
 user2 = User.create!(name: "Sam", email: "user2@gmail.com", password: "password")
 user3 = User.create!(name: "Maggie", email: "user3@gmail.com", password: "password")

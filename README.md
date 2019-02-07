@@ -1,6 +1,6 @@
 # GetStarted
 
-[GetStarted](https://www.getstart3d.herokuapp.com "GetStarted") is a platform inspired by Kickstarter that allows users to fundraise project ideas in order to meet production goals. Users who are interested in other project ideas are able to provide funding to see the project come to fruition.
+[GetStarted](https://getstart3d.herokuapp.com/ "GetStarted") is a platform inspired by Kickstarter that allows users to fundraise project ideas in order to meet production goals. Users who are interested in other project ideas are able to provide funding to see the project come to fruition.
 
 ![alt text](https://s3.amazonaws.com/getstarted-dev/Screen+Shot+2019-02-01+at+11.30.49+AM.png "GetStarted")
 

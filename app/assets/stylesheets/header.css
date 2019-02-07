@@ -9,6 +9,7 @@ button {
   line-height: unset;
   font-family: inherit;
   font-size: 15px;
+  outline: none;
 }
 
 .nav-bar {

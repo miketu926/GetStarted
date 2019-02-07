@@ -25,12 +25,12 @@ const mdp = (dispatch) => {
 class HeaderComponent extends React.Component {
   exploreNAV () {
     return (
-      <button className='hover'>Explore</button>
+      <button className='hover-header'>Explore</button>
     );
   }
   createProjectNAV () {
     return (
-      <button className='hover'><Link to='/projects/new'>Start a project</Link></button>
+      <button className='hover-header'><Link to='/projects/new'>Start a project</Link></button>
     );
   }
   logoNAV () {
@@ -40,14 +40,14 @@ class HeaderComponent extends React.Component {
   }
   searchNAV () {
     return (
-      <button className='hover'>Search</button>
+      <button className='hover-header'>Search</button>
     );
   }
 
   signinNAV () {
     return (
       <div className='login-nav nav-font'>
-        <button><Link className='hover' to='/login'>Sign in</Link></button>
+        <button><Link className='hover-header' to='/login'>Sign in</Link></button>
       </div>
     );
   }
@@ -55,7 +55,7 @@ class HeaderComponent extends React.Component {
   logoutNAV () {
     return (
       <div className='login-nav nav-font'>
-        <button className='hover nav-font' onClick={this.props.logout}>Logout</button>
+        <button className='hover-header nav-font' onClick={this.props.logout}>Logout</button>
       </div>
     )
   }

@@ -35,6 +35,7 @@ button {
 
 .hover:hover {
   color: #009E74;
+  border-bottom: 2px solid #034752;
 }
 
 .start-project-nav {}

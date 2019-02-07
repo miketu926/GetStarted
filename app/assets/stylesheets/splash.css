@@ -36,8 +36,10 @@
   font-family: 'roboto', sans-serif;
   font-size: 14px;
   color: #747474;
-  padding-left: 19px;
-  padding-right: 19px;
+  margin-left: 19px;
+  margin-right: 19px;
+  border-bottom: 2px solid transparent;
+  transition: border .2s ease-in;
 }
 
 .padding-lr {
@@ -175,4 +177,8 @@
 
 .fresh-width {
   width: 319px;
+}
+
+.hover-green-title:hover {
+  color: #009E74;
 }

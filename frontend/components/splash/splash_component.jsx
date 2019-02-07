@@ -225,14 +225,14 @@ class SplashComponent extends React.Component {
         </div> */}
 
         <div className='cat-bot flex row-wrap justify-center'>
-          <button className='hover cat'>Arts</button>
-          <button className='hover cat'>Comics & Illustration</button>
-          <button className='hover cat'>Design & Tech</button>
-          <button className='hover cat'>Film</button>
-          <button className='hover cat'>Food & Craft</button>
-          <button className='hover cat'>Games</button>
-          <button className='hover cat'>Music</button>
-          <button className='hover cat'>Publishing</button>
+          <button className='hover cat'><a href="https://github.com/miketu926/">Arts</a></button>
+          <button className='hover cat'><a href="https://github.com/miketu926/">Comics & Illustration</a></button>
+          <button className='hover cat'><a href="https://github.com/miketu926/">Design & Tech</a></button>
+          <button className='hover cat'><a href="https://github.com/miketu926/">Film</a></button>
+          <button className='hover cat'><a href="https://github.com/miketu926/">Food & Craft</a></button>
+          <button className='hover cat'><a href="https://github.com/miketu926/">Games</a></button>
+          <button className='hover cat'><a href="https://github.com/miketu926/">Music</a></button>
+          <button className='hover cat'><a href="https://github.com/miketu926/">Publishing</a></button>
         </div>
 
       </div>

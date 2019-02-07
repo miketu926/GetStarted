@@ -25,7 +25,7 @@ const mdp = (dispatch) => {
 class HeaderComponent extends React.Component {
   exploreNAV () {
     return (
-      <button className='hover-header'>Explore</button>
+      <button className='hover-header'><a href="https://github.com/miketu926/">Explore</a></button>
     );
   }
   createProjectNAV () {

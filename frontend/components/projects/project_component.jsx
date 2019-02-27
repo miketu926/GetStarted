@@ -38,6 +38,17 @@ class ProjectShowComponent extends React.Component {
     e.preventDefault();
     this.props.deleteProject(this.props.project.id).then( () => this.props.history.push('/'));
   }
+
+  completionDate(project_duration) {
+    let targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + project_duration);
+
+    let mm = targetDate.getMonth() + 1;
+    let dd = targetDate.getDate();
+    let yyyy = targetDate.getFullYear();
+
+    return mm + "/" + dd + "/" + yyyy;
+  }
   
   render() {
     
@@ -80,7 +91,7 @@ class ProjectShowComponent extends React.Component {
               <h2 className='black-funded-amt'>{this.numberWithCommas(project.duration_days)}</h2>
               <h2 className='details-small'>days to go</h2>
               <button className='back-this-project'>Back this project</button>
-              <h2 className='details-smaller'>This project will only be funded if it reaches its goal by Sat. March 9 2019 3:01 AM EST.</h2>
+              <h2 className='details-smaller'>This project will only be funded if it reaches its goal by {this.completionDate(project.duration_days)} 12:01 AM EST.</h2>
             </div>
           </div>
 

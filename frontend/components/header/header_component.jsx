@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
+import ExploreNavComponent from './exploreNAV_component';
+import SearchBar from './search_bar';
 
 const msp = ({session, entities}) => {
   // set the session to null if it doesn't exist, otherwise will find ID
@@ -20,39 +22,41 @@ const mdp = (dispatch) => {
   });
 };
 
-
-
 class HeaderComponent extends React.Component {
-  exploreNAV () {
-    return (
-      <button className='hover-header'><a href="https://github.com/miketu926/">Explore</a></button>
-    );
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchClick: false,
+    };
+    
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSearchExit = this.handleSearchExit.bind(this);
   }
-  createProjectNAV () {
+
+  createProjectNAV() {
     return (
       <button className='hover-header'><Link to='/projects/new'>Start a project</Link></button>
     );
   }
-  logoNAV () {
+  logoNAV() {
     return (
-      <Link className = 'logo-nav' to='/'>GETSTARTED</Link>
+      <Link className='logo-nav' to='/'>GETSTARTED</Link>
     );
   }
-  searchNAV () {
+  searchNAV() {
     return (
-      <button className='hover-header'>Search</button>
+      <button className='hover-header' onClick={this.handleSearch}>Search</button>
     );
   }
-
-  signinNAV () {
+  signinNAV() {
     return (
       <div className='login-nav nav-font'>
         <button><Link className='hover-header' to='/login'>Sign in</Link></button>
       </div>
     );
   }
-
-  logoutNAV () {
+  logoutNAV() {
     return (
       <div className='login-nav nav-font'>
         <button className='hover-header nav-font' onClick={this.props.logout}>Logout</button>
@@ -60,28 +64,42 @@ class HeaderComponent extends React.Component {
     )
   }
 
-  render() {
-    const { currentUser } = this.props;
+  handleSearch() {
+    this.setState({ searchClick: true });
+  }
 
+  handleSearchExit() {
+    this.setState({ searchClick: false});
+  }
+
+  render() {
+    const searching = this.state.searchClick;
+
+    const { currentUser } = this.props;
     let profileBtn = this.signinNAV();
     if (currentUser) {
       profileBtn = this.logoutNAV();
     };
-    
-    
-    return (
-      <header className='nav-bar'>
-        <nav className='nav-left'>
-          <div className='explore-nav nav-font'>{this.exploreNAV()}</div>
-          <div className='start-project-nav nav-font'>{this.createProjectNAV()}</div>
-        </nav>
-          {this.logoNAV()}
-        <nav className='nav-right'>
-          <div className='search-nav nav-font'>{this.searchNAV()}</div>
-          {profileBtn}
-        </nav>
-      </header>
-    );
+
+    if (searching) {
+      return <SearchBar handleSearchExit={this.handleSearchExit} />
+    } else {
+      return (
+        <div>
+          <header className='nav-bar'>
+            <nav className='nav-left'>
+              <ExploreNavComponent />
+              <div className='start-project-nav nav-font'>{this.createProjectNAV()}</div>
+            </nav>
+            {this.logoNAV()}
+            <nav className='nav-right'>
+              <div className='search-nav nav-font'>{this.searchNAV()}</div>
+              {profileBtn}
+            </nav>
+          </header>
+        </div>
+      )
+    }
   }
 }
 

@@ -75,3 +75,7 @@ button {
   justify-content: flex-start;
   margin-right: 25px;
 }
+
+#search-exit {
+  margin-right: 30px;
+}

@@ -29,7 +29,7 @@ class HeaderComponent extends React.Component {
     this.state = {
       searchClick: false,
     };
-    
+
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSearchExit = this.handleSearchExit.bind(this);
   }
@@ -89,11 +89,15 @@ class HeaderComponent extends React.Component {
           <header className='nav-bar'>
             <nav className='nav-left'>
               <ExploreNavComponent />
-              <div className='start-project-nav nav-font'>{this.createProjectNAV()}</div>
+              <div className='start-project-nav nav-font'>
+                <button className='hover-header'><Link to='/projects/new'>Start a project</Link></button>
+              </div>
             </nav>
-            {this.logoNAV()}
+            <Link className='logo-nav' to='/'>GETSTARTED</Link>
             <nav className='nav-right'>
-              <div className='search-nav nav-font'>{this.searchNAV()}</div>
+              <div className='search-nav nav-font'>
+                <button className='hover-header' onClick={this.handleSearch}>Search</button>
+              </div>
               {profileBtn}
             </nav>
           </header>

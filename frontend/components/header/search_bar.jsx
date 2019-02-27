@@ -7,7 +7,7 @@ const msp = ({entities}) => {
   });
 };
 
-const mdp = () => {
+const mdp = (dispatch) => {
   return({
 
   });
@@ -33,7 +33,7 @@ class SearchBar extends React.Component {
           <input type="text" placeholder="Search.." name="search"></input>
           <button type="submit">Search</button>
         </form>
-        <button onClick={this.props.handleSearchExit}>X</button>
+        <button id='search-exit' onClick={this.props.handleSearchExit}>X</button>
       </header>
     )
   }

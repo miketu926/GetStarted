@@ -4,7 +4,9 @@ class ExploreNavComponent extends React.Component {
 
   render() {
     return (
-      <button className='explore-nav nav-font hover-header'><a href="https://github.com/miketu926/">Explore</a></button>
+      <div className='explore-nav nav-font'>
+        <button className='hover-header'><a href="https://github.com/miketu926/">Explore</a></button>
+      </div>
     )
   }
 }

@@ -6,11 +6,13 @@ export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
 export const REMOVE_PROJECT = "REMOVE_PROJECT";
 
 // ACTION CREATORS
-const receiveAllProjects = ({projects, users}) => {
+const receiveAllProjects = ({projects, users, searchTerm}) => {
+  debugger
   return ({
     type: RECEIVE_ALL_PROJECTS,
     projects: projects,
     users: users,
+    searchTerm: searchTerm,
   });
 };
 const receiveProject = ({project, user}) => {
@@ -27,9 +29,15 @@ const removeProject = (project) => {
   });
 };
 
+// export const changeFilter = (filter, value) => ({
+//   type: UPDATE_FILTER,
+//   filter: filter,
+//   value: value,
+// });
+
 // THUNK ACTIONS
-export const fetchAllProjects = () => dispatch => {
-  return ProjectsApiUtil.fetchProjects().then( payload => dispatch(receiveAllProjects(payload)));
+export const fetchAllProjects = (data) => dispatch => {
+  return ProjectsApiUtil.fetchProjects(data).then( payload => dispatch(receiveAllProjects(payload)));
 };
 
 export const fetchProject = (id) => dispatch => {
@@ -48,3 +56,7 @@ export const deleteProject = (id) => dispatch => {
   return ProjectsApiUtil.deleteProject(id).then( (project) => dispatch(removeProject(project)));
 };
 
+// export const updateFilter = (filter, value) => (dispatch, getState) => {
+//   dispatch(changeFilter(filter, value));
+//   return fetchAllProjects(getState().ui.filters)(dispatch);
+// };

@@ -1,7 +1,16 @@
 class Api::ProjectsController < ApplicationController
 
   def index
-    @projects = Project.includes(:user).all
+    debugger
+    if params[:searchTerm]
+      debugger
+      @projects = Project.where('project LIKE ?', params[:searchTerm])
+      # @projects = Project.where('project.name = ?', params[:searchTerm])
+      debugger
+    else
+      @projects = Project.includes(:user).all
+    end
+
     render :index
   end
 
@@ -53,7 +62,12 @@ class Api::ProjectsController < ApplicationController
   
   def project_params
     params.require(:project).permit(:project, :description, :category,
-      :photo, :goal_amt, :location, :project_picture, :funded_amt, :duration_days, :user_id)
+      :photo, :goal_amt, :location, :project_picture,
+      :funded_amt, :duration_days, :user_id)
   end
-  
+
+  def search
+    params.permit(:searchTerm);
+  end
+
 end

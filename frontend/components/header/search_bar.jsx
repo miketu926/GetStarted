@@ -3,11 +3,8 @@ import { connect } from 'react-redux';
 import { fetchAllProjects } from './../../actions/projects/project_actions';
 
 const msp = () => {
-
   return ({
-
   });
-
 };
 
 const mdp = (dispatch) => {
@@ -36,8 +33,8 @@ class SearchBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
-    this.props.fetchAllProjects(this.state.searchTerm);
+    this.props.fetchAllProjects(this.state.searchTerm)
+    .then( () => {this.props.handleSearchExit()} );
     // .then( object => this.props.history.push(`/projects/${object.project.id}`));
   }
 

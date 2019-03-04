@@ -1,12 +1,8 @@
 class Api::ProjectsController < ApplicationController
 
   def index
-    debugger
-    if params[:searchTerm]
-      debugger
-      @projects = Project.where('project LIKE ?', params[:searchTerm])
-      # @projects = Project.where('project.name = ?', params[:searchTerm])
-      debugger
+    if search_term
+      @projects = Project.where('project LIKE ?', search_term_str )
     else
       @projects = Project.includes(:user).all
     end
@@ -66,8 +62,12 @@ class Api::ProjectsController < ApplicationController
       :funded_amt, :duration_days, :user_id)
   end
 
-  def search
-    params.permit(:searchTerm);
+  def search_term
+    params[:searchTerm]
+  end
+
+  def search_term_str
+    return str = '%' + params[:searchTerm] + '%'
   end
 
 end

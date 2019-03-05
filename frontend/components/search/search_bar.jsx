@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchAllProjects } from './../../actions/projects/project_actions';
+import { fetchAllProjects } from '../../actions/projects/project_actions';
 
 const msp = () => {
   return ({
@@ -32,10 +33,13 @@ class SearchBar extends React.Component {
   }
 
   handleSubmit(e) {
+    const that = this;
     e.preventDefault();
     this.props.fetchAllProjects(this.state.searchTerm)
-    .then( () => {this.props.handleSearchExit()} );
-    // .then( object => this.props.history.push(`/projects/${object.project.id}`));
+    .then( () => {
+      that.props.history.push('/search');
+      that.props.handleSearchExit();
+    });
   }
 
 
@@ -53,4 +57,4 @@ class SearchBar extends React.Component {
   
 }
 
-export default connect(msp, mdp)(SearchBar);
+export default withRouter(connect(msp, mdp)(SearchBar));

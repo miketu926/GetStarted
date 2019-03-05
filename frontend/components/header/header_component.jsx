@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
 import ExploreNavComponent from './exploreNAV_component';
-import SearchBar from './search_bar';
+import SearchBar from '../search/search_bar';
 
 const msp = ({session, entities}) => {
   // set the session to null if it doesn't exist, otherwise will find ID

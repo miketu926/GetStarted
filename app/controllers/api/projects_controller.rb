@@ -2,7 +2,8 @@ class Api::ProjectsController < ApplicationController
 
   def index
     if search_term
-      @projects = Project.where('project LIKE ?', search_term_str)
+      @projects = Project.includes(:user)
+        .where('project LIKE ?', search_term_str)
     else
       @projects = Project.includes(:user).all
     end
@@ -24,7 +25,6 @@ class Api::ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
-    # attached_return = @project.project_picture.attach(params[:project][:project_image])
     if @project.save
       render :show
     else
@@ -67,7 +67,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def search_term_str
-    return str = '%' + params[:searchTerm] + '%'
+    "%" + params[:searchTerm] + "%"
   end
 
 end

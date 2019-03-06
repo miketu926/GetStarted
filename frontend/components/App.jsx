@@ -9,7 +9,6 @@ import SearchIndex from './search/search_index';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch, Route, Redirect, Link } from 'react-router-dom';
 
-
 const App = () => (
   <div>
     <HeaderComponent />
@@ -19,7 +18,7 @@ const App = () => (
       <AuthRoute path='/signup' component={SignupComponent} />
       <ProtectedRoute path='/projects/new' component={NewProjectComponent} />
       <ProtectedRoute path='/projects/:projectId' component={ProjectShowComponent} />
-      <ProtectedRoute path='/search' component={SearchIndex} />
+      <ProtectedRoute path='/search/:searchTerm' component={SearchIndex} />
 
       <ProtectedRoute path='/' component={SplashComponent} />
     </Switch>

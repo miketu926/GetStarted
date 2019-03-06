@@ -37,7 +37,7 @@ class SearchBar extends React.Component {
     e.preventDefault();
     this.props.fetchAllProjects(this.state.searchTerm)
     .then( () => {
-      that.props.history.push('/search');
+      that.props.history.push(`/search/${this.state.searchTerm}`);
       that.props.handleSearchExit();
     });
   }

@@ -1,7 +1,40 @@
-.search-count {
+.search-page {
+  width: auto;
 
 }
 
+.search-count-sent {
+  font-family: 'roboto', sans-serif;
+  color: #282828;
+  font-size: 22px;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: 84px;
+}
+
 .green-bold {
-  
+  font-family: 'roboto', sans-serif;
+  color: #009e74;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.search-index-w {
+  width: auto;
+  justify-content: center;
+
+}
+
+.search-idx-i {
+  width: 392px;
+  border: 1px solid #DCDEDD;
+  height: 560px;
+  margin: 20px;
+}
+
+.each-line {
+  width: 350px;
+  align-self: center;
 }

@@ -18,9 +18,7 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = (dispatch) => {
-
   return({
-
   });
 };
 
@@ -48,9 +46,9 @@ class SearchIndex extends React.Component {
     }
     
     return(
-    <div className='flex'>
-      <h2 className='search-count'>Explore <i className='green-bold'>{this.props.projectCount} {wordProject}</i> related to <i className='green-bold'>{this.props.searchTerm}</i></h2>
-      <ul>
+    <div className='flex flex-col search-page'>
+      <h2 className='search-count-sent'>Explore <i className='green-bold'>{this.props.projectCount} {wordProject}</i> related to <i className='green-bold'>{this.props.searchTerm}</i></h2>
+      <ul className='flex row-wrap search-index-w'>
         {projects}
       </ul>
     </div>

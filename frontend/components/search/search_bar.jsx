@@ -48,7 +48,8 @@ class SearchBar extends React.Component {
         <form className='form-bar'>
           <input type="text" onChange={this.update("searchTerm")} 
             className='search-input'
-            placeholder="Search for projects or categories" />
+            placeholder="Search for projects or categories" 
+            autofocus="autofocus" onfocus="this.select()" />
           <button onClick={this.handleSubmit}><i className="fas fa-search search-submit hover-header"></i></button>
         </form>
         <button className='hover-header' id='search-exit' onClick={this.props.handleSearchExit}>+</button>

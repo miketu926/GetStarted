@@ -42,19 +42,19 @@ class SearchBar extends React.Component {
     });
   }
 
-
   render() {
     return (
-      <header className='nav-bar'>
-        <form>
-          <input type="text" onChange={this.update("searchTerm")} placeholder="Search.."></input>
-          <input onClick={this.handleSubmit} type="submit" value="Search!!"/>
+      <header className='search-bar'>
+        <form className='form-bar'>
+          <input type="text" onChange={this.update("searchTerm")} 
+            className='search-input'
+            placeholder="Search for projects or categories" />
+          <button onClick={this.handleSubmit}><i className="fas fa-search search-submit hover-header"></i></button>
         </form>
-        <button id='search-exit' onClick={this.props.handleSearchExit}>X</button>
+        <button className='hover-header' id='search-exit' onClick={this.props.handleSearchExit}>+</button>
       </header>
     )
   }
-  
 }
 
 export default withRouter(connect(msp, mdp)(SearchBar));

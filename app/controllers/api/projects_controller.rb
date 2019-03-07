@@ -3,7 +3,7 @@ class Api::ProjectsController < ApplicationController
   def index
     if search_term
       @projects = Project.includes(:user)
-        .where('project LIKE ?', search_term_str)
+      .where('category LIKE ? OR project LIKE ?', search_term_str, search_term_str)
     else
       @projects = Project.includes(:user).all
     end

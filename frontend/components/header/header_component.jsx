@@ -44,11 +44,6 @@ class HeaderComponent extends React.Component {
       <Link className='logo-nav' to='/'>GETSTARTED</Link>
     );
   }
-  searchNAV() {
-    return (
-      <button className='hover-header' onClick={this.handleSearch}>Search</button>
-    );
-  }
   signinNAV() {
     return (
       <div className='login-nav nav-font'>
@@ -96,7 +91,7 @@ class HeaderComponent extends React.Component {
             <Link className='logo-nav' to='/'>GETSTARTED</Link>
             <nav className='nav-right'>
               <div className='search-nav nav-font'>
-                <button className='hover-header' onClick={this.handleSearch}>Search</button>
+                <button className='hover-header' onClick={this.handleSearch}>Search <i className="fas fa-search header-search"></i></button>
               </div>
               {profileBtn}
             </nav>

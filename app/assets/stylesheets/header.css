@@ -76,6 +76,7 @@ button {
   margin-right: 25px;
 }
 
-#search-exit {
-  margin-right: 30px;
+.header-search {
+  color: #444444;
+  font-size: 13px;
 }

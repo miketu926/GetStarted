@@ -1,6 +1,5 @@
 .search-page {
   width: auto;
-
 }
 
 .search-count-sent {
@@ -37,4 +36,83 @@
 .each-line {
   width: 350px;
   align-self: center;
+}
+
+.search-i-title {
+  font-family: 'roboto', sans-serif;
+  color: #282828;
+  font-size: 18px;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.search-i-title:hover {
+  text-decoration: underline;
+}
+
+.search-i-desc {
+  font-family: 'roboto', sans-serif;
+  color: #9b9e9e;
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 24px;
+  letter-spacing: 0.4px;
+  margin-bottom: 20px;
+}
+
+.search-i-user {
+  font-family: 'roboto', sans-serif;
+  color: #282828;
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  font-weight: 300;
+}
+
+.progress-bar-bot {
+  margin-top: auto;
+  align-self: center;
+}
+
+.search-i-green {
+  font-family: 'roboto', sans-serif;
+  color: #037362;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.7px;
+  margin-bottom: 3px;
+}
+
+.search-i-progress-bar {
+  margin-bottom: 20px;
+}
+
+.search-i-bot-font {
+  font-family: 'roboto', sans-serif;
+  color: #656969;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.7px;
+  margin-bottom: 3px;
+
+}
+
+.search-i-bot-cat {
+  font-family: 'roboto', sans-serif;
+  color: #656969;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.7px;
+  text-decoration: underline;
+}
+
+.search-i-bot-margin {
+  font-family: 'roboto', sans-serif;
+  color: #656969;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.7px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }

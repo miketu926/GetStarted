@@ -118,7 +118,9 @@ class NewProjectComponent extends React.Component {
                 <option value="Design">Design</option>
                 <option value="Film">Film</option>
                 <option value="Games">Games</option>
+                <option value="Music">Music</option>
                 <option value="Photography">Photography</option>
+                <option value="Publishing">Publishing</option>
                 <option value="Technology">Technology</option>
               </select>
           </div>

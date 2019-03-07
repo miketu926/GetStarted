@@ -16,7 +16,7 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
   return({
-    fetchAllProjects: () => dispatch(fetchAllProjects()),
+    fetchAllProjects: (searchTerm) => dispatch(fetchAllProjects(searchTerm)),
     fetchProject: (id) => dispatch(fetchProject(id)),
   });
 };
@@ -26,6 +26,7 @@ class SplashComponent extends React.Component {
   constructor(props) {
     super(props);
     this.getFeatured = this.getFeatured.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() { 
@@ -45,8 +46,17 @@ class SplashComponent extends React.Component {
     }
     return (featured);
   }
-  
-  // CSS to handle max/min image sizing for window.mainIMG
+
+  handleSubmit(searchTerm) {
+    const that = this;
+    // e.preventDefault();
+    this.props.fetchAllProjects(searchTerm)
+      .then(() => {
+        that.props.history.push(`/search/${searchTerm}`);
+        window.scrollTo(0, 0);
+        // that.props.handleSearchExit();
+      });
+  }
 
   render() {
 
@@ -158,14 +168,14 @@ class SplashComponent extends React.Component {
       <div className='flex flex-col'>
 
         <div className='categories-NAV flex row-wrap justify-center'>
-          <button className='hover cat'>Arts</button>
-          <button className='hover cat'>Comics & Illustration</button>
-          <button className='hover cat'>Design & Tech</button>
-          <button className='hover cat'>Film</button>
-          <button className='hover cat'>Food & Craft</button>
-          <button className='hover cat'>Games</button>
-          <button className='hover cat'>Music</button>
-          <button className='hover cat'>Publishing</button>
+          <button onClick={ () => {this.handleSubmit("Arts")}} className='hover cat'>Arts</button>
+          <button onClick={ () => {this.handleSubmit("Design")}} className='hover cat'>Design</button>
+          <button onClick={ () => {this.handleSubmit("Film")}} className='hover cat'>Film</button>
+          <button onClick={ () => {this.handleSubmit("Games")}} className='hover cat'>Games</button>
+          <button onClick={ () => {this.handleSubmit("Music")}} className='hover cat'>Music</button>
+          <button onClick={ () => {this.handleSubmit("Photography")}} className='hover cat'>Photography</button>
+          <button onClick={ () => {this.handleSubmit("Publishing")}} className='hover cat'>Publishing</button>
+          <button onClick={ () => {this.handleSubmit("Technology")}} className='hover cat'>Technology</button>
         </div>
 
         <div className='flex row-wrap justify-center featured'>
@@ -225,14 +235,14 @@ class SplashComponent extends React.Component {
         </div> */}
 
         <div className='cat-bot flex row-wrap justify-center'>
-          <button className='hover cat'><a href="https://github.com/miketu926/">Arts</a></button>
-          <button className='hover cat'><a href="https://github.com/miketu926/">Comics & Illustration</a></button>
-          <button className='hover cat'><a href="https://github.com/miketu926/">Design & Tech</a></button>
-          <button className='hover cat'><a href="https://github.com/miketu926/">Film</a></button>
-          <button className='hover cat'><a href="https://github.com/miketu926/">Food & Craft</a></button>
-          <button className='hover cat'><a href="https://github.com/miketu926/">Games</a></button>
-          <button className='hover cat'><a href="https://github.com/miketu926/">Music</a></button>
-          <button className='hover cat'><a href="https://github.com/miketu926/">Publishing</a></button>
+          <button onClick={() => { this.handleSubmit("Arts") }} className='hover cat'>Arts</button>
+          <button onClick={() => { this.handleSubmit("Design") }} className='hover cat'>Design</button>
+          <button onClick={() => { this.handleSubmit("Film") }} className='hover cat'>Film</button>
+          <button onClick={() => { this.handleSubmit("Games") }} className='hover cat'>Games</button>
+          <button onClick={() => { this.handleSubmit("Music") }} className='hover cat'>Music</button>
+          <button onClick={() => { this.handleSubmit("Photography") }} className='hover cat'>Photography</button>
+          <button onClick={() => { this.handleSubmit("Publishing") }} className='hover cat'>Publishing</button>
+          <button onClick={() => { this.handleSubmit("Technology") }} className='hover cat'>Technology</button>
         </div>
 
       </div>

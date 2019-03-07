@@ -39,6 +39,7 @@ class SearchBar extends React.Component {
     .then( () => {
       that.props.history.push(`/search/${this.state.searchTerm}`);
       that.props.handleSearchExit();
+      window.scrollTo(0, 0);
     });
   }
 
@@ -49,7 +50,7 @@ class SearchBar extends React.Component {
           <input type="text" onChange={this.update("searchTerm")} 
             className='search-input'
             placeholder="Search for projects or categories" 
-            autofocus="autofocus" onfocus="this.select()" />
+            autoFocus="autofocus" />
           <button onClick={this.handleSubmit}><i className="fas fa-search search-submit hover-header"></i></button>
         </form>
         <button className='hover-header' id='search-exit' onClick={this.props.handleSearchExit}>+</button>

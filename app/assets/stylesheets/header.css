@@ -8,8 +8,10 @@ button {
   cursor: pointer;
   line-height: unset;
   font-family: inherit;
-  font-size: 15px;
+  font-size: 14px;
   outline: none;
+  font-weight: 300;
+  letter-spacing: 0.2px
 }
 
 .nav-bar {
@@ -22,10 +24,11 @@ button {
 }
 
 .nav-font {
-  /* font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-family: 'roboto', sans-serif;
   font-size: 14px;
   color: #282828;
+  font-weight: 300;
+  letter-spacing: 0.2px
 }
 
 
@@ -50,9 +53,7 @@ button {
 }
 
 .search-nav {
-  /* adjust margin right after including magnifying glass */
-  margin-right: 45px;
-  
+  margin-right: 30px;
 }
 
 .login-nav{

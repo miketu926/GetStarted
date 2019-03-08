@@ -1,14 +1,24 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class ExploreNavComponent extends React.Component {
+
+  handleSubmit(searchTerm) {
+    const that = this;
+    this.props.fetchAllProjects(searchTerm)
+      .then(() => {
+        that.props.history.push(`/search/all projects`);
+        window.scrollTo(0, 0);
+      });
+  }
 
   render() {
     return (
       <div className='explore-nav nav-font'>
-        <button className='hover-header'><a href="https://github.com/miketu926/">Explore</a></button>
+        <button onClick={ () => this.handleSubmit("ALL_PROJECTS")} className='hover-header'>Explore</button>
       </div>
     )
   }
 }
 
-export default ExploreNavComponent;
+export default withRouter(ExploreNavComponent);

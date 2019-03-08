@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchAllProjects } from '../../actions/projects/project_actions';
+import { withRouter } from 'react-router-dom';
 import SearchIndexItem from './search_index_item';
 
 const msp = (state, ownProps) => {
@@ -19,6 +21,7 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => {
   return({
+    fetchAllProjects: (searchTerm) => dispatch(fetchAllProjects(searchTerm)),
   });
 };
 
@@ -27,7 +30,20 @@ const mdp = (dispatch) => {
 class SearchIndex extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleSubmit(searchTerm) {
+    const that = this;
+    // e.preventDefault();
+    this.props.fetchAllProjects(searchTerm)
+      .then(() => {
+        that.props.history.push(`/search/${searchTerm}`);
+        window.scrollTo(0, 0);
+        // that.props.handleSearchExit();
+      });
+    }
 
   render() {
     const that = this;
@@ -70,4 +86,4 @@ class SearchIndex extends React.Component {
 
 }
 
-export default connect(msp, mdp)(SearchIndex);
+export default withRouter(connect(msp, mdp)(SearchIndex));

@@ -49,12 +49,10 @@ class SplashComponent extends React.Component {
 
   handleSubmit(searchTerm) {
     const that = this;
-    // e.preventDefault();
     this.props.fetchAllProjects(searchTerm)
       .then(() => {
         that.props.history.push(`/search/${searchTerm}`);
         window.scrollTo(0, 0);
-        // that.props.handleSearchExit();
       });
   }
 
@@ -78,7 +76,6 @@ class SplashComponent extends React.Component {
           <Link className='large-title med-desc-width hover-green-title' to={`/projects/${featuredProject.id}`}>{featuredProject.project}</Link>
           <Link className='medium-desc med-desc-width' to={`/projects/${featuredProject.id}`}>{featuredProject.description}</Link>
           <Link className='small-name' to={`/projects/${featuredProject.id}`}>By {this.props.users[featuredProject.user_id].name}</Link>
-          {/* <Link className='small-name' to={`/projects/${featuredProject.id}`}>By {featuredUser.name}</Link> */}
         </div>
       )
     };

@@ -4,6 +4,7 @@ import { logout } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
 import ExploreNavComponent from './exploreNAV_component';
 import SearchBar from '../search/search_bar';
+import { fetchAllProjects } from '../../actions/projects/project_actions';
 
 const msp = ({session, entities}) => {
   // set the session to null if it doesn't exist, otherwise will find ID
@@ -18,6 +19,7 @@ const msp = ({session, entities}) => {
 const mdp = (dispatch) => {
 
   return({
+    fetchAllProjects: (searchTerm) => dispatch(fetchAllProjects(searchTerm)),
     logout: () => dispatch(logout()),
   });
 };
@@ -83,7 +85,7 @@ class HeaderComponent extends React.Component {
         <div>
           <header className='nav-bar'>
             <nav className='nav-left'>
-              <ExploreNavComponent />
+              <ExploreNavComponent fetchAllProjects={this.props.fetchAllProjects} />
               <div className='start-project-nav nav-font'>
                 <button className='hover-header'><Link to='/projects/new'>Start a project</Link></button>
               </div>

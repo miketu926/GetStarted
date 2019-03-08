@@ -1,7 +1,9 @@
 class Api::ProjectsController < ApplicationController
 
   def index
-    if search_term
+    if search_term == "ALL_PROJECTS"
+      @projects = Project.includes(:user).all
+    elsif search_term
       @projects = Project.includes(:user)
       .where('category iLIKE ? OR project iLIKE ?', search_term_str, search_term_str)
     else

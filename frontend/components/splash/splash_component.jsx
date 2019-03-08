@@ -49,11 +49,19 @@ class SplashComponent extends React.Component {
 
   handleSubmit(searchTerm) {
     const that = this;
-    this.props.fetchAllProjects(searchTerm)
-      .then(() => {
-        that.props.history.push(`/search/${searchTerm}`);
-        window.scrollTo(0, 0);
-      });
+    if (searchTerm === "ALL_PROJECTS") {
+      this.props.fetchAllProjects(searchTerm)
+        .then(() => {
+          that.props.history.push(`/search/all projects`);
+          window.scrollTo(0, 0);
+        });
+    } else {
+      this.props.fetchAllProjects(searchTerm)
+        .then(() => {
+          that.props.history.push(`/search/${searchTerm}`);
+          window.scrollTo(0, 0);
+        });
+    }
   }
 
   render() {
@@ -182,7 +190,7 @@ class SplashComponent extends React.Component {
             {recommendedDiv}
             {recommendedDiv2}
             {recommendedDiv3}
-            <Link className='view-more' to='/'>View more projects</Link>
+            <Link onClick={() => { this.handleSubmit("ALL_PROJECTS") }} className='view-more' to='/'>View more projects</Link>
           </div>
         </div>
 

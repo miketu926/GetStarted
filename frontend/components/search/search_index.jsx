@@ -46,7 +46,7 @@ class SearchIndex extends React.Component {
     }
 
   render() {
-    const that = this;
+    
     const projects = this.props.projects.map(project => {
       return (
         <SearchIndexItem

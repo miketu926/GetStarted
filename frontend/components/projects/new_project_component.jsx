@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createProject } from '../../actions/projects/project_actions';
 import { Link, Redirect } from 'react-router-dom';
+import TierItem from '../projects/new_tier_component';
 
 const msp = (state) => {
   return ({
-
   });
 };
 
@@ -23,12 +23,14 @@ class NewProjectComponent extends React.Component {
     this.state = {
       project: "", description: "", category: "",
       goal_amt: 0, funded_amt: 0, duration_days: 30, location: "",
-      project_picture: null, redirectToShow: false,
+      project_picture: null,
+      tiers: [],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.update = this.update.bind(this);
+    this.appendTierItem = this.appendTierItem.bind(this);
   }
 
   update(field) {
@@ -52,22 +54,33 @@ class NewProjectComponent extends React.Component {
     formData.append('project[duration_days]', this.state.duration_days);
     formData.append('project[location]', this.state.location);
     formData.append('project[project_picture]', this.state.project_picture);
-    this.props.createProject(formData).then (
+    this.props.createProject(formData).then(
       (object) => this.props.history.push(`/projects/${object.project.id}`)
     );
+  }
 
+  appendTierItem(e) {
+    e.preventDefault();
+    this.setState({ tiers: this.state.tiers.concat(
+      [{title: "", amount: 0, description: ""}]
+    )});
   }
 
   render() {
+    const tierItems = this.state.tiers.map( (tier, idx) => {
+      return (
+        <TierItem 
+          tier={tier}
+          idx={idx}
+          update={ this.update }
+        />
+      )
+    });
 
     return (
     <div>
-      {/* 
-      <div>
-        <h2>BASICS NAV</h2>
-      </div> */}
 
-      <form className='flex flex-col' onSubmit={this.handleSubmit}>
+      <form className='flex flex-col'>
 
         <div className='basics-box'>
           <h1 className='black-funded-amt basics-line-h'>Start with the basics</h1>
@@ -76,7 +89,7 @@ class NewProjectComponent extends React.Component {
 
         <div className='create-bot-border row-wrap'>
           <div className='basics-left-w'>
-            <h2 className='basics-title'>Project title</h2>
+            <h2 className='basics-title'>Project Title</h2>
             <h2 className='basics-deets'>Write a clear, brief title that helps people quickly understand the gist of your project.</h2>
           </div>
           <div className='basics-right-w'>
@@ -108,7 +121,7 @@ class NewProjectComponent extends React.Component {
 
         <div className='create-bot-border row-wrap'>
           <div className='basics-left-w'>
-            <h2 className='basics-title'>Project category</h2>
+            <h2 className='basics-title'>Project Category</h2>
             <h2 className='basics-deets'>Choose the category that most closely aligns with your project.</h2>
           </div>
           <div className='basics-right-w'>
@@ -167,7 +180,7 @@ class NewProjectComponent extends React.Component {
 
         <div className='create-bot-border row-wrap'>
           <div className='basics-left-w'>
-            <h2 className='basics-title'>Campaign duration</h2>
+            <h2 className='basics-title'>Campaign Duration</h2>
             <h2 className='basics-deets'>Set a time limit for your campaign. You won’t be able to change this after you launch.</h2>
           </div>
           <div className='basics-right-w'>
@@ -180,7 +193,21 @@ class NewProjectComponent extends React.Component {
           </div>
         </div>
 
-        <input type="submit" className='back-this-project create-project' value="Create Project"/>
+        <div className='create-bot-border row-wrap'>
+          <div className='basics-left-w'>
+            <h2 className='basics-title'>Add a Reward</h2>
+            <h2 className='basics-deets'>Offer tangible or intangible things that bring backers closer to your project.</h2>
+          </div>
+          <div className='basics-right-w'>
+
+            {tierItems}
+
+            <button onClick={ this.appendTierItem }  className='back-this-project'>+ Add Reward</button>
+            
+          </div>
+        </div>
+
+        <input type="submit" className='back-this-project create-project' onSubmit={this.handleSubmit} value="Create Project"/>
 
       </form>
       

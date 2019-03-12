@@ -114,3 +114,60 @@
 .tier-box {
   margin-bottom: 25px;
 }
+
+.add-reward {
+  font-family: 'roboto', sans-serif;
+  width: 190px;
+  border: none;
+  color: white;
+  transition: all 0.25s;
+  font-size: 14px;
+  letter-spacing: 1px;
+  height: 42px;
+  line-height: 2;
+  padding: 6px;
+  font-weight: 300;
+  border-radius: 0px;
+  background-color: #000000;
+  cursor: pointer;
+  letter-spacing: 0.07em;
+  margin-bottom: 15px;
+}
+
+.add-reward:hover {
+  background-color: #474747;
+  transform: translateY(-1px);
+}
+
+.add-reward:focus {
+  outline: 0;
+}
+
+.remove-reward {
+  font-family: 'roboto', sans-serif;
+  width: 190px;
+  border: none;
+  color: white;
+  transition: all 0.25s;
+  font-size: 14px;
+  letter-spacing: 1px;
+  height: 42px;
+  line-height: 2;
+  padding: 6px;
+  font-weight: 300;
+  border-radius: 0px;
+  background-color: #000000;
+  cursor: pointer;
+  letter-spacing: 0.07em;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.remove-reward:hover {
+  background-color: #474747;
+  transform: translateY(-1px);
+}
+
+.remove-reward:focus {
+  outline: 0;
+}

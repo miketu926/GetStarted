@@ -25,7 +25,6 @@ class NewProjectComponent extends React.Component {
       goal_amt: 0, funded_amt: 0, duration_days: 30, location: "",
       project_picture: null,
       tiers: [],
-      addReward: true,
       // tiers: [
       //  {title: "exampleTier1", amount: 1, description: "one"},
       //  {title: "exampleTier2", amount: 2, description: "two"}
@@ -37,6 +36,7 @@ class NewProjectComponent extends React.Component {
     this.update = this.update.bind(this);
     this.appendTierItem = this.appendTierItem.bind(this);
     this.updateTier = this.updateTier.bind(this);
+    this.removeTierItem = this.removeTierItem.bind(this);
   }
 
   update(field) {
@@ -72,13 +72,19 @@ class NewProjectComponent extends React.Component {
     )});
   }
 
-  // WRONG!
+  removeTierItem(e) {
+    e.preventDefault();
+    let array = [...this.state.tiers];
+    let index = array.indexOf(e.target.value);
+    array.splice(index, 1);
+    this.setState({ tiers: array });
+  }
+
   updateTier(field, idx) {
     return (e) => {
-      this.setState({ [tiers[idx].field]: e.target.value });
+      this.setState({ [tiers[idx][field]]: e.target.value });
     };
   }
-  // END WRONG!
 
   render() {
     const tierItems = this.state.tiers.map( (tier, idx) => {
@@ -210,13 +216,14 @@ class NewProjectComponent extends React.Component {
         <div className='create-bot-border row-wrap'>
           <div className='basics-left-w'>
             <h2 className='basics-title'>Add a Reward</h2>
-            <h2 className='basics-deets'>Offer tangible or intangible things that bring backers closer to your project.</h2>
+              <h2 className='basics-deets'>Offer simple, meaningful rewards that bring backers closer to your project. Rewards don’t have to be physical items. Consider special experiences or behind-the-scenes peeks into your project.</h2>
           </div>
           <div className='basics-right-w'>
 
             {tierItems}
 
-            <button onClick={ this.appendTierItem }  className='back-this-project'>+ Add Reward</button>
+            <button onClick={ this.appendTierItem }  className='add-reward'>+ Add Reward</button>
+            <button onClick={ this.removeTierItem }  className='remove-reward'>- Remove Reward</button>
             
           </div>
         </div>

@@ -11,7 +11,7 @@ const TierItem = ({ tier, key, updateTier }) => {
         className='session-input input-box'
         placeholder='Signed limited-edition'
         value={tier.title}
-        onChange={updateTier("title")} 
+        onChange={updateTier("title", key)} 
       />
 
       <h2 className='basics-title2'>Pledge amount</h2>
@@ -20,7 +20,7 @@ const TierItem = ({ tier, key, updateTier }) => {
         className='session-input input-box'
         placeholder='1'
         value={tier.amount}
-        onChange={updateTier("amount")} 
+        onChange={updateTier("amount", key)} 
       />
 
       <h2 className='basics-title2'>Description</h2>
@@ -31,7 +31,7 @@ const TierItem = ({ tier, key, updateTier }) => {
         rows="5"
         value={tier.desc}
         placeholder='Get an early copy - hot off the press!'
-        onChange={updateTier("description")} 
+        onChange={updateTier("description", key)} 
       />
     </div>
 

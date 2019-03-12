@@ -1,20 +1,20 @@
 class Api::TiersController < ApplicationController
 
+  # is index necessary? Use project's index to show tiers through associations?
   def index
     @tiers = Tier.includes(:project).all
   end
 
   def new
-    @ptier = current_user.tiers.new
+    @ptier = Tier.new
     render :new
   end
 
   def create
-      @tier = current_user.tiers.new(tier_params)
+    @tier = tiers.new(tier_params)
     if @tier.save
-      # render :show
     else
-      render json: @project.errors.full_messages, status: 422
+      render json: @tier.errors.full_messages, status: 422
     end
   end
   

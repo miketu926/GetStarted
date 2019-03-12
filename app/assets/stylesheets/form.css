@@ -37,6 +37,15 @@
   letter-spacing: 0.5px;
 }
 
+.basics-title3 {
+  font-family: 'roboto', sans-serif;
+  color: #656969;
+  font-size: 14px;
+  font-weight: 200;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
 .basics-deets {
   margin-bottom: 25px;
   color: #656969;
@@ -102,3 +111,6 @@
   margin-left: 100%;
 }
 
+.tier-box {
+  margin-bottom: 25px;
+}

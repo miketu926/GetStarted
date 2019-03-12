@@ -25,10 +25,6 @@ class NewProjectComponent extends React.Component {
       goal_amt: 0, funded_amt: 0, duration_days: 30, location: "",
       project_picture: null,
       tiers: [],
-      // tiers: [
-      //  {title: "exampleTier1", amount: 1, description: "one"},
-      //  {title: "exampleTier2", amount: 2, description: "two"}
-      // ]
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -71,6 +67,17 @@ class NewProjectComponent extends React.Component {
       [{title: "", amount: 0, description: ""}]
     )});
   }
+  
+  updateTier(field, idx) {
+    return(e) => {
+      e.preventDefault();
+      let change = this.state.tiers[idx];
+      change[field] = e.target.value;
+      this.setState({ tiers: this.state.tiers.slice(0, idx)
+        .concat(change)
+        .concat(this.state.tiers.slice(idx + 1)) });
+    };
+  }
 
   removeTierItem(e) {
     e.preventDefault();
@@ -80,18 +87,13 @@ class NewProjectComponent extends React.Component {
     this.setState({ tiers: array });
   }
 
-  updateTier(field, idx) {
-    return (e) => {
-      this.setState({ [tiers[idx][field]]: e.target.value });
-    };
-  }
-
   render() {
     const tierItems = this.state.tiers.map( (tier, idx) => {
       return (
         <TierItem 
           tier={tier}
           key={idx}
+          idx={idx}
           updateTier={ this.updateTier }
         />
       )

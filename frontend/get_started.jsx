@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import * as ALLAJAX from './util/projects_api_util';
 
 // FOR TESTING IN DEVELOPMENT
 import { logout } from './actions/session/session_actions';
+import * as ALLAJAX from './util/projects_api_util';
 import * as PROJECTTHUNKS from './actions/projects/project_actions';
 // END TESTING - REMOVE IN PROD
 

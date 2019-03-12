@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const TierItem = ({ tier, key, updateTier }) => {
+const TierItem = ({ tier, idx, updateTier }) => {
   return (
 
     <div className="tier-box">
@@ -11,7 +11,7 @@ const TierItem = ({ tier, key, updateTier }) => {
         className='session-input input-box'
         placeholder='Signed limited-edition'
         value={tier.title}
-        onChange={updateTier("title", key)} 
+        onChange={updateTier("title", idx)} 
       />
 
       <h2 className='basics-title2'>Pledge amount</h2>
@@ -20,7 +20,7 @@ const TierItem = ({ tier, key, updateTier }) => {
         className='session-input input-box'
         placeholder='1'
         value={tier.amount}
-        onChange={updateTier("amount", key)} 
+        onChange={updateTier("amount", idx)} 
       />
 
       <h2 className='basics-title2'>Description</h2>
@@ -31,7 +31,7 @@ const TierItem = ({ tier, key, updateTier }) => {
         rows="5"
         value={tier.desc}
         placeholder='Get an early copy - hot off the press!'
-        onChange={updateTier("description", key)} 
+        onChange={updateTier("description", idx)} 
       />
     </div>
 

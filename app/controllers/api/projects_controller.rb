@@ -27,7 +27,23 @@ class Api::ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
+    # i = 0
+
     if @project.save
+      # HOW TO LOOP THROUGH PARAMS TIERS params[:tiers1]..etc
+      #Object.keys
+
+      # while params[:tier]
+      # debugger
+      #   Tier.new(params[:tier], project_id: @project.id)
+      #   debugger
+      #   i += 1
+      # end
+      # render :show
+
+      params.to_a.each do |el, idx|
+        
+      end
       render :show
     else
       render json: @project.errors.full_messages, status: 422
@@ -57,12 +73,16 @@ class Api::ProjectsController < ApplicationController
 
 
   private
-  
+
   def project_params
     params.require(:project).permit(:project, :description, :category,
       :photo, :goal_amt, :location, :project_picture,
       :funded_amt, :duration_days, :user_id)
   end
+  
+  # def tier_params
+  #   params.require(:tier).permit(:title, :description, :amount, :project_id, :tier_array)
+  # end
 
   def search_term
     params[:searchTerm]

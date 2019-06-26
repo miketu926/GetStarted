@@ -11,7 +11,7 @@ class Api::TiersController < ApplicationController
   end
 
   def create
-    @tier = tiers.new(tier_params)
+    @tier = Tier.new(tier_params)
     if @tier.save
     else
       render json: @tier.errors.full_messages, status: 422

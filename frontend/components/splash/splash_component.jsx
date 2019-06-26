@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAllProjects, fetchProject } from '../../actions/projects/project_actions';
 import { Link } from 'react-router-dom';
-import { Recommended } from './recommended';
+import { Recommended, Favorites } from './recommended';
 
 
 const msp = (state) => {
@@ -88,7 +88,8 @@ class SplashComponent extends React.Component {
     }
 
     let recommended = null;
-    if (this.getFeatured(3)[0]) {
+    let favorites = null;
+    if (this.getFeatured()[0]) {
       let recommendedProjects = this.getFeatured(3);
       recommended = recommendedProjects.map(project => {
         return (
@@ -100,55 +101,19 @@ class SplashComponent extends React.Component {
           />
         )
       })
+
+      let favoriteProjects = this.getFeatured(4);
+      favorites = favoriteProjects.map((project, idx) => {
+        return (
+          <Favorites
+            key={project.id}
+            project={project}
+            user={users[project.user_id]}
+            idx={idx}
+          />
+        )
+      })
     }
-
-    // let freshFavoriteDiv = null;
-    // let freshFavoriteDiv2 = null;
-    // let freshFavoriteDiv3 = null;
-    // let freshFavoriteDiv4 = null;
-    // if (this.getFeatured()) {
-    //   let freshProject1 = this.getFeatured();
-    //   let freshProject2 = this.getFeatured();
-    //   let freshProject3 = this.getFeatured();
-    //   let freshProject4 = this.getFeatured();
-    //   freshFavoriteDiv = (
-    //     <div className='flex flex-col padding-lr-17 margin-top-50 fresh-width'>
-    //       <h2 className='title-section fresh-fav'>FRESH FAVORITES</h2>
-    //       <Link to={`/projects/${freshProject1.id}`}>{<img src={freshProject1.photo} width={"285"} height={"165"} />}</Link>
-    //       <Link to={`/projects/${freshProject1.id}`} className='medium-desc hover-green-title' >{<h2>{freshProject1.project}</h2>}</Link>
-    //       <Link to={`/projects/${freshProject1.id}`} className='small-desc' >{<h2>{freshProject1.description}</h2>}</Link>
-    //       <Link to={`/projects/${freshProject1.id}`} className='small-name' >{<h2>By {this.props.users[freshProject1.user_id].name}</h2>}</Link>
-    //     </div>
-    //   );
-    //   freshFavoriteDiv2 = (
-    //     <div className='flex flex-col padding-lr-17 margin-top-65 fresh-width'>
-    //       <Link to={`/projects/${freshProject2.id}`}>{<img src={freshProject2.photo} width={"285"} height={"165"} />}</Link>
-    //       <Link to={`/projects/${freshProject2.id}`} className='medium-desc hover-green-title' >{<h2>{freshProject2.project}</h2>}</Link>
-    //       <Link to={`/projects/${freshProject2.id}`} className='small-desc' >{<h2>{freshProject2.description}</h2>}</Link>
-    //       <Link to={`/projects/${freshProject2.id}`} className='small-name' >{<h2>By {this.props.users[freshProject2.user_id].name}</h2>}</Link>
-    //     </div>
-    //   );
-    //   freshFavoriteDiv3 = (
-    //     <div className='flex flex-col padding-lr-17 margin-top-65 fresh-width'>
-    //       <Link to={`/projects/${freshProject3.id}`}>{<img src={freshProject3.photo} width={"285"} height={"165"} />}</Link>
-    //       <Link to={`/projects/${freshProject3.id}`} className='medium-desc hover-green-title' >{<h2>{freshProject3.project}</h2>}</Link>
-    //       <Link to={`/projects/${freshProject3.id}`} className='small-desc' >{<h2>{freshProject3.description}</h2>}</Link>
-    //       <Link to={`/projects/${freshProject3.id}`} className='small-name' >{<h2>By {this.props.users[freshProject3.user_id].name}</h2>}</Link>
-    //     </div>
-    //   );
-    //   freshFavoriteDiv4 = (
-    //     <div className='flex flex-col padding-lr-17 margin-top-65 fresh-width'>
-    //       <Link to={`/projects/${freshProject4.id}`}>{<img src={freshProject4.photo} width={"285"} height={"165"} />}</Link>
-    //       <Link to={`/projects/${freshProject4.id}`} className='medium-desc hover-green-title' >{<h2>{freshProject4.project}</h2>}</Link>
-    //       <Link to={`/projects/${freshProject4.id}`} className='small-desc' >{<h2>{freshProject4.description}</h2>}</Link>
-    //       <Link to={`/projects/${freshProject4.id}`} className='small-name' >{<h2>By {this.props.users[freshProject4.user_id].name}</h2>}</Link>
-    //     </div>
-    //   );
-    // };
-
-    // const recommended = this.getFeatured(3).map(project => {
-
-    // });
 
     return (
       <div className='flex flex-col'>
@@ -174,10 +139,7 @@ class SplashComponent extends React.Component {
         </div>
 
         <div className='flex row-wrap justify-center bottom-border padding-bottom-60' >
-          {/* {freshFavoriteDiv}
-          {freshFavoriteDiv2}
-          {freshFavoriteDiv3}
-          {freshFavoriteDiv4} */}
+          {favorites}
         </div>
 
         {/* <div className='flex row-wrap justify-center'>
@@ -229,7 +191,7 @@ class SplashComponent extends React.Component {
           <button onClick={() => { this.handleSubmit("Technology") }} className='hover cat'>Technology</button>
         </div>
 
-      </div>
+      </div >
     );
 
   }

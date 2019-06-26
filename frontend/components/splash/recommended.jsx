@@ -37,3 +37,15 @@ export const Favorites = ({ project, user, idx }) => {
     )
   }
 }
+
+export const Featured = ({ project, user }) => {
+  return (
+    <div className='flex flex-col padding-lr featured-border'>
+      <h2 className='title-section padding-bot-20'>FEATURED PROJECT</h2>
+      <Link to={`/projects/${project.id}`}>{<img src={project.photo} width={"630"} height={"360"} />}</Link>
+      <Link className='large-title med-desc-width hover-green-title' to={`/projects/${project.id}`}>{project.project}</Link>
+      <Link className='medium-desc med-desc-width' to={`/projects/${project.id}`}>{project.description}</Link>
+      <Link className='small-name' to={`/projects/${project.id}`}>By {user.name}</Link>
+    </div>
+  )
+}

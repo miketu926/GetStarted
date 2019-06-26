@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAllProjects, fetchProject } from '../../actions/projects/project_actions';
 import { Link } from 'react-router-dom';
-import { Recommended, Favorites } from './recommended';
+import { Recommended, Favorites, Featured } from './recommended';
 
 
 const msp = (state) => {
@@ -73,19 +73,15 @@ class SplashComponent extends React.Component {
       return <div>Loading...</div>
     }
 
-    let featuredBox = null;
-    if (this.getFeatured()[0]) {
-      let featuredProject = this.getFeatured()[0];
-      featuredBox = (
-        <div className='flex flex-col padding-lr featured-border'>
-          <h2 className='title-section padding-bot-20'>FEATURED PROJECT</h2>
-          <Link to={`/projects/${featuredProject.id}`}>{<img src={featuredProject.photo} width={"630"} height={"360"} />}</Link>
-          <Link className='large-title med-desc-width hover-green-title' to={`/projects/${featuredProject.id}`}>{featuredProject.project}</Link>
-          <Link className='medium-desc med-desc-width' to={`/projects/${featuredProject.id}`}>{featuredProject.description}</Link>
-          <Link className='small-name' to={`/projects/${featuredProject.id}`}>By {users[featuredProject.user_id].name}</Link>
-        </div>
-      )
-    }
+    const featured = this.getFeatured().map(project => {
+      return (
+        <Featured
+          key={project.id}
+          project={project}
+          user={users[project.user_id]}
+        />
+      );
+    })
 
     const recommended = this.getFeatured(3).map(project => {
       return (
@@ -124,7 +120,7 @@ class SplashComponent extends React.Component {
         </div>
 
         <div className='flex row-wrap justify-center featured'>
-          {featuredBox}
+          {featured}
           <div className='flex flex-col padding-lr margin-right-260'>
             <h2 className='title-section padding-bot-20'>RECOMMENDED</h2>
             {recommended}

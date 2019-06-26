@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAllProjects, fetchProject } from '../../actions/projects/project_actions';
 import { Link } from 'react-router-dom';
-import { Recommended, Favorites, Featured } from './recommended';
+import { Recommended, Favorites, Featured } from './splash_item';
 
 
 const msp = (state) => {

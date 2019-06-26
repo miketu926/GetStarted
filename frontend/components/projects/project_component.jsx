@@ -36,7 +36,7 @@ class ProjectShowComponent extends React.Component {
 
   handleRemove(e) {
     e.preventDefault();
-    this.props.deleteProject(this.props.project.id).then( () => this.props.history.push('/'));
+    this.props.deleteProject(this.props.project.id).then(() => this.props.history.push('/'));
   }
 
   completionDate(project_duration) {
@@ -49,11 +49,11 @@ class ProjectShowComponent extends React.Component {
 
     return mm + "/" + dd + "/" + yyyy;
   }
-  
+
   render() {
-    
-    const project = this.props.project;
-    const user = this.props.user;
+
+    const { project, user } = this.props;
+
     if (!project || !user) {
       return <div>Loading...</div>
     }
@@ -83,7 +83,7 @@ class ProjectShowComponent extends React.Component {
               <h2 className='details-smaller line-h-60'>{project.category} | {project.location}</h2>
             </div>
             <div className='flex flex-col detail-bar'>
-              <progress className='progress-bar' max="1" value={project.funded_amt/project.goal_amt}></progress>
+              <progress className='progress-bar' max="1" value={project.funded_amt / project.goal_amt}></progress>
               <h2 className='green-funded-amt'>${this.numberWithCommas(project.funded_amt)}</h2>
               <h2 className='details-small'>{`pledged of $${this.numberWithCommas(project.goal_amt)} goal`}</h2>
               <h2 className='black-funded-amt'>187</h2>

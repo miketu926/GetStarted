@@ -69,7 +69,7 @@ class SplashComponent extends React.Component {
   render() {
     const { projects, users } = this.props;
 
-    if (!projects || !users) {
+    if (!projects || !users || !this.getFeatured()[0]) {
       return <div>Loading...</div>
     }
 
@@ -87,33 +87,27 @@ class SplashComponent extends React.Component {
       )
     }
 
-    let recommended = null;
-    let favorites = null;
-    if (this.getFeatured()[0]) {
-      let recommendedProjects = this.getFeatured(3);
-      recommended = recommendedProjects.map(project => {
-        return (
-          <Recommended
-            numberWithCommas={this.numberWithCommas}
-            key={project.id}
-            project={project}
-            user={users[project.user_id]}
-          />
-        )
-      })
+    const recommended = this.getFeatured(3).map(project => {
+      return (
+        <Recommended
+          numberWithCommas={this.numberWithCommas}
+          key={project.id}
+          project={project}
+          user={users[project.user_id]}
+        />
+      )
+    })
 
-      let favoriteProjects = this.getFeatured(4);
-      favorites = favoriteProjects.map((project, idx) => {
-        return (
-          <Favorites
-            key={project.id}
-            project={project}
-            user={users[project.user_id]}
-            idx={idx}
-          />
-        )
-      })
-    }
+    const favorites = this.getFeatured(4).map((project, idx) => {
+      return (
+        <Favorites
+          key={project.id}
+          project={project}
+          user={users[project.user_id]}
+          idx={idx}
+        />
+      )
+    })
 
     return (
       <div className='flex flex-col'>

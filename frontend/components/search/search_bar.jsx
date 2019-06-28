@@ -9,7 +9,7 @@ const msp = () => {
 };
 
 const mdp = (dispatch) => {
-  return({
+  return ({
     fetchAllProjects: (searchTerm) => dispatch(fetchAllProjects(searchTerm)),
   });
 };
@@ -36,24 +36,24 @@ class SearchBar extends React.Component {
     const that = this;
     e.preventDefault();
     this.props.fetchAllProjects(this.state.searchTerm)
-    .then( () => {
-      that.props.history.push(`/search/${this.state.searchTerm}`);
-      that.props.handleSearchExit();
-      window.scrollTo(0, 0);
-    });
+      .then(() => {
+        that.props.history.push(`/search/${this.state.searchTerm}`);
+        that.props.handleSearchExit();
+        window.scrollTo(0, 0);
+      });
   }
 
   render() {
     return (
       <header className='search-bar'>
         <form className='form-bar'>
-          <input type="text" onChange={this.update("searchTerm")} 
+          <input type="text" onChange={this.update("searchTerm")}
             className='search-input'
-            placeholder="Search for projects or categories" 
+            placeholder="Search for projects or categories"
             autoFocus="autofocus" />
           <button onClick={this.handleSubmit}><i className="fas fa-search search-submit hover-header"></i></button>
         </form>
-        <button className='hover-header' id='search-exit' onClick={this.props.handleSearchExit}>+</button>
+        <button className='hover-header' id='search-exit' onClick={() => this.props.setSearch(false)}>+</button>
       </header>
     )
   }

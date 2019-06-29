@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { fetchProject, deleteProject } from '../../actions/projects/project_actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteProject } from '../../actions/projects/project_actions';
 import { Link } from 'react-router-dom';
 
 function ProjectShowComponent(props) {
@@ -20,7 +20,6 @@ function ProjectShowComponent(props) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetchProject(project.id)(dispatch);
   }, []);
 
   const numberWithCommas = (x) => {

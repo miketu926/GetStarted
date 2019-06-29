@@ -41,7 +41,8 @@ function HeaderComponent() {
         <header className='nav-bar'>
           <nav className='nav-left'>
             <ExploreNavComponent
-              fetchAllProjects={(searchTerm) => fetchAllProjects(searchTerm)(dispatch)} />
+              fetchAllProjects={() => fetchAllProjects()(dispatch)}
+            />
             <div className='start-project-nav nav-font'>
               <button className='hover-header'><Link to='/projects/new'>Start a project</Link></button>
             </div>

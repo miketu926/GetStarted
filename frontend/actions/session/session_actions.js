@@ -23,7 +23,7 @@ const logoutCurrentUser = () => {
   });
 };
 
-const receiveSessionErrors = (errors) => {
+export const receiveSessionErrors = (errors) => {
   return ({
     type: RECEIVE_SESSION_ERRORS,
     errors: errors

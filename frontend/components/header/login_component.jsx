@@ -1,141 +1,96 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { login, clearErrors } from '../../actions/session/session_actions';
 import { Link } from 'react-router-dom';
 
-const msp = ({ errors }) => {
-  return ({
-    errors: errors.errors || []
+function LoginComponent(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const errors = useSelector(({ errors }) => {
+    return errors.errors || [];
   });
-};
 
-const mdp = (dispatch) => {
+  useEffect(() => {
 
-  return ({
-    login: (formUser) => dispatch(login(formUser)),
-    clearErrors: () => dispatch(clearErrors())
-  });
-};
-
-
-
-class LoginComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { email: "", password: "" };
-    this.update = this.update.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.demoLogin = this.demoLogin.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.clearErrors();
-  }
-  
-  update(field) {
-    return (e) => {
-      this.setState({[field]: e.target.value});
+    return () => {
+      dispatch(clearErrors());
     };
-  }
+  }, []);
 
-  handleSubmit(e) {
-    e.preventDefault();
-    // this.props.login(this.state).then( () => this.props.history.push('/'));
-    this.props.login(this.state);
-  }
-  
-  signupLink () {
-    return (
-      <Link to='/signup'>Sign Up!</Link>
-    );
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   login({ email, password })(dispatch);
+  // };
 
-  demoLogin(e) {
+  const demoLogin = (e) => {
     e.preventDefault();
     const demo = { email: 'demo_user@getstarted.com', password: "demouser" };
-    this.props.login(demo);
-  }
-  // demoLogin(e) {
-  //   e.preventDefault();
-  //   const email = 'demo_user@getstarted.com'.split('');
-  //   const password = 'demouser'.split('');
-  //   const submit = document.getElementById('session-submit');
-  //   this.setState({ email: '', password: '' }, () => {
-  //     this.demoLoginHelper(email, password, submit);
-  //   });
-  // }
+    login(demo)(dispatch);
+  };
 
-  // demoLoginHelper(email, password, submit) {
-  //   if (email.length > 0) {
-  //     this.setState(
-  //       { email: this.state.email + email.shift() }, () => {
-  //         window.setTimeout(() =>
-  //           this.demoLoginHelper(email, password, submit), 50);
-  //       }
-  //     );
-  //   }
-  //   else if (password.length > 0) {
-  //     this.setState(
-  //       { password: this.state.password + password.shift() }, () => {
-  //         window.setTimeout(() =>
-  //           this.demoLoginHelper(email, password, submit), 50);
-  //       }
-  //     );
+  // const demoLoginHelper = (demoEmail, demoPassword) => {
+  //   if (demoEmail.length > 0) {
+  //     setEmail(email + demoEmail.shift());
+  //     window.setTimeout(() => demoLoginHelper(demoEmail, password), 50);
+  //   } else if (demoPassword.length > 0) {
+  //     setPassword(password + demoPassword.shift())
+  //     window.setTimeout(() => demoLoginHelper(demoEmail, demoPassword), 50);
   //   } else {
-  //     this.props.login();
+  //     login({ email, password })(dispatch);
   //   }
-  // }
-  
+  // };
 
-  render() {
-    //ERRORS LIST
-    const errorsList = this.props.errors.map((error, idx) => {
-      return (<li key={idx} className='li'>{error}</li>);
-    });
+  // const demoLogin = (e) => {
+  //   e.preventDefault();
+  //   let demoEmail = 'demo_user@getstarted.com'.split('');
+  //   let demoPassword = 'demouser'.split('');
+  //   // let submit = document.getElementById('session-submit');
+  //   // this.setState({ email: '', password: '' }, () => {
+  //   demoLoginHelper(demoEmail, demoPassword);
+  //   // });
+  // };
 
-    let errorsBox = null;
-    if (errorsList.length > 0) {
-      errorsBox = (<ul className='errors margin-lr'>{errorsList}</ul>)
-    }
-    // END ERROR LIST
+  //ERRORS LIST
+  const errorsList = errors.map((error, idx) => {
+    return (<li key={idx} className='li'>{error}</li>);
+  });
 
-    return (
-      <header className='login-form'>
-        <form className='login-form-box' onSubmit={this.handleSubmit}>
-          <p className='p-h2 margin-lr'>Log in</p>
+  return (
+    <header className='login-form'>
+      <form className='login-form-box' onSubmit={() => login({ email, password })(dispatch)}>
+        <p className='p-h2 margin-lr'>Log in</p>
 
-          {errorsBox}
+        {errorsList.length > 0 ? <ul className='errors margin-lr'>{errorsList}</ul> : null}
 
-          <input className='session-input margin-lr transition'
-            type="email"
-            placeholder="Email"
-            value={this.state.email}
-            onChange={this.update("email")} />
+        <input className='session-input margin-lr transition'
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)} />
 
-          <input className='session-input margin-lr transition'
-            type="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.update("password")} />
+        <input className='session-input margin-lr transition'
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)} />
 
-          {/* <a href='./' className='login-forgot-password margin-lr'>Forgot your password?</a> */}
-          <input className='session-submit margin-lr' type="submit" value="Log me in!" />
-          {/* <div className='login-remember-me margin-lr'>Remember me CHECKBOX</div> */}
-         
-          <div className="divider margin-lr">
-            <div className="line"></div>
-            <div className="txt">or</div>
-          </div>
+        {/* <a href='./' className='login-forgot-password margin-lr'>Forgot your password?</a> */}
+        <input className='session-submit margin-lr' type="submit" value="Log me in!" />
+        {/* <div className='login-remember-me margin-lr'>Remember me CHECKBOX</div> */}
 
-          <button onClick={this.demoLogin} className="demo-submit demo margin-lr">Guest Log in</button>
+        <div className="divider margin-lr">
+          <div className="line"></div>
+          <div className="txt">or</div>
+        </div>
 
-          <div className="session-form-footer">New to GetStarted? {this.signupLink()}</div>
-        </form>
-      </header>
-    )
+        <button onClick={(e) => demoLogin(e)} className="demo-submit demo margin-lr">Guest Log in</button>
 
-  }
-
+        {/* <div className="session-form-footer">New to GetStarted? {signupLink()}</div> */}
+        <div className="session-form-footer">New to GetStarted? <Link to='/signup'>Sign Up!</Link></div>
+      </form>
+    </header>
+  )
 }
-
-export default connect(msp, mdp)(LoginComponent);
+export default LoginComponent

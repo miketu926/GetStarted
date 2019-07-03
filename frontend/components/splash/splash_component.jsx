@@ -8,6 +8,7 @@ function SplashComponent(props) {
   const projects = useSelector(state => {
     return state.entities.projects;
   });
+
   const users = useSelector(state => {
     return state.entities.users;
   });
@@ -32,15 +33,15 @@ function SplashComponent(props) {
     return [...set];
   }
 
-  const handleSubmit = (searchTerm) => {
+  const handleSearch = (searchTerm) => {
     if (searchTerm === "ALL_PROJECTS") {
-      fetchAllProjects(searchTerm)(dispatch)
+      fetchAllProjects(searchTerm)
         .then(() => {
           props.history.push(`/search/all projects`);
           window.scrollTo(0, 0);
         });
     } else {
-      fetchAllProjects(searchTerm)(dispatch)
+      fetchAllProjects(searchTerm)
         .then(() => {
           props.history.push(`/search/${searchTerm}`);
           window.scrollTo(0, 0);
@@ -86,16 +87,15 @@ function SplashComponent(props) {
 
   return (
     <div className='flex flex-col'>
-
       <div className='categories-NAV flex row-wrap justify-center'>
-        <button onClick={() => handleSubmit("Arts")} className='hover cat'>Arts</button>
-        <button onClick={() => handleSubmit("Design")} className='hover cat'>Design</button>
-        <button onClick={() => handleSubmit("Film")} className='hover cat'>Film</button>
-        <button onClick={() => handleSubmit("Games")} className='hover cat'>Games</button>
-        <button onClick={() => handleSubmit("Music")} className='hover cat'>Music</button>
-        <button onClick={() => handleSubmit("Photography")} className='hover cat'>Photography</button>
-        <button onClick={() => handleSubmit("Publishing")} className='hover cat'>Publishing</button>
-        <button onClick={() => handleSubmit("Technology")} className='hover cat'>Technology</button>
+        <button onClick={() => handleSearch("Arts")} className='hover cat'>Arts</button>
+        <button onClick={() => handleSearch("Design")} className='hover cat'>Design</button>
+        <button onClick={() => handleSearch("Film")} className='hover cat'>Film</button>
+        <button onClick={() => handleSearch("Games")} className='hover cat'>Games</button>
+        <button onClick={() => handleSearch("Music")} className='hover cat'>Music</button>
+        <button onClick={() => handleSearch("Photography")} className='hover cat'>Photography</button>
+        <button onClick={() => handleSearch("Publishing")} className='hover cat'>Publishing</button>
+        <button onClick={() => handleSearch("Technology")} className='hover cat'>Technology</button>
       </div>
 
       <div className='flex row-wrap justify-center featured'>
@@ -103,7 +103,7 @@ function SplashComponent(props) {
         <div className='flex flex-col padding-lr margin-right-260'>
           <h2 className='title-section padding-bot-20'>RECOMMENDED</h2>
           {recommended}
-          <Link onClick={() => handleSubmit("ALL_PROJECTS")} className='view-more' to='/'>View more projects</Link>
+          <Link onClick={() => handleSearch("ALL_PROJECTS")} className='view-more' to='/'>View more projects</Link>
         </div>
       </div>
 
@@ -150,14 +150,14 @@ function SplashComponent(props) {
         </div> */}
 
       <div className='cat-bot flex row-wrap justify-center'>
-        <button onClick={() => handleSubmit("Arts")} className='hover cat'>Arts</button>
-        <button onClick={() => handleSubmit("Design")} className='hover cat'>Design</button>
-        <button onClick={() => handleSubmit("Film")} className='hover cat'>Film</button>
-        <button onClick={() => handleSubmit("Games")} className='hover cat'>Games</button>
-        <button onClick={() => handleSubmit("Music")} className='hover cat'>Music</button>
-        <button onClick={() => handleSubmit("Photography")} className='hover cat'>Photography</button>
-        <button onClick={() => handleSubmit("Publishing")} className='hover cat'>Publishing</button>
-        <button onClick={() => handleSubmit("Technology")} className='hover cat'>Technology</button>
+        <button onClick={() => handleSearch("Arts")} className='hover cat'>Arts</button>
+        <button onClick={() => handleSearch("Design")} className='hover cat'>Design</button>
+        <button onClick={() => handleSearch("Film")} className='hover cat'>Film</button>
+        <button onClick={() => handleSearch("Games")} className='hover cat'>Games</button>
+        <button onClick={() => handleSearch("Music")} className='hover cat'>Music</button>
+        <button onClick={() => handleSearch("Photography")} className='hover cat'>Photography</button>
+        <button onClick={() => handleSearch("Publishing")} className='hover cat'>Publishing</button>
+        <button onClick={() => handleSearch("Technology")} className='hover cat'>Technology</button>
       </div>
     </div >
   );

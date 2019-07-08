@@ -4,8 +4,7 @@ class Api::ProjectsController < ApplicationController
     if search_term == "ALL_PROJECTS"
       @projects = Project.includes(:user).all
     elsif search_term
-      @projects = Project.includes(:user)
-      .where('category iLIKE ? OR project iLIKE ?', search_term_str, search_term_str)
+      @projects = Project.includes(:user).where('category iLIKE ? OR project iLIKE ?', search_term_str, search_term_str)
     else
       @projects = Project.includes(:user).all
     end
@@ -89,7 +88,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def search_term_str
-    "%" + params[:searchTerm] + "%"
+    '%' + params[:searchTerm] + '%'
   end
 
 end

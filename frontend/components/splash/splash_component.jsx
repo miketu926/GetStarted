@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import { Recommended, Favorites, Featured } from './splash_item';
 
 function SplashComponent(props) {
-  const projects = useSelector(state => {
-    return state.entities.projects;
+  const projects = useSelector(({ entities }) => {
+    return entities.projects;
   });
 
-  const users = useSelector(state => {
-    return state.entities.users;
+  const users = useSelector(({ entities }) => {
+    return entities.users;
   });
 
   const dispatch = useDispatch();
@@ -35,19 +35,19 @@ function SplashComponent(props) {
 
   const handleSearch = (searchTerm) => {
     if (searchTerm === "ALL_PROJECTS") {
-      fetchAllProjects(searchTerm)
+      fetchAllProjects(searchTerm)(dispatch)
         .then(() => {
           props.history.push(`/search/all projects`);
           window.scrollTo(0, 0);
         });
     } else {
-      fetchAllProjects(searchTerm)
+      fetchAllProjects(searchTerm)(dispatch)
         .then(() => {
           props.history.push(`/search/${searchTerm}`);
           window.scrollTo(0, 0);
         });
     }
-  }
+  };
 
   if (!projects || !users || !getFeatured()[0]) {
     return <div>Loading...</div>

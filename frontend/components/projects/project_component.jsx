@@ -4,7 +4,7 @@ import { deleteProject } from '../../actions/projects/project_actions';
 import { Link } from 'react-router-dom';
 
 function ProjectShowComponent(props) {
-  const project = useSelector((state) => {
+  const project = useSelector(state => {
     return state.entities.projects[props.match.params.projectId];
   });
 
@@ -42,6 +42,8 @@ function ProjectShowComponent(props) {
     return mm + "/" + dd + "/" + yyyy;
   };
 
+  const { category, location, funded_amt, goal_amt, description, duration_days, user_id, photo } = project;
+
   if (!project || !user) {
     return <div>Loading...</div>
   };
@@ -53,21 +55,21 @@ function ProjectShowComponent(props) {
           <h2 className='profile'>By {user.name}</h2>
           <div className='flex flex-col title-spacing'>
             <h2 className='proj-title'>{project.project}</h2>
-            <h2 className='proj-desc'>{project.description}</h2>
+            <h2 className='proj-desc'>{description}</h2>
           </div>
         </div>
         <div className='flex row-wrap justify-center'>
           <div className='flex flex-col large-piece'>
-            <img src={project.photo} width={"815"} height={"455"} />
-            <h2 className='details-smaller line-h-60'>{project.category} | {project.location}</h2>
+            <img src={photo} width={"815"} height={"455"} />
+            <h2 className='details-smaller line-h-60'>{category} | {location}</h2>
           </div>
           <div className='flex flex-col detail-bar'>
-            <progress className='progress-bar' max="1" value={project.funded_amt / project.goal_amt}></progress>
-            <h2 className='green-funded-amt'>${numberWithCommas(project.funded_amt)}</h2>
-            <h2 className='details-small'>{`pledged of $${numberWithCommas(project.goal_amt)} goal`}</h2>
+            <progress className='progress-bar' max="1" value={funded_amt / goal_amt}></progress>
+            <h2 className='green-funded-amt'>${numberWithCommas(funded_amt)}</h2>
+            <h2 className='details-small'>{`pledged of $${numberWithCommas(goal_amt)} goal`}</h2>
             <h2 className='black-funded-amt'>187</h2>
             <h2 className='details-small'>backers</h2>
-            <h2 className='black-funded-amt'>{numberWithCommas(project.duration_days)}</h2>
+            <h2 className='black-funded-amt'>{numberWithCommas(duration_days)}</h2>
             <h2 className='details-small'>days to go</h2>
             <button className='back-this-project'>Back this project</button>
             <h2 className='details-smaller'>This project will only be funded if it reaches its goal by {completionDate(project.duration_days)} 12:01 AM EST.</h2>
@@ -84,7 +86,7 @@ function ProjectShowComponent(props) {
         <div className="flex row-wrap justify-center">
           <div className='flex flex-col left-detail width-650'>
             <h2 className='about'>About</h2>
-            <h3 className='about-deets'>{project.description}</h3>
+            <h3 className='about-deets'>{description}</h3>
           </div>
           <div className='flex flex-col right-detail width-350'>
             <h2 className='about'>Support</h2>
@@ -96,7 +98,7 @@ function ProjectShowComponent(props) {
         </div>
       </div>
 
-      {project.user_id === currentUserId ?
+      {user_id === currentUserId ?
         <div className='flex flex-col'>
           <button className='delete-project' onClick={(e) => handleRemove(e)}>Remove Project</button>
         </div> : null}

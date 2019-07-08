@@ -6,7 +6,7 @@ export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
 export const REMOVE_PROJECT = "REMOVE_PROJECT";
 
 // ACTION CREATORS
-const receiveAllProjects = ({projects, users, searchTerm}) => {
+const receiveAllProjects = ({ projects, users, searchTerm }) => {
   return ({
     type: RECEIVE_ALL_PROJECTS,
     projects: projects,
@@ -14,7 +14,7 @@ const receiveAllProjects = ({projects, users, searchTerm}) => {
     searchTerm: searchTerm,
   });
 };
-const receiveProject = ({project, user}) => {
+const receiveProject = ({ project, user }) => {
   return ({
     type: RECEIVE_PROJECT,
     project: project,
@@ -30,21 +30,21 @@ const removeProject = (project) => {
 
 // THUNK ACTIONS
 export const fetchAllProjects = (data) => dispatch => {
-  return ProjectsApiUtil.fetchProjects(data).then( payload => dispatch(receiveAllProjects(payload)));
+  return ProjectsApiUtil.fetchProjects(data).then(payload => dispatch(receiveAllProjects(payload)));
 };
 
 export const fetchProject = (id) => dispatch => {
-  return ProjectsApiUtil.fetchProject(id).then( project => dispatch(receiveProject(project)));
+  return ProjectsApiUtil.fetchProject(id).then(project => dispatch(receiveProject(project)));
 };
 
 export const createProject = (project) => dispatch => {
-  return ProjectsApiUtil.createProject(project).then( project => dispatch(receiveProject(project)));
+  return ProjectsApiUtil.createProject(project).then(project => dispatch(receiveProject(project)));
 };
 
 export const updateProject = (project) => dispatch => {
-  return ProjectsApiUtil.updateProject(project).then( project => dispatch(receiveProject(project)));
+  return ProjectsApiUtil.updateProject(project).then(project => dispatch(receiveProject(project)));
 };
 
 export const deleteProject = (id) => dispatch => {
-  return ProjectsApiUtil.deleteProject(id).then( (project) => dispatch(removeProject(project)));
+  return ProjectsApiUtil.deleteProject(id).then((project) => dispatch(removeProject(project)));
 };

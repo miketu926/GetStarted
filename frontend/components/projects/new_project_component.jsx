@@ -21,7 +21,7 @@ class NewProjectComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      project: "", description: "", category: "",
+      project: "", description: "", category: "Arts",
       goal_amt: 0, funded_amt: 0, duration_days: 30, location: "",
       project_picture: null,
       tiers: [],

@@ -57,12 +57,12 @@ class NewProjectComponent extends React.Component {
     formData.append('project[location]', this.state.location);
     formData.append('project[project_picture]', this.state.project_picture);
 
-    this.state.tiers.forEach(function (tier, idx) {
+    // this.state.tiers.forEach(function (tier, idx) {
 
-      formData.append(`tier${idx}[title]`, tier.title);
-      formData.append(`tier${idx}[description]`, tier.description);
-      formData.append(`tier${idx}[amount]`, tier.amount);
-    });
+    //   formData.append(`tier${idx}[title]`, tier.title);
+    //   formData.append(`tier${idx}[description]`, tier.description);
+    //   formData.append(`tier${idx}[amount]`, tier.amount);
+    // });
 
     this.props.createProject(formData).then(
       (object) => this.props.history.push(`/projects/${object.project.id}`)
@@ -227,7 +227,7 @@ class NewProjectComponent extends React.Component {
             </div>
           </div>
 
-          <div className='create-bot-border row-wrap'>
+          {/* <div className='create-bot-border row-wrap'>
             <div className='basics-left-w'>
               <h2 className='basics-title'>Add a Reward</h2>
               <h2 className='basics-deets'>Offer simple, meaningful rewards that bring backers closer to your project. Rewards don’t have to be physical items. Consider special experiences or behind-the-scenes peeks into your project.</h2>
@@ -240,7 +240,7 @@ class NewProjectComponent extends React.Component {
               <button onClick={this.removeTierItem} className='remove-reward'>- Remove Reward</button>
 
             </div>
-          </div>
+          </div> */}
 
           <input type="submit" className='back-this-project create-project' onClick={this.handleSubmit} value="Create Project" />
 

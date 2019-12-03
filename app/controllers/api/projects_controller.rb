@@ -26,23 +26,8 @@ class Api::ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
-    # i = 0
-
+    
     if @project.save
-      # HOW TO LOOP THROUGH PARAMS TIERS params[:tiers1]..etc
-      #Object.keys
-
-      # while params[:tier]
-      # debugger
-      #   Tier.new(params[:tier], project_id: @project.id)
-      #   debugger
-      #   i += 1
-      # end
-      # render :show
-
-      params.to_a.each do |el, idx|
-        
-      end
       render :show
     else
       render json: @project.errors.full_messages, status: 422
